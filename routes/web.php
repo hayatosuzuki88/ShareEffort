@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoutineController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
+    Route::get('/', 'index')->name('index');
+    
+    Route::get('/home', 'home')->name('home');
+
+    Route::get('/routines/{routine}', 'show')->name('show');
 });
+
+Route::controller(ProfileController::class)->middleware('auth')->group(function () {
+    Route::get('/profile', 'edit')->name('profile.edit');
+    Route::patch('/profile', 'update')->name('profile.update');
+    Route::delete('/profile', 'destroy')->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
