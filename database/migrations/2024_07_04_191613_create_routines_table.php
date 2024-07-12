@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
+            $table->integer('minutes');
+            $table->string('body', 200); # 一旦200文字
+            $table->string('image_path');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

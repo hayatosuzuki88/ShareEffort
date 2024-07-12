@@ -10,24 +10,30 @@
         <h1>ShareEffort</h1>
         <div class='routines'>
             <h2>Routines</h2>
-            <!--
-            @foreach ($routines as $routine)
-                <div class='routing_friend'>
-                    <h3 class='user_name'>{{ $routine->user_id }}</h3>
-                    <img class='img' src='{{ $routine->user_id->image_path }}' />
-                </div>
-            -->
+            @if (count($routines) == 0)
+                <p>投稿がありません。</p>
+            @else
+                @foreach ($routines as $routine)
+                    <div class='routing_friend'>
+                        <a href='routines/ $routine->id }}'>
+                            <h3 class='user_name'> {{ $routine->user->name }}</h3>
+                            <!--<img class='img' src=' $routine->user_id->image_path }}' />-->
+                        </a>
+                    </div>
+                @endforeach
+            @endif
+            
         </div>
         <div class='tasks'>
             <h2>今日のタスク</h2>
             <!--
-            @foreach
+            foreach
                 <div class='goal'>
                     <h4 class='goal_name'>
                         
                     </h4>
                 </div>
-                @foreach
+                foreach
                     <div class='task'>
                         <h5 class='task_name'></h5>
                         <p class='achive button'></p>
@@ -41,13 +47,13 @@
         <div class='shares'>
             <h2>友達を応援する</h2>
             <!--
-            @foreach
+            foreach
                 <div class='friend'>
                     
                 </div>
                 <div class='post'>
                     <div class='effort'>
-                        @foreach
+                        foreach
                             <div class='friend_task'>
                                 <div
                             </div>

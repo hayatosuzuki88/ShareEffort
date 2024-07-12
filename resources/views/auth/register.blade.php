@@ -8,20 +8,6 @@
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
-        {{--
-        <-- Preference -->
-        <div>
-            <x-input-label for="preference" :value="＿('好み')"/>
-            <x-text-input id="preference" name="preference" type="pref" maxlength="50" placeholder="sports" class="mt-1 block w-full" :value="old('preference', $user->preference)" autocomplete="preference" />
-            <x-input-error class="mt-2" :messages="$errors->get('preference')" />
-        </div>
-        
-        <-- Birth -->
-        <div>
-            <x-input-label for="birth" :value="＿('生年月日')"/>
-            <x-text-input id="birth" name="birth" type="birth" placeholder="2000/01/01" class="mt-1 block w-full" :value="old('birth', $user->birth)" autocomplete="birth" />
-            <x-input-error class="mt-2" :messages="$errors->get('birth')" />
-        </div> --}}
 
         <!-- Email Address -->
         <div class="mt-4">
