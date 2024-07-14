@@ -25,10 +25,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
 
     Route::get('/home', 'home')->name('home');
+    
+    Route::get('/routines/create', 'create')->name('routine_create');
+    
+    Route::post('/routines/post', 'store')->name('store');
 
     Route::get('/routines/{routine}', 'show')->name('show');
     

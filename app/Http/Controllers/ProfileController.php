@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -26,6 +27,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        
+        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $request += ['image_path' => $image_path];
+        
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
