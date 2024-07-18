@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoutineController;
+use App\Http\Controllers\GoalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,14 @@ Route::get('/dashboard', function () {
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(GoalController::class)->middleware(['auth'])->group(function(){
+    
+    Route::get('/create', 'create')->name('create');
+    
+    Route::post('/goals/post', 'store')->name('goal_store');
+    
 });
 
 Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){

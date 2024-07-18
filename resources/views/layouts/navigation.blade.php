@@ -18,7 +18,10 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('routine_create')" :active="request()->routeIs('create')">
+                    <x-nav-link :href="route('routine_create')" :active="request()->routeIs('routine_create')">
+                        {{ __('Routine') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{ __('目標設定') }}
                     </x-nav-link>
                 </div>
