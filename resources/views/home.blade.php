@@ -13,8 +13,9 @@
             </x-slot>
             <h1>ShareEffort</h1>
             <div class='routines'>
+                <h2>今の目標</h2>
+                    <p>今の目標はありません。</p>
                 <h2>Routines</h2>
-                <a href="/routines/create">投稿する</a>
                 @if (count($routines) == 0)
                     <p>投稿がありません。</p>
                 @else
@@ -31,6 +32,7 @@
             </div>
             <div class='tasks'>
                 <h2>今日のタスク</h2>
+                    <p>今日のタスクはありません。</p>
             <!--
             foreach
                 <div class='goal'>
@@ -51,6 +53,7 @@
             </div>
             <div class='shares'>
                 <h2>友達を応援する</h2>
+                    <p>投稿がありません。</p>
             <!--
             foreach
                 <div class='friend'>
