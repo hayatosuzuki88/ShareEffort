@@ -8,21 +8,28 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
+                    <h1>ShareEffort</h1>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('routine_create')" :active="request()->routeIs('routine_create')">
+                    <x-nav-link :href="route('Rcreate')" :active="request()->routeIs('Rcreate')">
                         {{ __('Routine') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
-                        {{ __('目標設定') }}
+                    <x-nav-link :href="route('Gcreate')" :active="request()->routeIs('Gcreate')">
+                        {{ __('Goal') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
+                        {{ __('Plan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
+                        {{ __('Task') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
+                        {{ __('Post') }}
                     </x-nav-link>
                 </div>
             </div>

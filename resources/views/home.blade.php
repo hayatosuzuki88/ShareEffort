@@ -14,20 +14,34 @@
             <h1>ShareEffort</h1>
             <div class='routines'>
                 <h2>今の目標</h2>
+                @if (count($goals) == 0)
                     <p>今の目標はありません。</p>
+                @else
+                    @foreach ($goals as $goal)
+                        <div class='my_goals'>
+                                <h3 class='goal_name'> {{ $goal->goal }} </h3>
+                                <p> {{ $goal->date }} </p>
+                                @if ($goal->achived == 0)
+                                    <p>未達成</p>
+                                @else
+                                    <p>達成</p>
+                                @endif
+                        <div>
+                    @endforeach
+                @endif
                 <h2>Routines</h2>
                 @if (count($routines) == 0)
                     <p>投稿がありません。</p>
                 @else
-                @foreach ($routines as $routine)
-                    <div class='routing_friend'>
-                        <a href="/routines/{{ $routine->id }}">
-                            <h3 class='user_name'> {{ $routine->user->name }}</h3>
-                            <!--<img class='img' src=' $routine->user->image_path }}' />-->
-                        </a>
-                    </div>
-                @endforeach
-            @endif
+                    @foreach ($routines as $routine)
+                        <div class='routing_friend'>
+                            <a href="/routines/{{ $routine->id }}">
+                                <h3 class='user_name'> {{ $routine->user->name }}</h3>
+                                <!--<img class='img' src=' $routine->user->image_path }}' />-->
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             
             </div>
             <div class='tasks'>

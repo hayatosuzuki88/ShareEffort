@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Routine;
-use Carbon\Carbon;
 use Cloudinary;
 use Auth;
 
@@ -13,7 +12,7 @@ class RoutineController extends Controller
     //
     public function create(Routine $routine)
     {
-        return view('Routine.create');
+        return view('Routine.Rcreate');
     }
     
     public function store(Request $request, Routine $routine)
@@ -30,11 +29,5 @@ class RoutineController extends Controller
     public function show(Routine $routine)
     {
         return view('Routine.routine')->with(['routine' => $routine]);
-    }
-    
-    public function home(Routine $routine)
-    {
-        $today_routine = Routine::whereDate('created_at', '>=', Carbon::today()->subDay())->get();
-        return view('home')->with(['routines' => $today_routine]);
     }
 }
