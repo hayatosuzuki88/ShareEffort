@@ -18,4 +18,8 @@ class Goal extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    
+    public function plans(){
+        return $this->hasMany(Plan::class);
+    }
 }

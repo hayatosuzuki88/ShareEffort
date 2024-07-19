@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,21 +28,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::controller(HomeController::class)->middleware(['auth'])->group(function(){
+
+    Route::get('/home', 'home')->name('home');
+    
+});
+
+Route::controller(PlanController::class)->middleware(['auth'])->group(function(){
+    
+    Route::get('/plan/create', 'create')->name('Pcreate');
+    
+    Route::post('/plans/post', 'store')->name('Pstore');
+    
+});
+
 Route::controller(GoalController::class)->middleware(['auth'])->group(function(){
     
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create', 'create')->name('Gcreate');
     
-    Route::post('/goals/post', 'store')->name('goal_store');
+    Route::post('/goals/post', 'store')->name('Gstore');
     
 });
 
 Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
 
-    Route::get('/home', 'home')->name('home');
+    Route::get('/routines/create', 'create')->name('Rcreate');
     
-    Route::get('/routines/create', 'create')->name('routine_create');
-    
-    Route::post('/routines/post', 'store')->name('store');
+    Route::post('/routines/post', 'store')->name('Rstore');
 
     Route::get('/routines/{routine}', 'show')->name('show');
     

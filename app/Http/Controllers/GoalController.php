@@ -13,7 +13,7 @@ class GoalController extends Controller
     //
     public function create(Goal $goal)
     {
-        return view('Goal.create');
+        return view('Goal.Gcreate');
     }
     
     public function store(Request $request, Goal $goal)
