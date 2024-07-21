@@ -37,7 +37,7 @@
                         <div class='routing_friend'>
                             <a href="/routines/{{ $routine->id }}">
                                 <h3 class='user_name'> {{ $routine->user->name }}</h3>
-                                <!--<img class='img' src=' $routine->user->image_path }}' />-->
+                                <img class='img' src='{{ $routine->user->image_path }}' />
                             </a>
                         </div>
                     @endforeach

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Goal;
+use App\Models\Task;
 
 class Plan extends Model
 {
@@ -21,5 +22,9 @@ class Plan extends Model
     
     public function goal(){
         return $this->belongsTo(Goal::class);
+    }
+    
+    public function tasks(){
+        return $this->hasMany(Task::class);
     }
 }
