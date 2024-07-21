@@ -63,6 +63,10 @@ Route::controller(RoutineController::class)->middleware(['auth'])->group(functio
     Route::get('/routines/create', 'create')->name('Rcreate');
     
     Route::post('/routines/post', 'store')->name('Rstore');
+    
+    Route::get('/routines/like/{id}', 'like')->name('Rlike');
+    
+    Route::get('/routines/unlike/{id}', 'unlike')->name('Runlike');
 
     Route::get('/routines/{routine}', 'show')->name('show');
     
