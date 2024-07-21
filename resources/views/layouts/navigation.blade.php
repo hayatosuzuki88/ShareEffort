@@ -25,7 +25,7 @@
                     <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
                         {{ __('Plan') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
+                    <x-nav-link :href="route('Tcreate')" :active="request()->routeIs('Tcreate')">
                         {{ __('Task') }}
                     </x-nav-link>
                     <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
@@ -39,6 +39,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <div><img class='img' src='{{ Auth::user()->image_path }}' /></div>
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">

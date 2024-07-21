@@ -22,6 +22,6 @@ class GoalController extends Controller
         $user_id = Auth::user()->id;
         $input += ['user_id' => $user_id];
         $goal->fill($input)->save();
-        return redirect('/home');
+        return redirect('/plans/create');
     }
 }

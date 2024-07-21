@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,9 +36,15 @@ Route::controller(HomeController::class)->middleware(['auth'])->group(function()
     
 });
 
+Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
+    
+   Route::get('/tasks/create', 'create')->name('Tcreate');
+
+});
+
 Route::controller(PlanController::class)->middleware(['auth'])->group(function(){
     
-    Route::get('/plan/create', 'create')->name('Pcreate');
+    Route::get('/plans/create', 'create')->name('Pcreate');
     
     Route::post('/plans/post', 'store')->name('Pstore');
     
