@@ -6,6 +6,7 @@ use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,15 @@ Route::controller(RoutineController::class)->middleware(['auth'])->group(functio
 
     Route::get('/routines/{routine}', 'show')->name('show');
     
+});
+
+Route::controller(UserController::class)->middleware(['auth'])->group(function(){
+    
+    Route::get('/users/follow/{id}', 'follow')->name('follow');
+    
+    Route::get('/users/removefollow/{id}', 'removefollow')->name('removefollow');
+    
+    Route::get('/users/{id}', 'show')->name('user.show');
 });
 
 Route::middleware('auth')->group(function () {
