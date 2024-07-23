@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Friend;
+use App\Models\Routine;
+use App\Models\Goal;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -49,11 +53,38 @@ class User extends Authenticatable
     ];
     
     public function routines(){
-        return $this->hasMany(User::class);
+        return $this->hasMany(Routine::class);
     }
     
     public function goals(){
-        return $this->hasMany(User::class);
+        return $this->hasMany(Goal::class);
+    }
+    
+    public function like_routines()
+    {
+        return $this->hasMany(LikeRoutine::class, 'routine_id');
+    }
+    
+    public function friends()
+    {
+        return $this->hasMany(Friend::class, 'followed');
+    }
+    
+    
+    public function is_followed_by_auth_user()
+    {
+        $id = Auth::id();
+        
+        $friends = array();
+        foreach($this->friends as $friend) {
+            array_push($friends, $friend->follow);
+        }
+        
+        if (in_array($id, $friends)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

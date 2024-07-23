@@ -6,6 +6,7 @@ use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,9 +64,22 @@ Route::controller(RoutineController::class)->middleware(['auth'])->group(functio
     Route::get('/routines/create', 'create')->name('Rcreate');
     
     Route::post('/routines/post', 'store')->name('Rstore');
+    
+    Route::get('/routines/like/{id}', 'like')->name('Rlike');
+    
+    Route::get('/routines/unlike/{id}', 'unlike')->name('Runlike');
 
     Route::get('/routines/{routine}', 'show')->name('show');
     
+});
+
+Route::controller(UserController::class)->middleware(['auth'])->group(function(){
+    
+    Route::get('/users/follow/{id}', 'follow')->name('follow');
+    
+    Route::get('/users/removefollow/{id}', 'removefollow')->name('removefollow');
+    
+    Route::get('/users/{id}', 'show')->name('user.show');
 });
 
 Route::middleware('auth')->group(function () {
