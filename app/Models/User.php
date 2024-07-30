@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Friend;
 use App\Models\Routine;
 use App\Models\Goal;
+use App\Models\CommentRoutine;
 use Auth;
 
 class User extends Authenticatable
@@ -68,6 +69,11 @@ class User extends Authenticatable
     public function friends()
     {
         return $this->hasMany(Friend::class, 'followed');
+    }
+    
+    public function comment_routines()
+    {
+        return $this->hasMany(CommentRoutine::class, 'user_id');
     }
     
     

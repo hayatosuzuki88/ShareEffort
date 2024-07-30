@@ -28,6 +28,13 @@
                         @else
                             <a href="{{ route('Rlike', ['id' => $routine->id]) }}" >いいね<span>{{ $routine->like_routines->count() }}</span></a>
                         @endif
+                        <form action="/routines/{{ $routine->id }}/comments" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="text" name="comment" placeholder="頑張れー！！"><br>
+                            <input value="{{ $routine->id }}" type="hidden" name="routine_id">
+                            <input value="{{ Auth::User()->id }}" type="hidden" name="user_id">
+                            <input type="submit" value="コメントを送信" />
+                        </form>
                         <p class='created_at' >{{ $routine->created_at }}に投稿</p>
                     </div>
             </div>
