@@ -2,6 +2,8 @@ const date = new Date();
 const today = date.getDate();
 const currentMonth = date.getMonth();
 
+console.log('test');
+
 function createCalendar(month) {
     const monthDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let calendarHTML = '<table class="calendar"><thead><tr>';

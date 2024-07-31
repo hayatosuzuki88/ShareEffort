@@ -5,7 +5,6 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <script src="{{ mix('js/calendar.js') }}" async></script>
         
     </head>
     <body>
@@ -24,4 +23,5 @@
         
         </x-app-layout>
     </body>
+    <script src="{{ asset('js/calendar.js') }}"></script>
 </html>
