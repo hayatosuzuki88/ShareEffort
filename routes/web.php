@@ -7,6 +7,7 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentRoutineController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,6 +81,14 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function()
     Route::get('/users/removefollow/{id}', 'removefollow')->name('removefollow');
     
     Route::get('/users/{id}', 'show')->name('user.show');
+});
+
+Route::controller(CommentRoutineController::class)->middleware(['auth'])->group(function() {
+   
+   Route::post('/routines/{comment_id}/comments', 'store');
+   
+   Route::get('/comments/{comment_id}', 'destroy');
+   
 });
 
 Route::middleware('auth')->group(function () {

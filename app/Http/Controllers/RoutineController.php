@@ -54,4 +54,5 @@ class RoutineController extends Controller
         
         return redirect()->back();
     }
+    
 }

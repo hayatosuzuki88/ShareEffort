@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\LikeRoutine;
 use App\Models\User;
+use App\Models\CommentRoutine;
 use Auth;
 
 class Routine extends Model
@@ -26,6 +27,11 @@ class Routine extends Model
     public function like_routines()
     {
         return $this->hasMany(LikeRoutine::class, 'routine_id');
+    }
+    
+    public function comment_routines()
+    {
+        return $this->hasMany(CommentRoutine::class, 'routine_id');
     }
     
     public function is_liked_by_auth_user()
