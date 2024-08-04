@@ -28,7 +28,7 @@
                     <x-nav-link :href="route('Tcreate')" :active="request()->routeIs('Tcreate')">
                         {{ __('Task') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
+                    <x-nav-link :href="route('Postcreate')" :active="request()->routeIs('Pcreate')">
                         {{ __('Post') }}
                     </x-nav-link>
                 </div>

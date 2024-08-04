@@ -27,7 +27,7 @@ class TaskController extends Controller
         {
             $count += 1;
             $count_string = (string) $count;
-            $title = $task->name .$count_string . '回目';
+            $title = $task->name;
             $start = $task->start;
             $event = [
                 'title' => $title,

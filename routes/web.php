@@ -6,6 +6,7 @@ use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentRoutineController;
 use Illuminate\Support\Facades\Route;
@@ -90,6 +91,27 @@ Route::controller(CommentRoutineController::class)->middleware(['auth'])->group(
    Route::post('/routines/{comment_id}/comments', 'store');
    
    Route::get('/comments/{comment_id}', 'destroy');
+   
+});
+
+Route::controller(PostController::class)->middleware(['auth'])->group(function() {
+    
+    Route::get('/posts/create', 'create')->name('Postcreate');
+    
+    Route::post('posts/post', 'store')->name('Poststore');
+    
+    Route::get('posts/{post}', 'show')->name('Postshow');
+    
+    Route::get('/posts/like/{id}', 'like')->name('Plike');
+    
+    Route::get('/posts/unlike/{id}', 'unlike')->name('Punlike');
+});
+
+Route::controller(CommentPostController::class)->middleware(['auth'])->group(function() {
+   
+   Route::post('/posts/{comment_id}/comments', 'store');
+   
+   Route::get('/posts/comments/{comment_id}', 'destroy');
    
 });
 
