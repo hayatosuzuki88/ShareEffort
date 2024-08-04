@@ -65,21 +65,22 @@
             </div>
             <div class='shares'>
                 <h2>友達を応援する</h2>
+                @if (count($posts) == 0)
                     <p>投稿がありません。</p>
-            <!--
-            foreach
-                <div class='friend'>
-                    
-                </div>
-                <div class='post'>
-                    <div class='effort'>
-                        foreach
-                            <div class='friend_task'>
-                                <div
-                            </div>
-                    </div>
-                </div>
-            -->
+                @else
+                    @foreach ($posts as $post)
+                        <div class='post'>
+                            <a href='/posts/{{ $post->id }}'>
+                                <h3 class='title'>{{ $post->title }}</h3>
+                                <p>{{ $post->body }}</p>
+                                <p>{{ $post->task->name }}</p>
+                                <img class='img' src='{{ $post->image_path }}' alt="画像が読み込みません。" />
+                                <p>{{ $post->user->name }}</p>
+                                <p>{{ $post->created_at }}</p>
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </x-app-layout>
         

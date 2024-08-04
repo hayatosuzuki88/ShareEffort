@@ -11,6 +11,8 @@ use App\Models\Friend;
 use App\Models\Routine;
 use App\Models\Goal;
 use App\Models\CommentRoutine;
+use App\Models\Post;
+use App\Models\LikePost;
 use Auth;
 
 class User extends Authenticatable
@@ -74,6 +76,16 @@ class User extends Authenticatable
     public function comment_routines()
     {
         return $this->hasMany(CommentRoutine::class, 'user_id');
+    }
+    
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'followed');
+    }
+    
+    public function like_posts()
+    {
+        return $this->hasMany(LikePost::class, 'post_id');
     }
     
     

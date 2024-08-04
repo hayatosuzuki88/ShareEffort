@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\TaskController;
 use App\Models\Plan;
+use App\Models\Post;
 use Auth;
 use Carbon\Carbon;
 
@@ -21,6 +22,11 @@ class Task extends Model
     public function user($task)
     {
         return $task->plan->goal->user;
+    }
+    
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'followed');
     }
     
     public function get_task_of_auth_user()
