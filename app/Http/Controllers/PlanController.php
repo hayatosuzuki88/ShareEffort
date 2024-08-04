@@ -8,6 +8,10 @@ use App\Models\Plan;
 
 use App\Models\Goal;
 
+use App\Models\Task;
+
+use Carbon\Carbon;
+
 class PlanController extends Controller
 {
     //
@@ -22,6 +26,22 @@ class PlanController extends Controller
     {
         $input = $request['plan'];
         $plan->fill($input)->save();
+        $start = Carbon::parse($plan->start);
+        $finish = Carbon::parse($plan->finish);
+        $period = $start->diffInDays($finish);
+        $task_size = $period / $plan->period;
+        for($task_i=0; $task_i < $task_size; $task_i++)
+        {
+            $task = new Task;
+            $task->name = $plan->name;
+            $task->todo = $plan->details;
+            $task->time = $plan->time;
+            $task->start = Carbon::parse($plan->start)->addDays($task_i);
+            $task->end = Carbon::parse($plan->start)->addDays($task_i + 1);
+            $task->finish = 0;
+            $task->plan_id = $plan->id;
+            $task->save();
+        }
         return redirect('/home');
     }
     
