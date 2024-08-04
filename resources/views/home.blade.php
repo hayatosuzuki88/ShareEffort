@@ -46,24 +46,22 @@
             </div>
             <div class='tasks'>
                 <h2>今日のタスク</h2>
+                @if (count($today_tasks) == 0)
                     <p>今日のタスクはありません。</p>
-            <!--
-            foreach
-                <div class='goal'>
-                    <h4 class='goal_name'>
-                        
-                    </h4>
-                </div>
-                foreach
-                    <div class='task'>
-                        <h5 class='task_name'></h5>
-                        <p class='achive button'></p>
-                        <p class='time'></p>
-                        <p class='content'></p>
-                        <p class='comment'></p>
-                    </div>
-                <p>Share Effort</p>
-            -->
+                @else
+                    @foreach($today_tasks as $task)
+                        <div class='task'>
+                            <h5 class='task_name'>{{ $task->name }}</h5>
+                            @if ($task->finish == 0)
+                                <p class='achive button'>未達成</p>
+                            @else
+                                <p class='achive button'>達成</p>
+                            @endif
+                            <p class='time'>{{ $task->time }}分</p>
+                            <p class='content'>{{ $task->todo }}</p>
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class='shares'>
                 <h2>友達を応援する</h2>

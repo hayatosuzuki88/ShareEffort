@@ -41,6 +41,8 @@ Route::controller(HomeController::class)->middleware(['auth'])->group(function()
 Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
     
    Route::get('/tasks/create', 'create')->name('Tcreate');
+   
+   Route::get('get_events', 'getEvents');
 
 });
 

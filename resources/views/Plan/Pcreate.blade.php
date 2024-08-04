@@ -26,6 +26,10 @@
                         <input type="integer" name="plan[time]"/><br>
                         <p>どこからどこまで</p>
                         <input type="text" name="plan[range]"/><br>
+                        <p>何時に取り組む？</p>
+                        <input type="time" name="plan[routine_time]"/><br>
+                        <p>何日ごと？</p>
+                        <input type="integer" name="plan[period]"/><br>
                         <p>どのゴールのため？？</p>
                         <select name="plan[goal_id]">
                             <option></option>

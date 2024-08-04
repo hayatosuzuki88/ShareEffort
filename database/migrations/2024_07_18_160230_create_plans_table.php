@@ -17,8 +17,10 @@ return new class extends Migration
             $table->date('start');
             $table->date('finish');
             $table->integer('time');
-            $table->string('details')->nullable()->default(null);
             $table->string('range');
+            $table->time('routine_time')->nullable()->default(null);
+            $table->integer('period');
+            $table->string('details')->nullable()->default(null);
             $table->foreignId('goal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

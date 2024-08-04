@@ -17,6 +17,8 @@ class Plan extends Model
         'finish',
         'time',
         'range',
+        'routine_time',
+        'period',
         'goal_id',
     ];
     
