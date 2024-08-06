@@ -9,35 +9,29 @@ use Auth;
 
 class UserController extends Controller
 {
-    //
     
-    
-    public function follow($id)
+    public function follow($friend_id)
     {
         Friend::create([
-            'followed' => $id,
-            'follow' => Auth::id(),
+            "followed" => $friend_id,
+            "follow" => Auth::id(),
             ]);
             
-        session()->flash('success', 'You Followed the User.');
-        
         return redirect()->back();
     }
     
     
-    public function removefollow($id)
+    public function removefollow($friend_id)
     {
-        $like = Friend::where('followed', $id)->where('follow', Auth::id())->first();
+        $like = Friend::where("followed", $friend_id)->where("follow", Auth::id())->first();
         $like->delete();
         
-        session()->flash('success', 'You Remove Following the User.');
-        
         return redirect()->back();
     }
     
-    public function show($id)
+    public function show($user_id)
     {
-        $user = User::where('id', $id)->first();
-        return view('profile.show')->with(['user' => $user]);
+        $user = User::where("id", $user_id)->first();
+        return view("profile.show")->with(["user" => $user]);
     }
 }

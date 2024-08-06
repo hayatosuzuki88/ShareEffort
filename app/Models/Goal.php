@@ -10,9 +10,9 @@ class Goal extends Model
     use HasFactory;
     
     protected $fillable = [
-        'goal',
-        'date',
-        'user_id',
+        "goal",
+        "date",
+        "user_id",
     ];
     
     public function user(){

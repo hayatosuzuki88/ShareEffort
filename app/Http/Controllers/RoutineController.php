@@ -10,48 +10,50 @@ use Auth;
 
 class RoutineController extends Controller
 {
-    //
+    
     public function create(Routine $routine)
     {
-        return view('Routine.Rcreate');
+        return view("Routine.create");
     }
     
     public function store(Request $request, Routine $routine)
     {
-        $input = $request['routine'];
-        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        $user_id = Auth::user()->id;
-        $input += ['image_path' => $image_path];
-        $input += ['user_id' => $user_id];
+        $input = $request["routine"];
+        if ($request->file("image") == null)
+        {
+            $image_path = null;
+        } else {
+            $image_path = Cloudinary::upload($request->file("image")->getRealPath())->getSecurePath();
+        }
+        
+        $input += ["image_path" => $image_path];
         $routine->fill($input)->save();
-        return redirect('/routines/' . $routine->id);
+        
+        return redirect(route("routine.show", ["routine_id" => $routine->id]));
     }
     
-    public function show(Routine $routine)
+    public function show($routine_id)
     {
-        return view('Routine.routine')->with(['routine' => $routine]);
+        $routine = Routine::find($routine_id);
+        return view("Routine.show")->with(["routine" => $routine]);
     }
     
-    public function like($id)
+    public function like($routine_id)
     {
         LikeRoutine::create([
-            'routine_id' => $id,
-            'user_id' => Auth::id(),
+            "routine_id" => $routine_id,
+            "user_id" => Auth::id(),
             ]);
             
-        session()->flash('success', 'You Liked the Routine.');
-        
         return redirect()->back();
     }
     
         
-    public function unlike($id)
+    public function unlike($routine_id)
     {
-        $like = LikeRoutine::where('routine_id', $id)->where('user_id', Auth::id())->first();
+        $like = LikeRoutine::where("routine_id", $routine_id)->where("user_id", Auth::id())->first();
         $like->delete();
-        
-        session()->flash('success', 'You Unliked the Routine.');
-        
+
         return redirect()->back();
     }
     

@@ -11,8 +11,8 @@ class Friend extends Model
     use HasFactory;
     
     protected $fillable = [
-        'follow',
-        'followed',
+        "follow",
+        "followed",
     ];
     
     public function user()

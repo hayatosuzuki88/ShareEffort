@@ -12,10 +12,10 @@ class CommentPost extends Model
     use HasFactory;
     
     protected $fillable = [
-        'routine_id',
-        'comment',
-        'is_advice',
-        'user_id',
+        "post_id",
+        "comment",
+        "is_advice",
+        "user_id",
     ];
     
     public function user()

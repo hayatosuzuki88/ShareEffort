@@ -26,33 +26,33 @@ class Task extends Model
     
     public function posts()
     {
-        return $this->hasMany(Post::class, 'followed');
+        return $this->hasMany(Post::class, "followed");
     }
     
-    public function get_task_of_auth_user()
+    public function get_my_tasks()
     {
-        $tasks_of_user = Task::whereHas('plan', function ($query1) {
-            $query1->whereHas('goal', function ($query2) {
-                $query2->whereHas('user', function ($query3) {
-                    $query3->where('id', Auth::id());    
+        $my_tasks = Task::whereHas("plan", function ($query1) {
+            $query1->whereHas("goal", function ($query2) {
+                $query2->whereHas("user", function ($query3) {
+                    $query3->where("id", Auth::id());    
                 });
             });
         })->get();
         
-        return $tasks_of_user;
+        return $my_tasks;
     }
     
     public function get_today_tasks()
     {
-        $tmp_task = new Task;
         $today = Carbon::today();
-        $today_tasks = Task::whereHas('plan', function ($query1) {
-            $query1->whereHas('goal', function ($query2) {
-                $query2->whereHas('user', function ($query3) {
-                    $query3->where('id', Auth::id());    
+        
+        $today_tasks = Task::whereHas("plan", function ($query1) {
+            $query1->whereHas("goal", function ($query2) {
+                $query2->whereHas("user", function ($query3) {
+                    $query3->where("id", Auth::id());    
                 });
             });
-        })->where('start', '=', $today)->get();
+        })->where("start", "=", $today)->get();
         
         return $today_tasks;
     }

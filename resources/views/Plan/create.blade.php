@@ -8,34 +8,37 @@
     </head>
     <body>
         <x-app-layout>
+            
             <x-slot name="header">
-        　  （ヘッダー名）
+        　      Plan
             </x-slot>
-            <h1>ShareEffort</h1>
-            <div class='plans'>
+            
+            <div class="plans">
                 <h2>プランの作成</h2>
-                <div class='plan'>
-                    <form action="/plans/post" method="POST" enctype="multipart/form-data">
+                <div class="plan">
+                    <form action="{{ route('plan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <p>作業概要</p>
-                        <input type="text" name="plan[name]"/><br>
+                        <input type="text" name="plan[name]" required="required"/><br>
                         <p>いつからいつまで？</p>
-                        <input type="date" name="plan[start]"/>
-                        <input type="date" name="plan[finish]"/><br>
+                        <input type="date" name="plan[start]" required="required"/>
+                        <input type="date" name="plan[end]" required="required"/><br>
                         <p>かかる時間は？</p>
-                        <input type="integer" name="plan[time]"/><br>
+                        <input type="integer" name="plan[duration]"/><br>
                         <p>どこからどこまで</p>
                         <input type="text" name="plan[range]"/><br>
                         <p>何時に取り組む？</p>
                         <input type="time" name="plan[routine_time]"/><br>
                         <p>何日ごと？</p>
-                        <input type="integer" name="plan[period]"/><br>
+                        <input type="integer" name="plan[interval]" required="required"/><br>
                         <p>どのゴールのため？？</p>
-                        <select name="plan[goal_id]">
+                        <select name="plan[goal_id]" required="required">
                             <option></option>
-                        @foreach ($goals as $goal)
-                            <option value="{{ $goal->id }}">{{ $goal->goal }}</option>
-                        @endforeach
+                            
+                            @foreach ($not_achived_goals as $goal)
+                                <option value="{{ $goal->id }}">{{ $goal->goal }}</option>
+                            @endforeach
+                            
                         </select><br>
                         <input type="submit" value="保存" />
                     </form>
