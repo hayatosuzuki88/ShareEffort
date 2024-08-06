@@ -12,9 +12,9 @@ class CommentRoutine extends Model
     use HasFactory;
     
     protected $fillable = [
-        'routine_id',
-        'comment',
-        'user_id',
+        "routine_id",
+        "comment",
+        "user_id",
     ];
     
     public function user()

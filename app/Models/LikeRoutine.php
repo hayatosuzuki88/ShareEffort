@@ -12,8 +12,8 @@ class LikeRoutine extends Model
     use HasFactory;
     
     protected $fillable = [
-        'routine_id',
-        'user_id',
+        "routine_id",
+        "user_id",
     ];
     
     public function routine()

@@ -9,6 +9,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentRoutineController;
+use App\Http\Controllers\CommentPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,94 +25,92 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 
-Route::controller(HomeController::class)->middleware(['auth'])->group(function(){
-
-    Route::get('/home', 'home')->name('home');
+Route::get('/', [HomeController::class, 'home'])->middleware(['auth', 'verified'])->name('home');
     
-});
-
-Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
     
-   Route::get('/tasks/create', 'create')->name('Tcreate');
-   
-   Route::get('get_events', 'getEvents');
+Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
 
-});
+    Route::get('/routines/create', 'create')->name('routine.create');
+    
+    Route::post('/routines/store', 'store')->name('routine.store');
+    
+    Route::get('/routines/like/{routine_id}', 'like')->name('routine.like');
+    
+    Route::get('/routines/unlike/{routine_id}', 'unlike')->name('routine.unlike');
 
-Route::controller(PlanController::class)->middleware(['auth'])->group(function(){
-    
-    Route::get('/plans/create', 'create')->name('Pcreate');
-    
-    Route::post('/plans/post', 'store')->name('Pstore');
+    Route::get('/routines/{routine_id}', 'show')->name('routine.show');
     
 });
 
 Route::controller(GoalController::class)->middleware(['auth'])->group(function(){
     
-    Route::get('/create', 'create')->name('Gcreate');
+    Route::get('/goals/create', 'create')->name('goal.create');
     
-    Route::post('/goals/post', 'store')->name('Gstore');
-    
-});
-
-Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
-
-    Route::get('/routines/create', 'create')->name('Rcreate');
-    
-    Route::post('/routines/post', 'store')->name('Rstore');
-    
-    Route::get('/routines/like/{id}', 'like')->name('Rlike');
-    
-    Route::get('/routines/unlike/{id}', 'unlike')->name('Runlike');
-
-    Route::get('/routines/{routine}', 'show')->name('show');
+    Route::post('/goals/store', 'store')->name('goal.store');
     
 });
 
-Route::controller(UserController::class)->middleware(['auth'])->group(function(){
+Route::controller(PlanController::class)->middleware(['auth'])->group(function(){
     
-    Route::get('/users/follow/{id}', 'follow')->name('follow');
+    Route::get('/plans/create', 'create')->name('plan.create');
     
-    Route::get('/users/removefollow/{id}', 'removefollow')->name('removefollow');
+    Route::post('/plans/store', 'store')->name('plan.store');
     
-    Route::get('/users/{id}', 'show')->name('user.show');
 });
 
-Route::controller(CommentRoutineController::class)->middleware(['auth'])->group(function() {
+Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
+    
+   Route::get('/tasks/manage', 'manage')->name('task.manage');
    
-   Route::post('/routines/{comment_id}/comments', 'store');
-   
-   Route::get('/comments/{comment_id}', 'destroy');
-   
+   Route::get('get_events', 'getEvents');
+
 });
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function() {
     
-    Route::get('/posts/create', 'create')->name('Postcreate');
+    Route::get('/posts/create', 'create')->name('post.create');
     
-    Route::post('posts/post', 'store')->name('Poststore');
+    Route::post('posts/store', 'store')->name('post.store');
     
-    Route::get('posts/{post}', 'show')->name('Postshow');
+    Route::get('posts/{post_id}', 'show')->name('post.show');
     
-    Route::get('/posts/like/{id}', 'like')->name('Plike');
+    Route::get('/posts/like/{post_id}', 'like')->name('post.like');
     
-    Route::get('/posts/unlike/{id}', 'unlike')->name('Punlike');
+    Route::get('/posts/unlike/{post_id}', 'unlike')->name('post.unlike');
+});
+
+Route::controller(UserController::class)->middleware(['auth'])->group(function(){
+    
+    Route::get('/users/follow/{user_id}', 'follow')->name('user.follow');
+    
+    Route::get('/users/removefollow/{user_id}', 'removefollow')->name('user.follow.remove');
+    
+    Route::get('/users/{user_id}', 'show')->name('user.show');
+});
+
+Route::controller(CommentRoutineController::class)->middleware(['auth'])->group(function() {
+   
+   Route::post('/routines/{routine_id}/comments', 'store')->name('routine.comment.store');
+   
+   Route::get('/comments/{comment_id}', 'destroy')->name('routine.comment.remove');
+   
 });
 
 Route::controller(CommentPostController::class)->middleware(['auth'])->group(function() {
    
-   Route::post('/posts/{comment_id}/comments', 'store');
+   Route::post('/posts/{post_id}/comments', 'store')->name('post.comment.store');
    
-   Route::get('/posts/comments/{comment_id}', 'destroy');
+   Route::get('/posts/comments/{comment_id}', 'destroy')->name('post.comment.remove');
    
 });
 

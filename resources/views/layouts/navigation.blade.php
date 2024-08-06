@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                     <h1>ShareEffort</h1>
@@ -16,19 +16,19 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Rcreate')" :active="request()->routeIs('Rcreate')">
+                    <x-nav-link :href="route('routine.create')" :active="request()->routeIs('routine.create')">
                         {{ __('Routine') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Gcreate')" :active="request()->routeIs('Gcreate')">
+                    <x-nav-link :href="route('goal.create')" :active="request()->routeIs('goal.create')">
                         {{ __('Goal') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Pcreate')" :active="request()->routeIs('Pcreate')">
+                    <x-nav-link :href="route('plan.create')" :active="request()->routeIs('plan.create')">
                         {{ __('Plan') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Tcreate')" :active="request()->routeIs('Tcreate')">
+                    <x-nav-link :href="route('task.manage')" :active="request()->routeIs('task.manage')">
                         {{ __('Task') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Postcreate')" :active="request()->routeIs('Pcreate')">
+                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
                         {{ __('Post') }}
                     </x-nav-link>
                 </div>
@@ -84,9 +84,25 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                {{ __('Home') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('routine.create')" :active="request()->routeIs('routine.create')">
+                {{ __('Routine') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('goal.create')" :active="request()->routeIs('goal.create')">
+                {{ __('Goal') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('plan.create')" :active="request()->routeIs('plan.create')">
+                {{ __('Plan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('task.manage')" :active="request()->routeIs('task.manage')">
+                {{ __('Task') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
+                {{ __('Post') }}
+            </x-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->

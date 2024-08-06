@@ -8,19 +8,21 @@
     </head>
     <body>
         <x-app-layout>
+            
             <x-slot name="header">
-        　  （ヘッダー名）
+        　      Goal
             </x-slot>
-            <h1>ShareEffort</h1>
-            <div class='goals'>
+            
+            <div class="goals">
                 <h2>目標設定</h2>
-                <div class='goal'>
-                    <form action="/goals/post" method="POST" enctype="multipart/form-data">
+                <div class="goal">
+                    <form action="{{ route('goal.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <p>あなたの目標は？？</p>
-                        <input type="text" name="goal[goal]"/><br>
+                        <input type="text" name="goal[goal]" required="required"/><br>
                         <p>いつまで？</p>
-                        <input type="date" name="goal[date]"/><br>
+                        <input type="date" name="goal[date]" required="required"/><br>
+                        <input type="hidden" name="goal[user_id]" value="{{ Auth::id() }}"/>
                         <input type="submit" value="保存" />
                     </form>
                 </div>

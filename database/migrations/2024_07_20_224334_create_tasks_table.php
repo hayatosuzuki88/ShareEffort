@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('todo')->nullable();
-            $table->integer('time');
-            $table->date('start');
-            $table->date('end');
-            $table->integer('finish');
+            $table->string('range')->nullable();
+            $table->integer('duration')->nullable();
+            $table->date('date');
+            $table->time('start');
+            $table->integer('taken_time');
             $table->foreignId('plan_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

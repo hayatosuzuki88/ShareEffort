@@ -11,50 +11,52 @@ use Cloudinary;
 
 class PostController extends Controller
 {
-    //
     
     public function create(Post $post)
     {
-        $tmp_task = new Task;
-        $tasks = $tmp_task->get_task_of_auth_user();
-        return view('Post.Pcreate')->with(['tasks' => $tasks]);
+        $Task = new Task;
+        $my_tasks = $Task->get_my_tasks();
+        return view("Post.create")->with(["my_tasks" => $my_tasks]);
     }
     
     public function store(Request $request, Post $post)
     {
-        $input = $request['post'];
-        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        $user_id = Auth::user()->id;
-        $input += ['image_path' => $image_path];
-        $input += ['user_id' => $user_id];
+        $input = $request["post"];
+        
+        if ($request->file("image") == null)
+        {
+            $image_path = null;
+        } else {
+            $image_path = Cloudinary::upload($request->file("image")->getRealPath())->getSecurePath();
+        }
+        
+        $input += ["image_path" => $image_path];
         $post->fill($input)->save();
-        return redirect('/posts/' .$post->id);
+        
+        return redirect(route("post.show", ["post_id" => $post->id]));
     }
     
-    public function show(Post $post)
+    public function show($post_id)
     {
-        return view('Post.post')->with(['post' => $post]);
+        $post = Post::find($post_id);
+        return view("Post.show")->with(["post" => $post]);
     }
     
-    public function like($id)
+    public function like($post_id)
     {
         LikePost::create([
-            'post_id' => $id,
-            'user_id' => Auth::id(),
+            "post_id" => $post_id,
+            "user_id" => Auth::id(),
             ]);
             
-        session()->flash('success', 'You Liked the Post.');
-        
         return redirect()->back();
     }
     
         
-    public function unlike($id)
+    public function unlike($post_id)
     {
-        $like = LikePost::where('post_id', $id)->where('user_id', Auth::id())->first();
+        $like = LikePost::where("post_id", $post_id)->where("user_id", Auth::id())->first();
         $like->delete();
-        
-        session()->flash('success', 'You Unliked the Post.');
         
         return redirect()->back();
     }

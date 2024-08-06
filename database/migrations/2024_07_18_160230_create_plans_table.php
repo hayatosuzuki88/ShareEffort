@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('start');
-            $table->date('finish');
-            $table->integer('time');
-            $table->string('range');
-            $table->time('routine_time')->nullable()->default(null);
-            $table->integer('period');
-            $table->string('details')->nullable()->default(null);
+            $table->date('end');
+            $table->integer('duration')->nullable();
+            $table->string('range')->nullable();
+            $table->time('routine_time')->nullable();
+            $table->integer('interval');
             $table->foreignId('goal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

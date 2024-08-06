@@ -12,14 +12,14 @@ class Plan extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name',
-        'start',
-        'finish',
-        'time',
-        'range',
-        'routine_time',
-        'period',
-        'goal_id',
+        "name",
+        "start",
+        "end",
+        "duration",
+        "range",
+        "routine_time",
+        "interval",
+        "goal_id",
     ];
     
     public function goal(){

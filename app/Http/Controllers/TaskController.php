@@ -12,30 +12,29 @@ class TaskController extends Controller
 {
     //
     
-    public function create(Task $task)
+    public function manage(Task $task)
     {
-        return view('Task.Tcreate');
+        return view("Task.manage");
     }
     
     public function getEvents()
     {
-        $tmp_task = new Task;
-        $tasks_of_user = $tmp_task->get_task_of_auth_user();
-        $events = [];
-        $count = 0;
-        foreach($tasks_of_user as $task)
+        $Task = new Task;
+        $my_tasks = $Task->get_my_tasks();
+        $my_events = [];
+        
+        foreach($my_tasks as $task)
         {
-            $count += 1;
-            $count_string = (string) $count;
-            $title = $task->name;
-            $start = $task->start;
-            $event = [
-                'title' => $title,
-                'start' => $start,
-                'color' => '#ff44cc',
+            $event_name = $task->name;
+            $date = $task->date;
+            $my_event = [
+                "title" => $event_name,
+                "start" => $date,
+                "color" => "#ff44cc",
             ];
-            array_push($events, $event);
+            array_push($my_events, $my_event);
         }
-        return $events;
+        
+        return $my_events;
     }
 }

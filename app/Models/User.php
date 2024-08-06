@@ -65,40 +65,41 @@ class User extends Authenticatable
     
     public function like_routines()
     {
-        return $this->hasMany(LikeRoutine::class, 'routine_id');
+        return $this->hasMany(LikeRoutine::class, "routine_id");
     }
     
     public function friends()
     {
-        return $this->hasMany(Friend::class, 'followed');
+        return $this->hasMany(Friend::class, "followed");
     }
     
     public function comment_routines()
     {
-        return $this->hasMany(CommentRoutine::class, 'user_id');
+        return $this->hasMany(CommentRoutine::class, "user_id");
     }
     
     public function posts()
     {
-        return $this->hasMany(Post::class, 'followed');
+        return $this->hasMany(Post::class, "followed");
     }
     
     public function like_posts()
     {
-        return $this->hasMany(LikePost::class, 'post_id');
+        return $this->hasMany(LikePost::class, "post_id");
     }
     
     
     public function is_followed_by_auth_user()
     {
-        $id = Auth::id();
+        $my_id = Auth::id();
         
-        $friends = array();
-        foreach($this->friends as $friend) {
-            array_push($friends, $friend->follow);
+        $my_friends = array();
+        
+        foreach($this->friends as $my_friend) {
+            array_push($my_friends, $my_friend->follow);
         }
         
-        if (in_array($id, $friends)) {
+        if (in_array($my_id, $my_friends)) {
             return true;
         } else {
             return false;

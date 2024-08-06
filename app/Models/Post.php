@@ -16,11 +16,11 @@ class Post extends Model
     use HasFactory;
     
     protected $fillable = [
-        'title',
-        'body',
-        'task_id',
-        'image_path',
-        'user_id',
+        "title",
+        "body",
+        "task_id",
+        "image_path",
+        "user_id",
     ];
     
     public function task(){
@@ -33,27 +33,30 @@ class Post extends Model
     
     public function comment_posts()
     {
-        return $this->hasMany(CommentPost::class, 'post_id');
+        return $this->hasMany(CommentPost::class, "post_id");
     }
     
     public function like_posts()
     {
-        return $this->hasMany(LikePost::class, 'post_id');
+        return $this->hasMany(LikePost::class, "post_id");
     }
     
     public function is_liked_by_auth_user()
     {
-        $id = Auth::id();
+        $my_id = Auth::id();
         
         $likers = array();
+        
         foreach($this->like_posts as $like) {
-            array_push($likers, $like->user_id);
+            $liker = $like->user_id;
+            array_push($likers, $liker);
         }
         
-        if (in_array($id, $likers)) {
+        if (in_array($my_id, $likers)) {
             return true;
         } else {
             return false;
         }
+        
     }
 }
