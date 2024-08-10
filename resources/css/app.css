@@ -99,7 +99,7 @@ h2 {
 
 .post_title {
     text-align: center;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 .user {
@@ -109,8 +109,30 @@ h2 {
 }
 
 .post_footer {
-    display: flex;
-    justify-content: space-between;
     padding: 10px;
     background-color: #f2f2f2;
+}
+
+
+@media (max-width: 450px) {
+    .routing_friends {
+        height: 80px;
+    }
+    
+    .routing_user_image {
+        height:50px;
+        width: 50px;
+    }
+    
+    .routing_user_name {
+        font-size: 10px;
+    }
+    
+    .post_header {
+        height: 100px;
+    }
+    
+    .post_title {
+        margin-top: 50px;
+    }
 }
