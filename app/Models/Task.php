@@ -52,7 +52,7 @@ class Task extends Model
                     $query3->where("id", Auth::id());    
                 });
             });
-        })->where("start", "=", $today)->get();
+        })->where("date", "=", $today)->get();
         
         return $today_tasks;
     }

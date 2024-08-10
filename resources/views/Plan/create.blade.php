@@ -9,10 +9,6 @@
     <body>
         <x-app-layout>
             
-            <x-slot name="header">
-        　      Plan
-            </x-slot>
-            
             <div class="plans">
                 <h2>プランの作成</h2>
                 <div class="plan">
@@ -35,7 +31,7 @@
                         <select name="plan[goal_id]" required="required">
                             <option></option>
                             
-                            @foreach ($not_achived_goals as $goal)
+                            @foreach ($not_achived_goals_of_mine as $goal)
                                 <option value="{{ $goal->id }}">{{ $goal->goal }}</option>
                             @endforeach
                             

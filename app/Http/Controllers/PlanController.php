@@ -7,14 +7,18 @@ use App\Models\Goal;
 use App\Models\Plan;
 use App\Models\Task;
 use Carbon\Carbon;
+use Auth;
 
 class PlanController extends Controller
 {
     
     public function create(Plan $plan)
     {
-        $not_achived_goals = Goal::where("achived", "=", 0)->get();
-        return view("Plan.create")->with(["not_achived_goals" => $not_achived_goals]);
+        $not_achived_goals_of_mine = Goal::where([
+            ["user_id", Auth::id()],
+            ["achived", 0],
+            ])->get();
+        return view("Plan.create")->with(["not_achived_goals_of_mine" => $not_achived_goals_of_mine]);
     }
     
     public function store(Request $request, Plan $plan)

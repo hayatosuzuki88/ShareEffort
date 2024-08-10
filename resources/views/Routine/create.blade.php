@@ -8,9 +8,6 @@
     </head>
     <body>
         <x-app-layout>
-            <x-slot name="header">
-        　      Routine
-            </x-slot>
             <div class="routines">
                 <div class="routine">
                     <form action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">

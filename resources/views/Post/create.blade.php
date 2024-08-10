@@ -9,10 +9,6 @@
     <body>
         <x-app-layout>
             
-            <x-slot name="header">
-        　      Post
-            </x-slot>
-            
             <div class="posts">
                 <h2>投稿作成</h2>
                 <div class="posts">
