@@ -1,3 +1,116 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.home {
+    padding: 30px;
+    background-color: #d6eaff;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.user_image {
+    height: 50px;
+    width: 50px;
+}
+
+.logo_image {
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
+}
+
+.my_goals, .routing_friends, .today_tasks {
+    display: flex;
+    flex-direction: row;
+}
+
+.my_goal {
+    border-radius: 50%;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    border-width: 4px;
+    border-color: #84ffc1;
+    background-color: white;
+}
+
+.today_task {
+    background-color: #e5ffe5;
+    border-color: white;
+    border-width: 4px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20%;
+}
+
+.routing_friends {
+    max-width: 1000px;
+    padding: 5px;
+    background-color: white;
+    height: 150px;
+    border-width: 6px;
+    border-color: #ccffff;
+}
+
+.routing_user_image {
+    height:100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.routing_user_name {
+    display: flex;
+    justify-content: center;
+}
+
+.today_task {
+    margin: 10px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.post {
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border-width: 6px;
+    border-color: #ccffff;
+}
+
+.post_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-width: 2px;
+    border-color: #f2f2f2;
+    padding: 10px;
+}
+
+.post_title {
+    text-align: center;
+    font-size: 35px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post_footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f2f2f2;
+}

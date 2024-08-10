@@ -9,10 +9,6 @@
     <body>
         <x-app-layout>
             
-            <x-slot name="header">
-        　      Goal
-            </x-slot>
-            
             <div class="goals">
                 <h2>目標設定</h2>
                 <div class="goal">

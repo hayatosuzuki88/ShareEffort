@@ -21,10 +21,6 @@
     <body>
         <x-app-layout>
             
-            <x-slot name="header">
-                Task
-            </x-slot>
-            
             <div class="routines">
                 <h2>Task</h2>
                 <div id="app">
