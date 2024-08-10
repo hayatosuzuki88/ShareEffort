@@ -107,8 +107,8 @@
                                             <img class="user_image" src="{{ $post->user->image_path }}" />
                                             <p>{{ $post->user->name }}</p>
                                         </div>
-                                        <h2 class="post_title">{{ $post->title }}</h2>
                                         <p>タスク：{{ $post->task->name }}</p>
+                                        <h2 class="post_title">{{ $post->title }}</h2>
                                     </div>
                                 
                                     @if($post->image_path != null)
