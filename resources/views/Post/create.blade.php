@@ -5,11 +5,12 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <script src="https://...jquery.min.js"></script>
     </head>
     <body>
         <x-app-layout>
             
-            <div class="posts">
+            <div class="posts body">
                 <h2>投稿作成</h2>
                 <div class="posts">
                     <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
@@ -22,11 +23,13 @@
                         <select name="post[task_id]" required="required">
                             <option></option>
                             
-                            @foreach ($my_tasks as $task)
+                            @foreach ($my_today_tasks as $task)
                                 <option value="{{ $task->id }}">{{ $task->name }}</option>
                             @endforeach
                             
                         </select><br>
+                        <p>何分頑張った？</p>
+                        <input type="number" id="minutes_value" name="minutes" required="required" value="0" /><br>
                         <p>写真も載せよう！</p>
                         <input type="file" name="image"/><br>
                         <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}"/>
@@ -34,7 +37,26 @@
                     </form>
                 </div>
             </div>
+            <div class="post">
+                <div class="post_header">
+                    <div class="user">
+                        <img class="user_image" src="{{ Auth::User()->image_path }}" />
+                        <p>{{ Auth::User()->name }}</p>
+                    </div>
+                    
+                    <p>タスク：</p>
+                    <h2 class="post_title"></h2>
+                </div>
+                                    
+                <img class="post_image" src="" alt="画像が読み込みません。" />
+                <div class="post_footer">
+                    <p></p>
+                    <p>{{ \Carbon\Carbon::now() }}に投稿</p>
+                </div>
+            </div>
+            </br>
         
         </x-app-layout>
+        <script src="/js/post_show.js"></script>
     </body>
 </html>

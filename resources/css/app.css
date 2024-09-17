@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.body {
+    padding: 30px;
+}
 
 .home {
-    padding: 30px;
-    background-color: #d6eaff;
+    background-color: #eaf4ff;
 }
 
 h1 {
@@ -14,8 +16,24 @@ h1 {
 }
 
 .user_image {
+    position: relative;
+    display: inline-block;
+}
+
+.user_image img {
     height: 50px;
     width: 50px;
+    display: block; /* 画像の下に余分な隙間ができないようにする */
+}
+
+.user_image p {
+    position: absolute; /* 画像の上に絶対的に位置させる */
+    bottom: 0; /* 下部に合わせる */
+    padding: 20px;
+}
+
+.user_name {
+    display: inline-block;
 }
 
 .logo_image {
@@ -37,6 +55,17 @@ h1 {
     text-align: center;
     border-width: 4px;
     border-color: #84ffc1;
+    background-color: white;
+    height: 150px;
+}
+
+.my_plan {
+    border-radius: 10%;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    border-width: 4px;
+    border-color: #eaeaff;
     background-color: white;
 }
 
@@ -113,6 +142,57 @@ h2 {
     background-color: #f2f2f2;
 }
 
+.routines {
+    background-color: #eafff4;
+}
+
+.like_icon {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+}
+
+.comment_submit {
+    display: inline-block;
+}
+
+.footer {
+    text-align: right;
+}
+
+.comment_form {
+    display: inline;
+}
+
+.created_at {
+    display: inline-block;
+}
+
+.image_post {
+    position: relative;
+    display: inline-block;
+}
+
+.image_post img {
+    display: block; /* 画像の下に余分な隙間ができないようにする */
+    width: 100%; /* コンテナに合わせて画像の幅を設定 */
+    height: auto; /* アスペクト比を維持する */
+}
+
+.post_goal {
+    position: absolute; /* 画像の上に絶対的に位置させる */
+    top: 0; /* 上部に合わせる */
+    right: 0; /* 右端に合わせる */
+    color: white;
+    border-radius: 50%;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    border-width: 4px;
+    border-color: white;
+    height: 150px;
+    background-color: rgba(132, 255, 193, 0.2);
+}
 
 @media (max-width: 450px) {
     .routing_friends {
@@ -136,4 +216,6 @@ h2 {
         margin-top: 50px;
         align-items: flex-end;
     }
+    
+
 }

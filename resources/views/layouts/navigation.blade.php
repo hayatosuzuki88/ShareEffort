@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
+                    <a href="\#my_goals">
                         <img class="logo_image" src="{{ asset('/images/logo_demo.jpg') }}" alt="画像が読み込めません"/>
                     </a>
                     <h1>ShareEffort</h1>
@@ -16,14 +16,11 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('post.all')" :active="request()->routeIs('post.all')">
+                        {{ __('New') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('routine.create')" :active="request()->routeIs('routine.create')">
                         {{ __('Routine') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('goal.create')" :active="request()->routeIs('goal.create')">
-                        {{ __('Goal') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('plan.create')" :active="request()->routeIs('plan.create')">
-                        {{ __('Plan') }}
                     </x-nav-link>
                     <x-nav-link :href="route('task.manage')" :active="request()->routeIs('task.manage')">
                         {{ __('Task') }}
@@ -39,15 +36,20 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div><img class="user_image" class='user_image' src='{{ Auth::user()->image_path }}' /></div>
-                            <div>{{ Auth::user()->name }}</div>
-
+                            
+                            <div class="user_image">
+                                <img  src='{{ Auth::user()->image_path }}' />
+                                <p>{{ Auth::User()->continue }}</p>
+                            </div>
+                            <p>{{ Auth::user()->name }}</p>
+                        
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
                             </div>
                         </button>
+                        <!--<div>所有ポイント： Auth::User)->point }}</div>-->
                     </x-slot>
 
                     <x-slot name="content">
@@ -87,14 +89,11 @@
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('post.all')" :active="request()->routeIs('post.all')">
+                {{ __('New') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('routine.create')" :active="request()->routeIs('routine.create')">
                 {{ __('Routine') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('goal.create')" :active="request()->routeIs('goal.create')">
-                {{ __('Goal') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('plan.create')" :active="request()->routeIs('plan.create')">
-                {{ __('Plan') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('task.manage')" :active="request()->routeIs('task.manage')">
                 {{ __('Task') }}

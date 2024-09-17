@@ -9,7 +9,7 @@
     <body>
         <x-app-layout>
             
-            <div class="goals">
+            <div class="goals body">
                 <h2>目標設定</h2>
                 <div class="goal">
                     <form action="{{ route('goal.store') }}" method="POST" enctype="multipart/form-data">

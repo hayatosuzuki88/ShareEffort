@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('routine_id')->constrained('routines')->onDelete('cascade');
             $table->string('comment');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->integer('like')->default(0);
             $table->timestamps();
         });
     }

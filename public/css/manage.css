@@ -1,0 +1,23 @@
+
+#goal_create, #plan_create, #edit_event {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 34%;
+    background-color: #e6ecf0;
+    padding: 20px 0 40px;
+    border-radius: 10px;
+    width: 450px;
+    height: auto;
+    text-align: center;
+    z-index: 10;
+}
+
+#goal_create_button {
+    font-size: 30px;
+}
+
+#plan_create_button {
+    font-size: 30px;
+    padding-left: 250px;
+}

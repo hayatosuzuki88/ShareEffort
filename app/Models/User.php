@@ -70,7 +70,7 @@ class User extends Authenticatable
     
     public function friends()
     {
-        return $this->hasMany(Friend::class, "followed");
+        return $this->hasMany(Friend::class, "follow");
     }
     
     public function comment_routines()

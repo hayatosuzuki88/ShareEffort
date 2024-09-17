@@ -18,6 +18,6 @@ class GoalController extends Controller
     {
         $input = $request["goal"];
         $goal->fill($input)->save();
-        return redirect(route("plan.create"));
+        return redirect(route("task.manage"));
     }
 }

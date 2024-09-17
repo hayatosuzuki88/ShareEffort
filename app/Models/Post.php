@@ -59,4 +59,15 @@ class Post extends Model
         }
         
     }
+    
+    public function get_posts_of_friends()
+    {
+        $user = Auth::User();
+        
+        $my_friends = Friend::where('follow', Auth::id())->pluck("followed");
+        
+        $posts_of_friends = Post::whereIn("user_id", $my_friends)->get();
+        
+        return $posts_of_friends;
+    }
 }

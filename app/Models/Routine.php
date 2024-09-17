@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\LikeRoutine;
 use App\Models\User;
 use App\Models\CommentRoutine;
+use Carbon\Carbon;
 use Auth;
 
 class Routine extends Model
@@ -52,6 +53,20 @@ class Routine extends Model
             return false;
         }
         
+    }
+    
+    public function get_today_routines_of_friends ()
+    {
+        $user = Auth::User();
+        
+        $yesterday = Carbon::now()->subDay();
+        
+        $my_friends = Friend::where('follow', Auth::id())->pluck("followed");
+        
+        $today_routines_of_friends = Routine::whereDate("created_at", ">=", $yesterday)->whereIn("user_id", $my_friends)->get();
+    
+        return $today_routines_of_friends;
+    
     }
     
 }

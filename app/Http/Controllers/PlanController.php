@@ -32,12 +32,19 @@ class PlanController extends Controller
         $period = $start->diffInDays($end);
         $interval = $plan->interval;
         $task_size = $period / $interval;
+        $task_range_per_day = round(($plan->rangeE - $plan->rangeS) / $task_size);
+        $task_range_start = $plan->rangeS - 1;
         
         for($task_i=1; $task_i <= $task_size; $task_i++)
         {
             $task = new Task;
             $task->name = $plan->name . $task_i . "回目";
-            $task->range = $plan->range;
+            if($task_i == $task_size){
+                $task->range = ($task_range_start + 1) . $plan->rangeUnit ."から". $plan->rangeE . $plan->rangeUnit;
+            }else {
+            $task->range = ($task_range_start + 1) . $plan->rangeUnit ."から". ($task_range_start + $task_range_per_day) . $plan->rangeUnit;
+            }
+            $task_range_start += $task_range_per_day;
             $task->duration = $plan->duration;
             $task->date = Carbon::parse($plan->start)->addDays(($task_i - 1) * $interval);
             $task->start = $plan->routine_time;
