@@ -82,11 +82,15 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     
     Route::post('posts/store', 'store')->name('post.store');
     
-    Route::get('posts/{post_id}', 'show')->name('post.show');
+    Route::get('posts/all', 'all')->name('post.all');
     
     Route::get('/posts/like/{post_id}', 'like')->name('post.like');
     
     Route::get('/posts/unlike/{post_id}', 'unlike')->name('post.unlike');
+    
+    Route::get('posts/{post_id}', 'show')->name('post.show');
+    
+    Route::delete('/posts/{post_id}/delete', 'delete')->name('post.delete');
 });
 
 Route::controller(UserController::class)->middleware(['auth'])->group(function(){
@@ -102,6 +106,8 @@ Route::controller(CommentRoutineController::class)->middleware(['auth'])->group(
    
    Route::post('/routines/{routine_id}/comments', 'store')->name('routine.comment.store');
    
+   Route::put('/comments/{comment_id}/like', 'like')->name('routine.comment.like');
+   
    Route::get('/comments/{comment_id}', 'destroy')->name('routine.comment.remove');
    
 });
@@ -109,6 +115,8 @@ Route::controller(CommentRoutineController::class)->middleware(['auth'])->group(
 Route::controller(CommentPostController::class)->middleware(['auth'])->group(function() {
    
    Route::post('/posts/{post_id}/comments', 'store')->name('post.comment.store');
+   
+   Route::put('/posts/comments/{comment_id}/like', 'like')->name('routine.comment.like');
    
    Route::get('/posts/comments/{comment_id}', 'destroy')->name('post.comment.remove');
    

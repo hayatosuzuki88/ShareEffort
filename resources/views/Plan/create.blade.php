@@ -9,7 +9,7 @@
     <body>
         <x-app-layout>
             
-            <div class="plans">
+            <div class="plans body">
                 <h2>プランの作成</h2>
                 <div class="plan">
                     <form action="{{ route('plan.store') }}" method="POST" enctype="multipart/form-data">

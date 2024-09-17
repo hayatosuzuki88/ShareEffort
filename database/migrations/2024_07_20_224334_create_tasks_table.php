@@ -18,7 +18,9 @@ return new class extends Migration
             $table->integer('duration')->nullable();
             $table->date('date');
             $table->time('start');
+            $table->integer('finish')->default(0);
             $table->integer('taken_time');
+            $table->string('color')->default('#c0c0c0');
             $table->foreignId('plan_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

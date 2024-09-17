@@ -16,6 +16,7 @@ class CommentPost extends Model
         "comment",
         "is_advice",
         "user_id",
+        "is_advise",
     ];
     
     public function user()

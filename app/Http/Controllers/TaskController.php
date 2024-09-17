@@ -14,7 +14,21 @@ class TaskController extends Controller
     
     public function manage(Task $task)
     {
-        return view("Task.manage");
+        $my_goals = Goal::where("user_id", "=", Auth::id())->get();
+        $my_goals_id =  Goal::where("user_id", "=", Auth::id())->pluck("id");
+        
+        $my_plans = Plan::whereIn("goal_id", $my_goals_id)->get();
+        
+        $not_achived_goals_of_mine = Goal::where([
+            ["user_id", Auth::id()],
+            ["achived", 0],
+            ])->get();
+            
+        return view("Task.manage")->with([
+            "my_goals" => $my_goals,
+            "my_plans" => $my_plans,
+            "not_achived_goals_of_mine" => $not_achived_goals_of_mine,
+            ]);
     }
     
     public function getEvents()
@@ -27,10 +41,13 @@ class TaskController extends Controller
         {
             $event_name = $task->name;
             $date = $task->date;
+            $color = $task->color;
+            $range = $task->range;
             $my_event = [
                 "title" => $event_name,
                 "start" => $date,
-                "color" => "#ff44cc",
+                "color" => $color,
+                "description" => $range,
             ];
             array_push($my_events, $my_event);
         }

@@ -17,7 +17,9 @@ return new class extends Migration
             $table->date('start');
             $table->date('end');
             $table->integer('duration')->nullable();
-            $table->string('range')->nullable();
+            $table->integer('rangeS')->nullable();
+            $table->integer('rangeE')->nullable();
+            $table->string('rangeUnit')->nullable();
             $table->time('routine_time')->nullable();
             $table->integer('interval');
             $table->foreignId('goal_id')->constrained()->onDelete('cascade');

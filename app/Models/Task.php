@@ -9,6 +9,7 @@ use App\Models\Plan;
 use App\Models\Post;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Task extends Model
 {
@@ -55,5 +56,39 @@ class Task extends Model
         })->where("date", "=", $today)->get();
         
         return $today_tasks;
+    }
+    
+    public function achive($minutes)
+    {
+        $this->finish = 1;
+        $this->taken_time = $minutes;
+        $this->save();
+        
+        return $this;
+    }
+    
+    public function previous_task_is_achived()
+    {
+        $task_table = DB::table('tasks')->orderBy('date')->where('user', Auth::id())->get();
+        
+        $specified_id = $this->id;
+        
+        $index = $task_table->search(function ($task_table) use ($specified_id) {
+            return $task_table->id == $specified_id;
+        });
+
+        // 一つ前の行を取得
+        $previousRow = $index > 0 ? $rows[$index - 1] : null;
+        
+        if ($previousRow == null)
+        {
+            return 0;
+        }
+        
+        if ($previousRow->achived == 1){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }

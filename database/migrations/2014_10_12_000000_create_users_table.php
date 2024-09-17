@@ -20,6 +20,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('image_path')->nullable();
+            //$table->integer('point')->default('0');
+            $table->integer('continue')->default('0');
         });
     }
 

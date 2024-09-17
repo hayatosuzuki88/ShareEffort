@@ -8,7 +8,6 @@ use App\Models\Goal;
 use App\Models\Plan;
 use App\Models\Task;
 use App\Models\Post;
-use Carbon\Carbon;
 use Auth;
 
 class HomeController extends Controller
@@ -18,24 +17,27 @@ class HomeController extends Controller
     {
         $my_goals = Goal::where("user_id", "=", Auth::id())->get();
         
-        $yesterday = Carbon::now()->subDay();
-        $today_routines = Routine::whereDate("created_at", ">=", $yesterday)->get();
         
         $Task = new Task;
         $today_tasks = $Task->get_today_tasks();
+        
+        $Routine = new Routine;
+        $today_routines_of_friends = $Routine->get_today_routines_of_friends();
         
         //未実装　いずれゴールごとに今日のタスクを表示したい
         $goals_of_today_tasks = [];
         
         //未実装　いずれ友達の投稿のみにしたい
-        $all_posts = Post::all();
+        $Post = new Post;
+        $posts_of_friends = $Post->get_posts_of_friends();
         
+        //dd($posts_of_friends);
         return view("home")->with([
-            "today_routines" => $today_routines, 
+            "today_routines_of_friends" => $today_routines_of_friends, 
             "my_goals" => $my_goals,
             "goals_of_today_tasks" => $goals_of_today_tasks,
             "today_tasks" => $today_tasks,
-            "all_posts" => $all_posts,
+            "posts_of_friends" => $posts_of_friends,
         ]);
     }
 }
