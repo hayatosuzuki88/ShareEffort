@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="\#my_goals">
-                        <img class="logo_image" src="{{ asset('/images/logo_demo.jpg') }}" alt="画像が読み込めません"/>
+                        <img class="logo_image" src="{{ asset('/images/logo_demo6.jpg') }}" alt="画像が読み込めません"/>
                     </a>
                     <h1>ShareEffort</h1>
                 </div>
@@ -39,7 +39,7 @@
                             
                             <div class="user_image">
                                 <img  src='{{ Auth::user()->image_path }}' />
-                                <p>{{ Auth::User()->continue }}</p>
+                                <!--<p> Auth::User)->continue }}</p>-->
                             </div>
                             <p>{{ Auth::user()->name }}</p>
                         

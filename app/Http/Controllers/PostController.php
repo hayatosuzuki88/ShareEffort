@@ -46,7 +46,7 @@ class PostController extends Controller
         
         $input += ["image_path" => $image_path];
         $post->fill($input)->save();
-        
+        /*
         if($task->previous_task_is_achived())
         {
             Auth::User()->continue += 1;
@@ -55,7 +55,7 @@ class PostController extends Controller
             Auth::User()->continue = 1;
             Auth::User()->save();
         }
-        
+        */
         return redirect(route("post.show", ["post_id" => $post->id]));
     }
     

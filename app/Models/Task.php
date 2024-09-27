@@ -69,7 +69,13 @@ class Task extends Model
     
     public function previous_task_is_achived()
     {
-        $task_table = DB::table('tasks')->orderBy('date')->where('user', Auth::id())->get();
+        $task_table = Task::whereHas("plan", function ($query1) {
+            $query1->whereHas("goal", function ($query2) {
+                $query2->whereHas("user", function ($query3) {
+                    $query3->where("id", Auth::id());    
+                });
+            });
+        })->orderBy('date')->get();
         
         $specified_id = $this->id;
         

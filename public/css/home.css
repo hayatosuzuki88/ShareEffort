@@ -1,0 +1,33 @@
+.my_goal, .today_task, .routing_friend {
+    display: none;
+}
+
+.goal_active, .task_active, .routing_active {
+    display: block;
+}
+
+.prev_goal_button, .prev_task_button, .prev_routing_button {
+    display: none;
+}
+
+.prev_goal_button, .next_goal_button {
+    height: 200px;
+    width: 30px;
+    align-items: center;
+    background-color: #84ffc1;
+}
+
+.prev_task_button, .next_task_button {
+    height: 200px;
+    width: 30px;
+    align-items: center;
+    background-color: #e5ffe5;
+    color: black;
+}
+
+.prev_routing_button, .next_routing_button {
+    height: 200px;
+    width: 30px;
+    align-items: center;
+    background-color: #ededed;
+}
