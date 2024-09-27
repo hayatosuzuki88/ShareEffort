@@ -73,7 +73,7 @@ class PostController extends Controller
         $post = Post::find($post_id);
         
         $task = Task::find($post->task_id);
-        if($task->previous_task_is_achived())
+        /*if($task->previous_task_is_achived())
         {
             Auth::User()->continue -= 1;
             Auth::User()->save();
@@ -81,7 +81,8 @@ class PostController extends Controller
             Auth::User()->continue = 0;
             Auth::User()->save();
         }
-        
+         
+        */
         $task->color = "#c0c0c0";
         $task->save();
         
