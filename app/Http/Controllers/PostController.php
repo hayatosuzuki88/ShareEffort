@@ -81,6 +81,7 @@ class PostController extends Controller
             Auth::User()->continue = 0;
             Auth::User()->save();
         }
+         
         */
         $task->color = "#c0c0c0";
         $task->save();
