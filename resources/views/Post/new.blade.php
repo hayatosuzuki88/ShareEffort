@@ -28,6 +28,10 @@
                             <p>タスク：{{ $post->task->name }}</p>
                             <h2 class="post_title">{{ $post->title }}</h2>
                         </div>
+                        
+                        <div class="post_header2">
+                            <h2 class="post_title2">{{ $post->title }}</h2>
+                        </div>
                                     
                         <a class="image_post" href="{{ route('post.show', ['post_id' => $post->id ]) }}">
                         @if($post->image_path != null)

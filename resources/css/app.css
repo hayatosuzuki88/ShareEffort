@@ -183,7 +183,7 @@ h2 {
     position: absolute; /* 画像の上に絶対的に位置させる */
     top: 0; /* 上部に合わせる */
     right: 0; /* 右端に合わせる */
-    color: white;
+    color: black;
     border-radius: 50%;
     margin: 10px;
     padding: 30px;
@@ -191,10 +191,35 @@ h2 {
     border-width: 4px;
     border-color: white;
     height: 150px;
-    background-color: rgba(132, 255, 193, 0.2);
+    background-color: rgba(132, 255, 193, 0.4);
 }
 
-@media (max-width: 450px) {
+.post_header2 {
+    display: none;
+}
+
+.button11 {
+  color: #fff;
+  padding: 10px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  outline: 1px solid;
+  outline-color: white;
+  outline-offset: 0px;
+  transition: .3s;
+}
+.button11:hover {
+  color: #fff;
+  animation: light .8s infinite;
+}
+@keyframes light {
+  100% { 
+    outline-color: transparent;
+    outline-offset: 10px;
+  }
+}
+
+@media (max-width: 768px) {
     .routing_friends {
         height: 80px;
     }
@@ -213,8 +238,23 @@ h2 {
     }
     
     .post_title {
-        margin-top: 50px;
-        align-items: flex-end;
+        display: none;
+    }
+    
+    .post_header2 {
+        display: block;
+    }
+    
+    .post_goal {
+        height: 100px;    
+    }
+    
+    .my_goal h2, .post_goal h2 {
+        font-size: 15px;
+    }
+    
+    .my_goal p, .post_goal p {
+        font-size: 10px;
     }
     
 
