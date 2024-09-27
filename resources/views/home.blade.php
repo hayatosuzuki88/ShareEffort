@@ -164,6 +164,7 @@
         </x-app-layout>
         <script src="js/home.js"></script>
         <script>
+            ;(function(){
             $(function(){
                 let display_size = 0;
                 if (window.matchMedia('(max-width: 768px)').matches) {
@@ -294,6 +295,7 @@
                     }
                 });
             });
+            })();
         </script>
     </body>
 </html>

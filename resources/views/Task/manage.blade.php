@@ -198,6 +198,8 @@
         
     </script>
     <script>
+        
+            ;(function(){
             $(function(){
                 
                 const my_goal_size = $('.my_goal_plan').length;
@@ -286,6 +288,8 @@
                 });
                 
             });
+            
+            })();
             
     </script>
     <script src="/js/manage.js"></script>
