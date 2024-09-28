@@ -26,7 +26,7 @@
     </head>
     <body>
         <x-app-layout>
-            <div class="body">
+            <div class="manage body">
             <!--現在の目標-->
             <div id="goal_create">
                 <h2>目標設定</h2>

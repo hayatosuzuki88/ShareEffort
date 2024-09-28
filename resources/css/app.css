@@ -199,7 +199,6 @@ h2 {
 }
 
 .button11 {
-  color: #fff;
   padding: 10px 30px;
   text-decoration: none;
   font-size: 20px;
@@ -249,13 +248,31 @@ h2 {
         height: 100px;    
     }
     
-    .my_goal h2, .post_goal h2 {
+    .my_goal h2, .post_goal h2, .today_task h2 {
         font-size: 15px;
     }
     
-    .my_goal p, .post_goal p {
+    .my_goal p, .post_goal p, .today_task p {
         font-size: 10px;
     }
     
+    .button11 { 
+        padding:10px 15px;   
+    }
+    
 
+}
+
+@media (max-width: 480px) {
+    .my_goal h2, .my_plan h2, .today_task h2 {
+        font-size: 15px;
+    }
+    
+    .my_goal p, .my_plan p, .today_task p {
+        font-size: 10px;
+    }
+    
+    .manage .my_goal {
+        height: 300px;
+    }
 }
