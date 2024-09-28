@@ -22,10 +22,6 @@
 	});
 
 
-});
-
-
-let slide = function() {
 
 		let display_size = 0;
 		if (window.matchMedia('(max-width: 768px)').matches) {
@@ -139,6 +135,4 @@ let slide = function() {
 				$('.goal_active .next_plan_button').css('display', 'inline-block');
 			}
 		});
-};
-
-slide();
+})();
