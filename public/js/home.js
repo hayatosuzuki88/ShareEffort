@@ -1,4 +1,4 @@
-let slide = function() {
+;(function(){
 		let display_size = 0;
 		if (window.matchMedia('(max-width: 768px)').matches) {
 			//スマホ処理
@@ -129,5 +129,4 @@ let slide = function() {
 				$('.next_routing_button').css('display', 'block')
 			}
 		});
-};
-slide();
+})();
