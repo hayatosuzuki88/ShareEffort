@@ -1,5 +1,3 @@
-"use strict";
-
 ;
 (function() {
 	$("#goal_create_button").click(function() {
@@ -26,9 +24,8 @@
 
 });
 
-;
-(function() {
-	$(function() {
+
+let slide = function() {
 
 		let display_size = 0;
 		if (window.matchMedia('(max-width: 768px)').matches) {
@@ -142,7 +139,6 @@
 				$('.goal_active .next_plan_button').css('display', 'inline-block');
 			}
 		});
+};
 
-	});
-
-})();
+slide();
