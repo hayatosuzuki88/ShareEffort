@@ -1,8 +1,4 @@
-"use strict";
-
-;
-(function() {
-	$(function() {
+let slide = function() {
 		let display_size = 0;
 		if (window.matchMedia('(max-width: 768px)').matches) {
 			//スマホ処理
@@ -133,5 +129,5 @@
 				$('.next_routing_button').css('display', 'block')
 			}
 		});
-	});
-})();
+};
+slide();
