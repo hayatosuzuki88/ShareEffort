@@ -81,3 +81,31 @@
         display: none;
     }
 }
+
+@media (max-width: 480px) {
+    
+    #goal_create_button, #plan_create_button {
+        padding: 10px, 20px;
+        font-size: 15px;
+    }
+    #plan_create_button {
+        margin-left: 50px;
+    }
+    
+    .my_goal {
+        width: 50px;
+        writing-mode: vertical-rl; /* 縦書き、右から左へ */
+        text-orientation: upright;  /* 文字の向きを立てる */
+        display: flex;
+        justify-content: center;
+    }
+    
+    .prev_goal_button, .next_goal_button {
+        height: 40px;
+    }
+    .calendar p {
+        font-size: 1px;
+    }
+    
+    
+}

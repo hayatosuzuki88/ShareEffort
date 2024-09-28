@@ -14,7 +14,8 @@
     height: 200px;
     width: 30px;
     align-items: center;
-    background-color: #84ffc1;
+    background-color: #f9f9f9;
+    color: #84ffc1;
 }
 
 .prev_task_button, .next_task_button {
@@ -30,4 +31,14 @@
     width: 30px;
     align-items: center;
     background-color: #ededed;
+}
+
+@media (max-width: 768px) {
+    .prev_goal_button, .prev_routing_button, .prev_task_button {
+        width: 20px;
+    }
+    
+    .next_goal_button, .next_routing_button, .next_task_button {
+        width: 20px;
+    }
 }
