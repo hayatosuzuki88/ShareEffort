@@ -1,4 +1,4 @@
-
+;(function(){
     $("#goal_create_button").click(function(){
         $("#goal_create").css("display", "block");
         $("#calendar").css("display", "none");
@@ -146,5 +146,7 @@
                 });
                 
             });
+            
+})();
             
             
