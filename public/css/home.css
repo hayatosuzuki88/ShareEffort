@@ -18,7 +18,7 @@
 }
 
 .prev_task_button, .next_task_button {
-    height: 200px;
+    height: 100px;
     width: 30px;
     align-items: center;
     background-color: #e5ffe5;
