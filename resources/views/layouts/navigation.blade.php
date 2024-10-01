@@ -4,14 +4,17 @@
         <div class="flex justify-between h-22">
             <div class="flex">
                 <!-- Logo -->
+                <!-- ロゴの変更 -->
                 <div class="shrink-0 flex items-center">
-                    <a href="\#my_goals">
+                    <!-- ホーム画面の先頭へのリンク -->
+                    <a href="\#my_goals"> 
                         <img class="logo_image" src="{{ asset('/images/logo_demo6.jpg') }}" alt="画像が読み込めません"/>
                     </a>
                     <h1>ShareEffort</h1>
                 </div>
 
                 <!-- Navigation Links -->
+                <!-- 変更 -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
@@ -37,8 +40,10 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             
+                            <!-- 変更 -->
                             <div class="user_image">
                                 <img  src='{{ Auth::user()->image_path }}' />
+                                <!-- todo タスクの継続回数の表示 -->
                                 <!--<p> Auth::User)->continue }}</p>-->
                             </div>
                             <p>{{ Auth::user()->name }}</p>
@@ -49,6 +54,7 @@
                                 </svg>
                             </div>
                         </button>
+                        <!-- 所有ポイントの表示　廃止 -->
                         <!--<div>所有ポイント： Auth::User)->point }}</div>-->
                     </x-slot>
 
@@ -84,6 +90,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
+    <!-- 変更 -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">

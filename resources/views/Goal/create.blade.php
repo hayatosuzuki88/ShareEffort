@@ -8,7 +8,7 @@
     </head>
     <body>
         <x-app-layout>
-            
+            <!-- ゴールの作成画面 -->
             <div class="goals body">
                 <h2>目標設定</h2>
                 <div class="goal">

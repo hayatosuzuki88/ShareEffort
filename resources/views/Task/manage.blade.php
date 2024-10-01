@@ -103,6 +103,11 @@
                         @foreach ($my_goals as $goal)
                         <tr class="my_goal_plan">
                             <th class="my_goal">
+                                <form action="{{ route('goal.delete', ['goal_id' => $goal->id ]) }}" id="form_{{ $goal->id }}" method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="button" onclick="deleteGoal({{ $goal->id }})">×</button>
+                                </form>
                                 <h2 class="goal_name"> {{ $goal->goal }} </h2>
                                 <p> {{ \Carbon\Carbon::parse($goal->date)->format('Y年m月d日') }} </p>
                                 <p>あと<strong>{{ \Carbon\Carbon::parse($goal->date)->diffInDays(\Carbon\Carbon::today()) }}日</strong></p>
@@ -116,7 +121,12 @@
                             @foreach ($my_plans as $plan)
                                 @if ($plan->goal_id == $goal->id)
                             <th class="my_plan">
-                                <h3>{{ $plan->name }}</h3>
+                                <form action="{{ route('plan.delete', ['plan_id' => $plan->id ]) }}" id="form_{{ $plan->id }}" method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="button" onclick="deletePlan({{ $plan->id }})">×</button>
+                                </form>
+                                <h2>{{ $plan->name }}</h2>
                                 <p>{{ $plan->start }}〜{{ $plan->end }}</p>
                                 <p>1回{{ $plan->duration }}分</p>
                                 <p>範囲：{{ $plan->rangeS . $plan->rangeUnit ."〜". $plan->rangeE . $plan->rangeUnit }}</p>
@@ -197,5 +207,21 @@
         });
         
     </script>
+        <script>
+            function deleteGoal(id){
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+            function deletePlan(id){
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     <script src="/js/manage.js"></script>
 </html>

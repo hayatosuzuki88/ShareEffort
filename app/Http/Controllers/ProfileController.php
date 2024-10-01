@@ -29,8 +29,9 @@ class ProfileController extends Controller
     {
         
         $request->user()->fill($request->safe()->only(['name','email']));
+        // 追加　ユーザ画像を変更し、保存
         $image_path = null;
-        if ($request->hasfile('image_path')) {
+        if ($request->hasfile('image_path')) { // ファイルが選択されていたら
             $image_path = Cloudinary::upload($request->file('image_path')->getRealPath())->getSecurePath();
             $request->user()->image_path = $image_path;
         }

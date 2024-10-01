@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('range')->nullable();
-            $table->integer('duration')->nullable();
-            $table->date('date');
-            $table->time('start');
-            $table->integer('finish')->default(0);
-            $table->integer('taken_time');
-            $table->string('color')->default('#c0c0c0');
+            $table->integer('duration')->nullable(); // 何分かかる予定か
+            $table->date('date'); // 実施日
+            $table->time('start'); // 開始時間
+            $table->integer('finish')->default(0); // 実施状況
+            $table->integer('taken_time'); // かかった時間
+            $table->string('color')->default('#c0c0c0'); // カレンダーで表示する色
             $table->foreignId('plan_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

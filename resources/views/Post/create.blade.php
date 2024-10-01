@@ -9,7 +9,7 @@
     </head>
     <body>
         <x-app-layout>
-            
+            <!-- 投稿作成画面 -->
             <div class="posts body">
                 <h2>投稿作成</h2>
                 <div class="posts">
@@ -20,11 +20,12 @@
                         <p>本文</p>
                         <input type="text" name="post[body]"/>
                         <p>どのタスク？</p>
+                        <!-- 達成したタスクの選択 -->
                         <select name="post[task_id]" required="required">
                             <option></option>
                             
                             @foreach ($my_today_tasks as $task)
-                                <option value="{{ $task->id }}">{{ $task->name }}</option>
+                            <option value="{{ $task->id }}">{{ $task->name }}</option>
                             @endforeach
                             
                         </select><br>
@@ -37,22 +38,29 @@
                     </form>
                 </div>
             </div>
+            <!-- 投稿のプレビュー -->
             <div class="post">
                 <div class="post_header">
+                    <!-- ユーザ -->
                     <div class="user">
                         <img class="user_image" src="{{ Auth::User()->image_path }}" />
                         <p>{{ Auth::User()->name }}</p>
                     </div>
                     
+                    <!-- 達成したタスク -->
                     <p>タスク：</p>
                     <h2 class="post_title"></h2>
+                    
                 </div>
                                     
                 <img class="post_image" src="" alt="画像が読み込みません。" />
+                
+                <!-- 投稿時間 -->
                 <div class="post_footer">
                     <p></p>
                     <p>{{ \Carbon\Carbon::now() }}に投稿</p>
                 </div>
+                
             </div>
             </br>
         
