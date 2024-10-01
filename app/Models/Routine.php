@@ -36,18 +36,20 @@ class Routine extends Model
         return $this->hasMany(CommentRoutine::class, "routine_id");
     }
     
+    // ルーティンがログインユーザにいいねされているか
     public function is_liked_by_auth_user()
     {
         $my_id = Auth::id();
         
+        // ルーティンをいいねしているユーザの配列
         $likers = array();
-        
         foreach($this->like_routines as $like) {
             $liker = $like->user_id;
             array_push($likers, $liker);
         }
         
-        if (in_array($my_id, $likers)) {
+        
+        if (in_array($my_id, $likers)) { // いいねしているユーザにログインユーザが含まれているか
             return true;
         } else {
             return false;
@@ -55,6 +57,7 @@ class Routine extends Model
         
     }
     
+    // 今日のルーティンをしている友達
     public function get_today_routines_of_friends ()
     {
         $user = Auth::User();
@@ -63,6 +66,7 @@ class Routine extends Model
         
         $my_friends = Friend::where('follow', Auth::id())->pluck("followed");
         
+        // 一日以内のルーティン
         $today_routines_of_friends = Routine::whereDate("created_at", ">=", $yesterday)->whereIn("user_id", $my_friends)->get();
     
         return $today_routines_of_friends;

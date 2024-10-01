@@ -34,14 +34,14 @@ Route::get('/', function () {
 });
 */
 
-
+// ログイン後はホーム画面へ
 Route::get('/', [HomeController::class, 'home'])->middleware(['auth', 'verified'])->name('home');
     
-    
-Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
 
+Route::controller(RoutineController::class)->middleware(['auth'])->group(function(){
+    // 作成画面
     Route::get('/routines/create', 'create')->name('routine.create');
-    
+    // 保存URL
     Route::post('/routines/store', 'store')->name('routine.store');
     
     Route::get('/routines/like/{routine_id}', 'like')->name('routine.like');
@@ -50,38 +50,44 @@ Route::controller(RoutineController::class)->middleware(['auth'])->group(functio
 
     Route::get('/routines/{routine_id}', 'show')->name('routine.show');
     
+    Route::delete('/routines/{routine_id}/delete', 'delete')->name('routine.delete');
+    
 });
 
 Route::controller(GoalController::class)->middleware(['auth'])->group(function(){
-    
+    // 作成画面
     Route::get('/goals/create', 'create')->name('goal.create');
-    
+    // 保存URL
     Route::post('/goals/store', 'store')->name('goal.store');
+    
+    Route::delete('/goals/{goal_id}/delete', 'delete')->name('goal.delete');
     
 });
 
 Route::controller(PlanController::class)->middleware(['auth'])->group(function(){
-    
+    // 作成画面
     Route::get('/plans/create', 'create')->name('plan.create');
-    
+    // 保存URL
     Route::post('/plans/store', 'store')->name('plan.store');
+    
+    Route::delete('/plans/{plan_id}/delete', 'delete')->name('plan.delete');
     
 });
 
 Route::controller(TaskController::class)->middleware(['auth'])->group(function(){
-    
-   Route::get('/tasks/manage', 'manage')->name('task.manage');
-   
-   Route::get('get_events', 'getEvents');
+    // 管理画面の表示
+    Route::get('/tasks/manage', 'manage')->name('task.manage');
+    // カレンダーのイベント取得
+    Route::get('get_events', 'getEvents');
 
 });
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function() {
-    
+    // 作成画面
     Route::get('/posts/create', 'create')->name('post.create');
-    
+    // 保存URL
     Route::post('posts/store', 'store')->name('post.store');
-    
+    // NEW POST画面の表示
     Route::get('posts/all', 'all')->name('post.all');
     
     Route::get('/posts/like/{post_id}', 'like')->name('post.like');

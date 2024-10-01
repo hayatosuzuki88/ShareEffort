@@ -18,6 +18,14 @@
                     <a href="{{ route('user.show', ['user_id' => $routine->user->id ]) }}">
                 @endif
                     
+                    <form action="{{ route('routine.delete', ['routine_id' => $routine->id ]) }}" id="form_{{ $routine->id }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        @if ($routine->user->id == Auth::id())
+                        <button type="button" onclick="deleteRoutine({{ $routine->id }})">×</button>
+                        @endif
+                    </form>
+                    
                         <div class="user">
                             <img class="user_image" src="{{ $routine->user->image_path }}" />
                             <p>{{ $routine->user->continue }}</p>
@@ -82,6 +90,14 @@
                 </div>
             </div>
         </x-app-layout>
-        
+        <script>
+            function deleteRoutine(id){
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>

@@ -12,26 +12,28 @@ use Auth;
 
 class HomeController extends Controller
 {
-                                                    
+    // ホーム画面の表示                                                
     public function home(Routine $routine)
     {
+        // 自分のゴール
         $my_goals = Goal::where("user_id", "=", Auth::id())->get();
         
-        
+        // 自分の今日のタスク
         $Task = new Task;
         $today_tasks = $Task->get_today_tasks();
         
+        // 友達の今日のルーティン
         $Routine = new Routine;
         $today_routines_of_friends = $Routine->get_today_routines_of_friends();
         
-        //未実装　いずれゴールごとに今日のタスクを表示したい
+        // ゴールごとのタスク
+        // todo　いずれゴールごとに今日のタスクを表示したい
         $goals_of_today_tasks = [];
         
-        //未実装　いずれ友達の投稿のみにしたい
+        // 友達の投稿
         $Post = new Post;
         $posts_of_friends = $Post->get_posts_of_friends();
         
-        //dd($posts_of_friends);
         return view("home")->with([
             "today_routines_of_friends" => $today_routines_of_friends, 
             "my_goals" => $my_goals,

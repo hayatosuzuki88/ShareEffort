@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained('posts')->onDelete('cascade');
             $table->string('comment');
-            $table->integer('is_advice');
+            $table->integer('is_advice'); // アドバイスか応援コメントか
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('like')->default('0');
             $table->timestamps();

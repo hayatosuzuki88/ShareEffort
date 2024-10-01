@@ -41,18 +41,19 @@ class Post extends Model
         return $this->hasMany(LikePost::class, "post_id");
     }
     
+    // 投稿がログインユーザにいいねされているか
     public function is_liked_by_auth_user()
     {
         $my_id = Auth::id();
         
+        // 投稿をいいねしているユーザの配列
         $likers = array();
-        
         foreach($this->like_posts as $like) {
             $liker = $like->user_id;
             array_push($likers, $liker);
         }
         
-        if (in_array($my_id, $likers)) {
+        if (in_array($my_id, $likers)) { // いいねしているユーザにログインユーザが含まれているか
             return true;
         } else {
             return false;
@@ -60,6 +61,7 @@ class Post extends Model
         
     }
     
+    // 友達の投稿を返す
     public function get_posts_of_friends()
     {
         $user = Auth::User();

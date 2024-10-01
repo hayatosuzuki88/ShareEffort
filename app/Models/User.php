@@ -26,10 +26,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        /*
-        'preference',
-        'birth',
-        */
         'email',
         'password',
         'image_path',
@@ -88,18 +84,18 @@ class User extends Authenticatable
         return $this->hasMany(LikePost::class, "post_id");
     }
     
-    
+    // ユーザがログインユーザにフォローされているか
     public function is_followed_by_auth_user()
     {
         $my_id = Auth::id();
         
+        // フォローしているユーザの配列
         $my_friends = array();
-        
         foreach($this->friends as $my_friend) {
             array_push($my_friends, $my_friend->follow);
         }
         
-        if (in_array($my_id, $my_friends)) {
+        if (in_array($my_id, $my_friends)) { // フォローしているユーザにログインユーザが含まれているか
             return true;
         } else {
             return false;

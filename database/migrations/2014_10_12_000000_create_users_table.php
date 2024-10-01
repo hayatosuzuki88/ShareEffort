@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('image_path')->nullable();
-            //$table->integer('point')->default('0');
-            $table->integer('continue')->default('0');
+            $table->string('image_path')->nullable(); // 追加
+            // 投稿のポイント制度導入時の処理　廃止
+            //$table->integer('point')->default('0'); // 追加
+            $table->integer('continue')->default('0'); // 追加
         });
     }
 

@@ -30,6 +30,7 @@ class Task extends Model
         return $this->hasMany(Post::class, "followed");
     }
     
+    // 自分のタスクを取得
     public function get_my_tasks()
     {
         $my_tasks = Task::whereHas("plan", function ($query1) {
@@ -43,6 +44,7 @@ class Task extends Model
         return $my_tasks;
     }
     
+    // 今日のタスクを取得
     public function get_today_tasks()
     {
         $today = Carbon::today();
@@ -58,6 +60,7 @@ class Task extends Model
         return $today_tasks;
     }
     
+    // タスクを達成状況にする
     public function achive($minutes)
     {
         $this->finish = 1;
@@ -67,6 +70,7 @@ class Task extends Model
         return $this;
     }
     
+    // 一つ前のタスクが達成状況になっているか
     public function previous_task_is_achived()
     {
         $task_table = Task::whereHas("plan", function ($query1) {

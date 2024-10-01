@@ -8,7 +8,7 @@
     </head>
     <body>
         <x-app-layout>
-            
+            <!-- プランの作成画面 -->
             <div class="plans body">
                 <h2>プランの作成</h2>
                 <div class="plan">
@@ -28,11 +28,12 @@
                         <p>何日ごと？</p>
                         <input type="integer" name="plan[interval]" required="required"/><br>
                         <p>どのゴールのため？？</p>
+                        <!-- ゴールの選択 -->
                         <select name="plan[goal_id]" required="required">
                             <option></option>
                             
                             @foreach ($not_achived_goals_of_mine as $goal)
-                                <option value="{{ $goal->id }}">{{ $goal->goal }}</option>
+                            <option value="{{ $goal->id }}">{{ $goal->goal }}</option>
                             @endforeach
                             
                         </select><br>
