@@ -6,22 +6,6 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/manage.css') }}" />
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var calendarEl = document.getElementById("calendar");
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: "dayGridMonth"
-                });
-                calendar.render();
-            });
-
-        </script>
         
     </head>
     <body>
@@ -155,7 +139,23 @@
         </div>
         </x-app-layout>
     </body>
-    <script>
+        <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
+        <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js"></script>
+        <script defer>
+            document.addEventListener("DOMContentLoaded", function() {
+                var calendarEl = document.getElementById("calendar");
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: "dayGridMonth"
+                });
+                calendar.render();
+            });
+
+        </script>
+    <script defer>
         function showEventDialog(info){
             console.log(info.event.title +"ok");
             //$("#edit_event").css("display", "block");
@@ -207,7 +207,7 @@
         });
         
     </script>
-        <script>
+        <script defer>
             function deleteGoal(id){
                 'use strict'
                 

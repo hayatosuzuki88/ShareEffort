@@ -79,7 +79,7 @@
             </div>
             
         </x-app-layout>
-        <script>
+        <script defer>
             function deletePost(id){
                 'use strict'
                 
