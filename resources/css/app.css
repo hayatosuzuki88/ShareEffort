@@ -39,6 +39,10 @@ h1 {
     display: inline-block;
 }
 
+.post_header .user_name {
+    font-size: 10px;
+}
+
 .logo_image {
     margin: 10px;
     height: 100px;
@@ -222,8 +226,7 @@ h2 {
 }
 
 .comment_send {
-    display: flex;
-    align-items: center;
+    font-size: 15px;
 }
 
 .sent_comment {
@@ -245,6 +248,7 @@ h2 {
     height: 25px;
     width: 25px;
 }
+
 
 @media (max-width: 768px) {
     .routing_friends {

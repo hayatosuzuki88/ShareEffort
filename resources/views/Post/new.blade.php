@@ -32,7 +32,7 @@
                         </a>
                         
                         <!-- 達成したタスク -->
-                        <p>タスク：{{ $post->task->name }}</p>
+                        <p>{{ $post->task->name }}</p>
                         <h2 class="post_title">{{ $post->title }}</h2>
                         
                     </div>
