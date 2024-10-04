@@ -8,7 +8,7 @@
                 <div class="shrink-0 flex items-center">
                     <!-- ホーム画面の先頭へのリンク -->
                     <a href="\#my_goals"> 
-                        <img class="logo_image" src="{{ asset('/images/logo_demo6.jpg') }}" alt="画像が読み込めません"/>
+                        <img class="logo_image" src="{{ asset('/images/logo_demo.webp') }}" alt="画像が読み込めません"/>
                     </a>
                     <h1>ShareEffort</h1>
                 </div>
