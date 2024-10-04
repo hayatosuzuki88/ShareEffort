@@ -90,7 +90,7 @@
                 </div>
             </div>
         </x-app-layout>
-        <script>
+        <script defer>
             function deleteRoutine(id){
                 'use strict'
                 

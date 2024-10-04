@@ -5,7 +5,6 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <script src="https://...jquery.min.js"></script>
     </head>
     <body>
         <x-app-layout>
@@ -67,6 +66,7 @@
             </br>
         
         </x-app-layout>
-        <script src="/js/post_show.js"></script>
+        <script defer src="https://...jquery.min.js"></script>
+        <script defer src="/js/post_show.js"></script>
     </body>
 </html>

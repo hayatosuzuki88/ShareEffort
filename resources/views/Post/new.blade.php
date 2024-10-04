@@ -6,7 +6,6 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/home.css') }}" />
-        <script src="https://...jquery.min.js"></script>
     </head>
     <body>
         <x-app-layout>
@@ -120,6 +119,7 @@
                     
             </div>
         </x-app-layout>
-        <script src="js/home.js"></script>
+        <script defer src="https://...jquery.min.js"></script>
+        <script defer src="js/home.js"></script>
     </body>
 </html>

@@ -5,7 +5,6 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     </head>
     <body>
         <x-app-layout>
@@ -54,6 +53,7 @@
             </div>
         
         </x-app-layout>
-        <script src="\js\routine_show.js"></script>
+        <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script defer src="\js\routine_show.js"></script>
     </body>
 </html>
