@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <title>ShareEffort</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+
     </head>
     <body>
         <x-app-layout>
