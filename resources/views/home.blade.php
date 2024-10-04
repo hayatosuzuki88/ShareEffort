@@ -152,11 +152,11 @@
                             <br/>
                         @if ($post->is_liked_by_auth_user())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
-                                いいね<span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="/images/gooded.webp"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @else
                             <a href="{{ route('post.like', ['post_id' => $post->id]) }}" >
-                                いいね<span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="/images/good.webp"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @endif
                     

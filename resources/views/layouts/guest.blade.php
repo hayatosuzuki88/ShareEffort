@@ -19,7 +19,7 @@
             <div>
                 <!-- ロゴ変更 -->
                 <a href="/">
-                    <img class="logo_image" src="{{ asset('/images/logo_demo6.jpg') }}" alt="画像が読み込めません"/>
+                    <img class="logo_image" src="{{ asset('/images/logo_demo.webp') }}" alt="画像が読み込めません"/>
                 </a>
             </div>
 
