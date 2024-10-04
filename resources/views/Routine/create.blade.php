@@ -18,7 +18,7 @@
                         <p>何分頑張った？</p>
                         <input type="number" id="minutes_value" name="routine[minutes]" required="required" value="0" /><br>
                         <p>コメントを残そう！！</p>
-                        <textarea id="body_value" name="routine[body]" placeholder="今日も頑張ったー！！"></textarea><br>
+                        <textarea id="body_value" name="routine[body]" rows="3" cols="30" placeholder="今日も頑張ったー！！"></textarea><br>
                         <input type="file" id="input" name="image"><br>
                         <input type="hidden" name="routine[user_id]" value="{{ Auth::id() }}"/>
                         <input type="submit" value="保存" />
@@ -29,7 +29,13 @@
             <div class="routines">
                 <div class="routine">
                         
-                    <p>{{ Auth::user()->name }}</p>
+                    <!-- ユーザ -->
+                    <div class="user">
+                        <div class="user_image">
+                            <img class="user_image" src="{{ Auth::User()->image_path }}" />
+                        </div>
+                        <p>　{{ Auth::User()->name }}</p>
+                    </div>
                         
                     <p id="minutes">頑張った時間：0分間</p>
                     <p id="body"></p>

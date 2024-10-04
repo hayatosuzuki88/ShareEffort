@@ -20,15 +20,15 @@
                     <!-- ヘッダー -->
                     <div class="post_header">
                         <!-- ユーザ -->
-                    @if ($post->user->id == Auth::id())
-                        <a class="user_name" href="{{ route('profile.edit') }}">
-                    @else
-                        <a class="user_name" href="{{ route('user.show', ['user_id' => $post->user->id ]) }}">
-                    @endif
-                            <div class="user">
+                        @if ($post->user->id == Auth::id())
+                        <a class="user" href="{{ route('profile.edit') }}">
+                        @else
+                        <a class="user" href="{{ route('user.show', ['user_id' => $post->user->id ]) }}">
+                        @endif
+                            <div class="user_image">
                                 <img class="user_image" src="{{ $post->user->image_path }}" />
-                                <p>{{ $post->user->name }}</p>
                             </div>
+                            <p class="user_name" >　{{ $post->user->name }}</p>
                         </a>
                         
                         <!-- 達成したタスク -->
@@ -57,7 +57,60 @@
                         <!-- フッター -->
                         <div class="post_footer">
                             <p>{{ $post->body }}</p>
-                            <p>{{ $post->created_at }}に投稿</p>
+                            <br/>
+                        @if ($post->is_liked_by_auth_user())
+                            <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
+                                <img class="good" src="/images/gooded.jpg"><span>{{ $post->like_posts->count() }}</span>
+                            </a>
+                        @else
+                            <a href="{{ route('post.like', ['post_id' => $post->id]) }}" >
+                                <img class="good" src="/images/good.svg"><span>{{ $post->like_posts->count() }}</span>
+                            </a>
+                        @endif
+                    
+                            <div class="comment">
+                                <form class="comment_send" action="{{ route('post.comment.store', ['post_id' => $post->id ]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                    <input type="text" name="comment[comment]" placeholder="頑張れー！！"><br>
+                                    <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
+                                    <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}">
+                                    <input type="checkbox" name="comment[is_advice]" value="1">アドバイス
+                                    <input type="submit" value="コメントを送信" />
+                                </form>
+                        
+                                @foreach ($post->comment_posts as $comment)
+                                <div class="mb-2 sent_comment">
+                                    
+                                <!-- ユーザ -->
+                                    <div class="user_comment">
+                                    @if ($post->user->id == Auth::id())
+                                        <a class="user" href="{{ route('profile.edit') }}">
+                                    @else
+                                        <a class="user" href="{{ route('user.show', ['user_id' => $comment->user->id ]) }}">
+                                    @endif
+                                            <div class="user_image">
+                                                <img class="user_image" src="{{ $comment->user->image_path }}" />
+                                            </div>
+                                            <p class="comment_user_name" >　{{ $comment->user->name }}</p>
+                                        </a>
+                                    </div>
+                                    <span>　{{ $comment->comment }}</span>
+                            
+                                    @if ($comment->user->id == Auth::id())
+                                    <a href="posts/comments/{{ $comment->id }}/like">　いいね</a>
+                                    <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/posts/comments/{{ $comment->id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </a>
+                                    @endif
+                            
+                                </div>
+                                @endforeach
+                            </div>
+                            
+                            <p class="created_at" >{{ $post->created_at }}に投稿</p>
+                            
                         </div>
                     </a>
                 </div>

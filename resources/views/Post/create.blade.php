@@ -18,7 +18,7 @@
                         <p>タイトル</p>
                         <input type="text" name="post[title]" required="required"/><br>
                         <p>本文</p>
-                        <input type="text" name="post[body]"/>
+                        <textarea name="post[body]" rows="3" cols="30" placeholder="今日も頑張ったー！！"></textarea>
                         <p>どのタスク？</p>
                         <!-- 達成したタスクの選択 -->
                         <select name="post[task_id]" required="required">
@@ -43,8 +43,10 @@
                 <div class="post_header">
                     <!-- ユーザ -->
                     <div class="user">
-                        <img class="user_image" src="{{ Auth::User()->image_path }}" />
-                        <p>{{ Auth::User()->name }}</p>
+                        <div class="user_image">
+                            <img class="user_image" src="{{ Auth::User()->image_path }}" />
+                        </div>
+                        <p>　{{ Auth::User()->name }}</p>
                     </div>
                     
                     <!-- 達成したタスク -->

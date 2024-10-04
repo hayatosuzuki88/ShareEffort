@@ -42,11 +42,11 @@
                             
                             <!-- 変更 -->
                             <div class="user_image">
-                                <img  src='{{ Auth::user()->image_path }}' />
+                                <img class="user_image" src='{{ Auth::user()->image_path }}' />
                                 <!-- todo タスクの継続回数の表示 -->
                                 <!--<p> Auth::User)->continue }}</p>-->
                             </div>
-                            <p>{{ Auth::user()->name }}</p>
+                            <p>　{{ Auth::user()->name }}</p>
                         
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

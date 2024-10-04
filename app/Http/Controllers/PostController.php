@@ -59,17 +59,6 @@ class PostController extends Controller
         $task->save();
         
         // 画像の保存
-        if ($request->hasFile('image')) {
-    $file = $request->file('image');
-    
-    if (!$file->isValid()) {
-        $errorCode = $file->getError();
-        return response()->json(['error' => 'File upload error', 'code' => $errorCode], 400);
-    }
-    
-    // アップロード処理
-}
-
         $image_path = Cloudinary::upload($request->file("image")->getRealPath())->getSecurePath();
         
         $input += ["image_path" => $image_path];
