@@ -74,13 +74,13 @@
                                     <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
                                     <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}">
                                     <input type="checkbox" name="comment[is_advice]" value="1">アドバイス
-                                    <input type="submit" value="コメントを送信" />
+                                    <input class="button" type="submit" value="コメントを送信" />
                                 </form>
                         
                                 @foreach ($post->comment_posts as $comment)
                                 <div class="mb-2 sent_comment">
                                     
-                                <!-- ユーザ -->
+                                <!-- コメントユーザ -->
                                     <div class="user_comment">
                                     @if ($post->user->id == Auth::id())
                                         <a class="user" href="{{ route('profile.edit') }}">

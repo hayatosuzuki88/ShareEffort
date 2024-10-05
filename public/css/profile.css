@@ -1,0 +1,31 @@
+.profile img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.button {
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 250px;
+    padding: 10px 25px;
+    font-family: "Noto Sans Japanese";
+    color: #333;
+    line-height: 1.8;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.button:hover {
+    background: #333;
+    color: #FFF;
+}
+
+.friend {
+    display: flex;
+}
