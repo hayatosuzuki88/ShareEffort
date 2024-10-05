@@ -73,4 +73,16 @@ class Routine extends Model
     
     }
     
+    public function get_my_today_routine()
+    {
+        $user = Auth::User();
+        
+        $yesterday = Carbon::now()->subDay();
+        
+        // 一日以内のルーティン
+        $my_today_routine = Routine::whereDate("created_at", ">=", $yesterday)->where("user_id", $user)->get();
+    
+        return $my_today_routine;
+    }
+    
 }

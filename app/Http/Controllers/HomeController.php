@@ -22,8 +22,11 @@ class HomeController extends Controller
         $Task = new Task;
         $today_tasks = $Task->get_today_tasks();
         
-        // 友達の今日のルーティン
+        // 今日の自分のルーティン
         $Routine = new Routine;
+        $my_today_routine = $Routine->get_my_today_routine();
+        
+        // 友達の今日のルーティン
         $today_routines_of_friends = $Routine->get_today_routines_of_friends();
         
         // ゴールごとのタスク
@@ -35,6 +38,7 @@ class HomeController extends Controller
         $posts_of_friends = $Post->get_posts_of_friends();
         
         return view("home")->with([
+            "my_today_routine" => $my_today_routine,
             "today_routines_of_friends" => $today_routines_of_friends, 
             "my_goals" => $my_goals,
             "goals_of_today_tasks" => $goals_of_today_tasks,
