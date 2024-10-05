@@ -80,12 +80,23 @@
                 <!--最近投稿されたROUTINE-->
                 <div class="home-routine">
                     <h1>Routines</h1>
-                    
-                    @if (count($today_routines_of_friends)==0)
-                        <p>投稿がありません。</p>
+                    <div class="routing_friends">
+                        <a class="button11 prev_routing_button"><</a>
+                    @if($my_today_routine->empty())
+                        <a class="routing_friend">
                     @else
-                        <div class="routing_friends">
-                            <a class="button11 prev_routing_button"><</a>
+                        <a class="routing_friend" href="{{ route('routine.show', ['routine_id' => $my_today_routine->id ]) }}">
+                    @endif
+                            <div>    
+                                <div class="user_image">
+                                    <img class="routing_user_image" src='{{ Auth::User()->image_path }}' />
+                                    <!--<p> Auth::User)->continue }}</p>-->
+                                </div>
+                                <p class="routing_user_name"> {{ Auth::User()->name }}</p>
+                            </div>
+                        </a>
+                    
+                        
                         @foreach ($today_routines_of_friends as $routine)
                         
                             <a class="routing_friend" href="{{ route('routine.show', ['routine_id' => $routine->id ]) }}">
@@ -102,7 +113,7 @@
                             <a class="button11 next_routing_button">></a>
                         </div>
                         
-                    @endif
+                    
                 </div>
                 </br>
 
