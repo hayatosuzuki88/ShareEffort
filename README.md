@@ -22,22 +22,33 @@ SNS×目標タスク管理アプリ
 ## 使い方
 
 ### 1. ユーザー登録
-![login](https://github.com/user-attachments/assets/8f5dd94f-0cb7-4c57-b665-8ad0adc29548)
-
 - **サインアップ**: ログイン画面にある「サインアップ」ボタンをクリックします。
+<img src="https://github.com/user-attachments/assets/8f5dd94f-0cb7-4c57-b665-8ad0adc29548?raw=true" alt="Example Image" width="400" />
+
 - **登録情報**: 登録画面で、名前、メールアドレス、パスワードを入力してアカウントを作成します。
+<img src="https://github.com/user-attachments/assets/0dc40aa6-1f8d-46d4-8828-7a6834adf04f?raw=true" alt="Example Image" width="400" />
+
 
 ### 2. 目標の設定
 - **タスク管理画面**: ヘッダーにある「Task」ボタンをクリックしてタスク管理画面に移動します。
 - **ゴールの作成**:
   - 「Goal」ボタンをクリックすると、ゴール作成モーダルが表示されます。
+<img src="https://github.com/user-attachments/assets/54da327c-3f44-4737-92ed-1f84cd114595?raw=true" alt="Example Image" width="800" />
+
   - ゴールの達成時期とゴール名を入力して登録します。
+
+<img src="https://github.com/user-attachments/assets/6bc7cb75-281f-42e1-b489-9caea19454fb?raw=true" alt="Example Image" width="300" />
 
 ### 3. プランの作成
 - **タスク管理画面**: 再度、ヘッダーの「Task」ボタンをクリックします。
 - **プランの作成**:
   - 「Plan」ボタンをクリックしてプラン作成モーダルを開きます。
+<img src="https://github.com/user-attachments/assets/54da327c-3f44-4737-92ed-1f84cd114595?raw=true" alt="Example Image" width="800" />
+
   - プランの作業概要、実施期間、作業にかかる時間、作業範囲（例: ページ数）、取り組む時間、実施間隔（日数）、目指すゴールを入力して登録します。
+
+<img src="https://github.com/user-attachments/assets/ecf5b9a8-8632-4936-8b50-ad55cca8cff4?raw=true" alt="Example Image" width="300" />
+
   - **タスクの自動生成**: 登録したプランに基づいて、自動的にタスクが生成されます。
 
 ### 4. タスクの実施
