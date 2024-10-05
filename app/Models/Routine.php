@@ -79,7 +79,7 @@ class Routine extends Model
         $yesterday = Carbon::now()->subDay();
         
         // 一日以内のルーティン
-        $my_today_routine = Routine::whereDate("created_at", ">=", $yesterday)->where("user_id", Auth::id)->get();
+        $my_today_routine = Routine::whereDate("created_at", ">=", $yesterday)->where("user_id", Auth::id())->get();
     
         return $my_today_routine;
     }
