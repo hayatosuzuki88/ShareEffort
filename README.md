@@ -1,4 +1,5 @@
 # Share Effort
+<img src="https://github.com/user-attachments/assets/35b3c0de-7f55-493c-8187-278bdbcb4e95?raw=true" alt="Example Image" width="400" />
 
 ## URL
 https://shareeffort-eae8f3c7726a.herokuapp.com
