@@ -60,9 +60,9 @@
                                     @endif
                             
                                     @if ($task->finish == 0)
-                                        <p class="achive button">未達成</p>
+                                        <p>未達成</p>
                                     @else
-                                        <p class="achive button">達成</p>
+                                        <p>達成</p>
                                     @endif
                             
                                     <p class="content">{{ $task->todo }}</p>
@@ -82,6 +82,7 @@
                     <h1>Routines</h1>
                     <div class="routing_friends">
                         <a class="button11 prev_routing_button"><</a>
+                        
                     @if($my_today_routine->empty())
                         <a class="routing_friend">
                     @else
