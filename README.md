@@ -22,7 +22,7 @@ SNS×目標タスク管理アプリ
 ## 使い方
 
 ### 1. ユーザー登録
-![Example Image](https://github.com/hayatosuzuki88/ShareEffort/login.png?raw=true)
+![Example Image][(https://github.com/hayatosuzuki88/ShareEffort/login.png?raw=true)](https://github.com/hayatosuzuki88/ShareEffort/issues/55#issue-2568295808)
 
 - **サインアップ**: ログイン画面にある「サインアップ」ボタンをクリックします。
 - **登録情報**: 登録画面で、名前、メールアドレス、パスワードを入力してアカウントを作成します。
