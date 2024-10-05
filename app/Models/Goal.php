@@ -8,18 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Goal extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        "goal",
-        "date",
-        "user_id",
+        'goal',
+        'date',
+        'user_id',
     ];
-    
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    
-    public function plans(){
+
+    public function plans()
+    {
         return $this->hasMany(Plan::class);
     }
 }

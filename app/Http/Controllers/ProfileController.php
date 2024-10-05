@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use Cloudinary;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -27,8 +27,8 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        
-        $request->user()->fill($request->safe()->only(['name','email']));
+
+        $request->user()->fill($request->safe()->only(['name', 'email']));
         // 追加　ユーザ画像を変更し、保存
         $image_path = null;
         if ($request->hasfile('image_path')) { // ファイルが選択されていたら

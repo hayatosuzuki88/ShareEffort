@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('body')->nullable(); // 本文
             // 達成したタスク
-            $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade'); 
+            $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
             $table->string('image_path')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
