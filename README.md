@@ -1,66 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Share Effort
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## URL
+https://shareeffort-eae8f3c7726a.herokuapp.com
 
-## About Laravel
+## 概要
+SNS×目標タスク管理アプリ
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+夢のために目標を設定し、そのために計画を組むことや実行することは難しい。本アプリは目標から簡単に計画を組むことができ、友達に応援やアドバイスをしてもらうことで実行しやすくする環境を提供します。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 作成背景
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 目標タスク管理について
+私は塾講師としてアルバイトをする中で、たくさんの生徒の目標に携わってきました。「目標設定」→「計画」→「実行」→「振り返り」というプロセスは大事ですが、意識するのは難しいです。このプロセスを容易に行えるようにIT技術を利用していきたいです。
 
-## Learning Laravel
+### SNS機能について
+人は様々なことに時間を割いていますが、SNSではいいところだけが強調されがちです。このアプリでは、日々の苦労も努力であり、共有することでお互いを応援し合える相乗効果を生み出したいと考えています。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### ユーザーのニーズ
+私がアルバイトをしている塾の受験生はスマホを触らないようにＳＮＳをアンインストールしたと話してくれました。実際、私が高校生の頃もアプリの誘惑に負けないように制限をかけていました。勉強の邪魔になるＳＮＳではなく、勉強の味方をしてくれるＳＮＳがあったらいいなと思い、このアプリを作成しました。
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 使い方
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. ユーザー登録
+- **サインアップ**: ログイン画面にある「サインアップ」ボタンをクリックします。
+- **登録情報**: 登録画面で、名前、メールアドレス、パスワードを入力してアカウントを作成します。
 
-## Laravel Sponsors
+### 2. 目標の設定
+- **タスク管理画面**: ヘッダーにある「Task」ボタンをクリックしてタスク管理画面に移動します。
+- **ゴールの作成**:
+  - 「Goal」ボタンをクリックすると、ゴール作成モーダルが表示されます。
+  - ゴールの達成時期とゴール名を入力して登録します。
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. プランの作成
+- **タスク管理画面**: 再度、ヘッダーの「Task」ボタンをクリックします。
+- **プランの作成**:
+  - 「Plan」ボタンをクリックしてプラン作成モーダルを開きます。
+  - プランの作業概要、実施期間、作業にかかる時間、作業範囲（例: ページ数）、取り組む時間、実施間隔（日数）、目指すゴールを入力して登録します。
+  - **タスクの自動生成**: 登録したプランに基づいて、自動的にタスクが生成されます。
 
-### Premium Partners
+### 4. タスクの実施
+- **Postの投稿**: タスクを実施したら、Postを投稿します。
+  - 投稿には「いいね」や「コメント」をもらうことができます。
+  - コメントは「アドバイス」または「応援」を選択できます。
+- **友達機能**: 友達になったユーザーのRoutineやPostがホーム画面に表示されます。
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 5. タスクの確認
+- **ホーム画面**: 今日実施するタスクが表示されます。
+- **カレンダー**: タスク管理画面にあるカレンダーで、今日より先のタスクを確認できます。
 
-## Contributing
+### 6. タスクの状態
+- **カレンダー表示**: 
+  - 未実施のタスクは灰色で表示され、実施済みのタスクは赤色で表示されます。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### その他
+- **Routineの投稿**: ゴールに関係なく、頑張ったこと（家事や通学など）をRoutineとして投稿することができます。
 
-## Code of Conduct
+## テストアカウント
+### メールアドレス
+test.share.effort@gmail.com
+### パスワード
+shareeffort
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ライセンス
+このプロジェクトは [MIT License](LICENSE) の下でライセンスされています。
