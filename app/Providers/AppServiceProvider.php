@@ -20,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \URL::forceScheme('https');
-        $this->app['request']->server->set('HTTMPS','on');
+        $this->app['request']->server->set('HTTMPS', 'on');
     }
 }

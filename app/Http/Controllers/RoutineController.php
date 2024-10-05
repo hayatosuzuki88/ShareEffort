@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Routine;
 use App\Models\LikeRoutine;
-use Cloudinary;
+use App\Models\Routine;
 use Auth;
+use Cloudinary;
+use Illuminate\Http\Request;
 
 class RoutineController extends Controller
 {
     // ルーティン作成画面の表示
     public function create(Routine $routine)
     {
-        return view("Routine.create");
+        return view('Routine.create');
     }
-    
+
     // ルーティンの保存
     public function store(Request $request, Routine $routine)
     {
@@ -24,26 +24,26 @@ class RoutineController extends Controller
         Auth::User()->point += 3;
         Auth::User()->save();
         */
-        
-        $input = $request["routine"];
-        
+
+        $input = $request['routine'];
+
         // 画像の保存
-        $image_path = Cloudinary::upload($request->file("image")->getRealPath())->getSecurePath();
-        $input += ["image_path" => $image_path];
-        
+        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input += ['image_path' => $image_path];
+
         $routine->fill($input)->save();
-        
-        return redirect(route("routine.show", ["routine_id" => $routine->id]));
+
+        return redirect(route('routine.show', ['routine_id' => $routine->id]));
     }
-    
+
     // ルーティンの詳細画面の表示
     public function show($routine_id)
     {
         $routine = Routine::find($routine_id);
-        
-        return view("Routine.show")->with(["routine" => $routine]);
+
+        return view('Routine.show')->with(['routine' => $routine]);
     }
-    
+
     // ルーティンの削除
     public function delete($routine_id)
     {
@@ -52,13 +52,13 @@ class RoutineController extends Controller
         Auth::User()->point -= 3;
         Auth::User()->save();
         */
-       
+
         $routine = Routine::find($routine_id);
         $routine->delete();
-        
+
         return redirect()->back();
     }
-    
+
     // ルーティンのいいね
     public function like($routine_id)
     {
@@ -67,15 +67,15 @@ class RoutineController extends Controller
         Auth::User()->point+=1;
         Auth::User()->save();
         */
-        
+
         LikeRoutine::create([
-            "routine_id" => $routine_id,
-            "user_id" => Auth::id(),
+            'routine_id' => $routine_id,
+            'user_id' => Auth::id(),
         ]);
-            
+
         return redirect()->back();
     }
-    
+
     // ルーティンのいいね取り消し
     public function unlike($routine_id)
     {
@@ -84,12 +84,10 @@ class RoutineController extends Controller
         Auth::User()->point -= 1;
         Auth::User()->save();
         */
-        
-        $like = LikeRoutine::where("routine_id", $routine_id)->where("user_id", Auth::id())->first();
+
+        $like = LikeRoutine::where('routine_id', $routine_id)->where('user_id', Auth::id())->first();
         $like->delete();
 
         return redirect()->back();
     }
-    
-    
 }

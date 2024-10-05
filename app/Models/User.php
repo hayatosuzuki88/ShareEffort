@@ -3,17 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Friend;
-use App\Models\Routine;
-use App\Models\Goal;
-use App\Models\CommentRoutine;
-use App\Models\Post;
-use App\Models\LikePost;
-use Auth;
 
 class User extends Authenticatable
 {
@@ -50,55 +44,54 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    
-    public function routines(){
+
+    public function routines()
+    {
         return $this->hasMany(Routine::class);
     }
-    
-    public function goals(){
+
+    public function goals()
+    {
         return $this->hasMany(Goal::class);
     }
-    
+
     public function like_routines()
     {
-        return $this->hasMany(LikeRoutine::class, "routine_id");
+        return $this->hasMany(LikeRoutine::class, 'routine_id');
     }
-    
+
     public function friends()
     {
-        return $this->hasMany(Friend::class, "follow");
+        return $this->hasMany(Friend::class, 'follow');
     }
-    
+
     public function comment_routines()
     {
-        return $this->hasMany(CommentRoutine::class, "user_id");
+        return $this->hasMany(CommentRoutine::class, 'user_id');
     }
-    
+
     public function posts()
     {
-        return $this->hasMany(Post::class, "followed");
+        return $this->hasMany(Post::class, 'followed');
     }
-    
+
     public function like_posts()
     {
-        return $this->hasMany(LikePost::class, "post_id");
+        return $this->hasMany(LikePost::class, 'post_id');
     }
-    
+
     // ユーザがログインユーザにフォローされているか
     public function is_followed_by_auth_user()
     {
         $my_id = Auth::id();
-        
+
         // フォローしているユーザの配列
-        $my_friends = Friend::where("follow", "=", $my_id)->get()->pluck("followed");
-        
-        if ($my_friends->contains($this->id)){ // フォローしているユーザにログインユーザが含まれているか
+        $my_friends = Friend::where('follow', '=', $my_id)->get()->pluck('followed');
+
+        if ($my_friends->contains($this->id)) { // フォローしているユーザにログインユーザが含まれているか
             return true;
         } else {
             return false;
         }
     }
-
 }
-
-
