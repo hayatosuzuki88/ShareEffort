@@ -117,25 +117,29 @@
                         @foreach ($posts_of_friends as $post)
                             <div class="post">
                                 <div class="post_header">
-                                    @if ($post->user->id == Auth::id())
-                                    <a class="post_user" href="{{ route('profile.edit') }}">
-                                    @else
-                                    <a class="post_user" href="{{ route('user.show', ['user_id' => $post->user->id ]) }}">
-                                    @endif
-                                        
-                                        <div class="user_image">
-                                            <img  src='{{ $post->user->image_path }}' />
-                                            <p>{{ $post->user->continue }}</p>
-                                        </div>
-                                        <p class="user_name" >{{ $post->user->name }}</p>
+                            <!-- ユーザ -->
+                        @if ($post->user->id == Auth::id())
+                        <a class="user" href="{{ route('profile.edit') }}">
+                        @else
+                        <a class="user" href="{{ route('user.show', ['user_id' => $post->user->id ]) }}">
+                        @endif
+                            <div class="user_image">
+                                <img class="user_image" src="{{ $post->user->image_path }}" />
+                            </div>
+                            <p class="user_name" >　{{ $post->user->name }}</p>
+                        </a>
+                        
+                        <!-- 達成したタスク -->
+                        <p>{{ $post->task->name }}</p>
+                        <h2 class="post_title">{{ $post->title }}</h2>
+                        
+                    </div>
+                        
+                    <!-- todo 要改善　レスポンシブデザイン用のヘッダー2段目 -->    
+                    <div class="post_header2">
+                        <h2 class="post_title2">{{ $post->title }}</h2>
+                    </div>
                     
-                                    </a>
-                                    <p>タスク：{{ $post->task->name }}</p>
-                                    <h2 class="post_title">{{ $post->title }}</h2>
-                                </div>
-                                <div class="post_header2">
-                                    <h2 class="post_title2">{{ $post->title }}</h2>
-                                </div>
                                     
                                 <a class="image_post" href="{{ route('post.show', ['post_id' => $post->id ]) }}">
                                     @if($post->image_path != null)
@@ -167,13 +171,13 @@
                                     <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
                                     <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}">
                                     <input type="checkbox" name="comment[is_advice]" value="1">アドバイス
-                                    <input type="submit" value="コメントを送信" />
+                                    <input class="button" type="submit" value="コメントを送信" />
                                 </form>
                         
                                 @foreach ($post->comment_posts as $comment)
                                 <div class="mb-2 sent_comment">
                                     
-                                <!-- ユーザ -->
+                                <!-- コメントユーザ -->
                                     <div class="user_comment">
                                     @if ($post->user->id == Auth::id())
                                         <a class="user" href="{{ route('profile.edit') }}">

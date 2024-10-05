@@ -90,12 +90,9 @@ class User extends Authenticatable
         $my_id = Auth::id();
         
         // フォローしているユーザの配列
-        $my_friends = array();
-        foreach($this->friends as $my_friend) {
-            array_push($my_friends, $my_friend->follow);
-        }
+        $my_friends = Friend::where("follow", "=", $my_id)->get()->pluck("followed");
         
-        if (in_array($my_id, $my_friends)) { // フォローしているユーザにログインユーザが含まれているか
+        if ($my_friends->contains($this->id)){ // フォローしているユーザにログインユーザが含まれているか
             return true;
         } else {
             return false;
