@@ -32,6 +32,8 @@ SNS×目標タスク管理アプリ
 ### ライブラリ
 - **Laravel**
 - **JQuery**
+### その他
+- **Laravel Pint**
 
 ## 使い方
 
