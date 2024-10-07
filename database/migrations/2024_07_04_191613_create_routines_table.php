@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('minutes')->nullable(); // ルーティンにかかった時間
+            $table->integer('minutes'); // ルーティンにかかった時間
             $table->string('body')->nullable(); // 一旦200文字　本文
             $table->string('image_path')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
