@@ -13,7 +13,13 @@
             <div class="routines body">
                 <!-- 投稿 -->
                 <div class="post">
-                    
+                    <form action="{{ route('post.delete', ['post_id' => $post->id ]) }}" id="form_{{ $post->id }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        @if ($post->user->id == Auth::id())
+                        <button type="button" onclick="deletePost({{ $post->id }})">×</button>
+                        @endif
+                    </form>
                     <!-- ヘッダー -->
                     <div class="post_header">
                         <!-- ユーザ -->
