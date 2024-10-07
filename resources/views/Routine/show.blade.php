@@ -5,6 +5,8 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+        <link rel="preload" href="css/routine_show.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+
 
     </head>
     <body>
