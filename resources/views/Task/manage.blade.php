@@ -16,13 +16,19 @@
                 <h2>目標設定</h2>
                 <div class="goal_create">
                     <p id="close_goal_create">×</p>
-                    <form action="{{ route('goal.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="goal_form" action="{{ route('goal.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <p>あなたの目標は？？</p>
-                        <input type="text" name="goal[goal]" required="required"/><br>
-                        <p>いつまで？</p>
-                        <input type="date" name="goal[date]" required="required"/><br>
-                        <input type="hidden" name="goal[user_id]" value="{{ Auth::id() }}"/>
+                        <ul>
+                            <li>*あなたの目標は？？</li>
+                            <input id="goal-name" type="text" name="goal[goal]" required="required"/><br>
+                            <p id="goal-name-error" class="error">ゴールが入力されていません。</p>
+                            
+                            <li>*いつまで？</li>
+                            <input id="goal-date" type="date" name="goal[date]" required="required"/><br>
+                            <p id="goal-date-error" class="error">達成時期が選択されていません。</p>
+                            
+                            <input type="hidden" name="goal[user_id]" value="{{ Auth::id() }}"/>
+                        </ul>
                         <input type="submit" value="保存" />
                     </form>
                 </div>
@@ -31,32 +37,48 @@
                 <p id="close_plan_create">×</p>
                 <h2>プランの作成</h2>
                 <div class="plan">
-                    <form action="{{ route('plan.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="plan_form" action="{{ route('plan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <p>作業概要</p>
-                        <input type="text" name="plan[name]" required="required"/><br>
-                        <p>いつからいつまで？</p>
-                        <input type="date" name="plan[start]" required="required"/>
-                        <input type="date" name="plan[end]" required="required"/><br>
-                        <p>かかる時間は？</p>
-                        <input type="integer" name="plan[duration]"/><br>
-                        <p>どこからどこまで</p>
-                        <input type="integer" name="plan[rangeS]"/>〜
-                        <input type="integer" name="plan[rangeE]"/><br>
-                        単位：<input type="string" name="plan[rangeUnit]"/><br>
-                        <p>何時に取り組む？</p>
-                        <input type="time" name="plan[routine_time]"/><br>
-                        <p>何日ごと？</p>
-                        <input type="integer" name="plan[interval]" required="required"/><br>
-                        <p>どのゴールのため？？</p>
-                        <select name="plan[goal_id]" required="required">
-                            <option></option>
+                        <ul>
+                            <li>*作業概要</li>
+                            <input id="plan-name" type="text" name="plan[name]" required="required"/><br>
+                            <p id="plan-name-error" class="error">作業概要が入力されていません。</p>
+                            
+                            <li>*いつからいつまで？</li>
+                            <input id="plan-date-start" type="date" name="plan[start]" required="required"/>
+                            <input id="plan-date-end" type="date" name="plan[end]" required="required"/><br>
+                            <p id="plan-date-error" class="error">期間が入力されていません。</p>
+                        
+                            <li>何分かかる？</li>
+                            <input id="plan-integer" type="integer" name="plan[duration]"/><br>
+                            <p id="plan-integer-error" class="error">可能な数値を入力してください。</p>
+                            
+                            <li>どこからどこまで</li>
+                            <input id="plan-range-start" type="integer" name="plan[rangeS]"/>〜
+                            <input id="plan-range-end" type="integer" name="plan[rangeE]"/><br>
+                            <span>単位：</span>
+                            <input id="plan-range-unit" type="string" name="plan[rangeUnit]"/><br>
+                            <p id="plan-range-error" class="error"></p>
+                        
+                            <li>何時に取り組む？</li>
+                            <input type="time" name="plan[routine_time]"/><br>
+                        
+                            <li>*何日ごと？</li>
+                            <input id="plan-interval" type="integer" name="plan[interval]" required="required"/><br>
+                            <p id="plan-interval-error" class="error"></p>
+                        
+                            <li>*どのゴールのため？？</li>
+                            <select id="plan-goal" name="plan[goal_id]" required="required">
+                                <option></option>
                             
                             @foreach ($not_achived_goals_of_mine as $goal)
                                 <option value="{{ $goal->id }}">{{ $goal->goal }}</option>
                             @endforeach
                             
-                        </select><br>
+                            </select><br>
+                            <p id="plan-goal-error" class="error">ゴールが入力されていません。</p>
+                            
+                        </ul>
                         <input type="submit" value="保存" />
                     </form>
                 </div>

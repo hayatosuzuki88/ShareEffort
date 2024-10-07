@@ -5,6 +5,7 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+        <link rel="preload" href="/css/post_create.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 
     </head>
     <body>
@@ -13,27 +14,38 @@
             <div class="posts body">
                 <h2>投稿作成</h2>
                 <div class="posts">
-                    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="form" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <p>タイトル</p>
-                        <input type="text" name="post[title]" required="required"/><br>
-                        <p>本文</p>
-                        <textarea name="post[body]" rows="3" cols="30" placeholder="今日も頑張ったー！！"></textarea>
-                        <p>どのタスク？</p>
-                        <!-- 達成したタスクの選択 -->
-                        <select name="post[task_id]" required="required">
-                            <option></option>
+                        <ul>
+                            <li>*タイトル</li>
+                            <input id="title" type="text" name="post[title]" required="required"/><br>
+                            <p id="title-error" class="error">タイトルが入力されていません。</p>
                             
-                            @foreach ($my_today_tasks as $task)
-                            <option value="{{ $task->id }}">{{ $task->name }}</option>
-                            @endforeach
+                            <li>本文</li>
+                            <textarea name="post[body]" rows="3" cols="30" placeholder="今日も頑張ったー！！"></textarea>
                             
-                        </select><br>
-                        <p>何分頑張った？</p>
-                        <input type="number" id="minutes_value" name="minutes" required="required" value="0" /><br>
-                        <p>写真も載せよう！</p>
-                        <input type="file" name="image"/><br>
-                        <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}"/>
+                            <li>*どのタスク？</li>
+                            <!-- 達成したタスクの選択 -->
+                            <select id="task" name="post[task_id]" required="required">
+                                <option></option>
+                                @foreach ($my_today_tasks as $task)
+                                <option value="{{ $task->id }}">{{ $task->name }}</option>
+                                @endforeach
+                            
+                            </select><br>
+                            <p id="task-error" class="error">タスクが選択されていません。</p>
+                            
+                            <li>*何分頑張った？</li>
+                            <input id="minutes" type="number" id="minutes_value" name="minutes" required="required" value="0" /><br>
+                            <p id="minutes-error" class="error"></p>
+                            
+                            <li>*写真も載せよう！</li>
+                            <input id="image" type="file" name="image" required="required"/><br>
+                            <p id="image-error" class="error">写真が選択されていません。</p>
+                            
+                            <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}"/>
+                            
+                        </ul>
                         <input type="submit" value="保存" />
                     </form>
                 </div>
@@ -67,7 +79,8 @@
             </br>
         
         </x-app-layout>
-        <script defer src="https://...jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script defer src="/js/post_show.js"></script>
+        <script defer src="/js/post_create.js"></script>
     </body>
 </html>

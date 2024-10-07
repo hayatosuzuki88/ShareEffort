@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
-    // プラン作成画面の表示
+    // プラン作成画面の表示　→　タスク管理画面に移動
+    /*
     public function create(Plan $plan)
     {
         // 自分の未達成なゴール
@@ -22,6 +23,7 @@ class PlanController extends Controller
 
         return view('Plan.create')->with(['not_achived_goals_of_mine' => $not_achived_goals_of_mine]);
     }
+    */
 
     // プランの保存
     public function store(Request $request, Plan $plan)

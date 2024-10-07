@@ -5,6 +5,7 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+        <link rel="preload" href="/css/routine_create.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 
     </head>
     <body>
@@ -13,14 +14,23 @@
                 <div class="routine">
                     <form id="routine_form" action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <p>何を頑張った？</p>
-                        <input type="text" name="routine[name]" required="required"/><br>
-                        <p>何分頑張った？</p>
-                        <input type="number" id="minutes_value" name="routine[minutes]" required="required" value="0" /><br>
-                        <p>コメントを残そう！！</p>
-                        <textarea id="body_value" name="routine[body]" rows="3" cols="30" placeholder="今日も頑張ったー！！"></textarea><br>
-                        <input type="file" id="input" name="image"><br>
-                        <input type="hidden" name="routine[user_id]" value="{{ Auth::id() }}"/>
+                        <ul>
+                            <li>*何を頑張った？</li>
+                            <input id="title" type="text" name="routine[name]" required="required"/><br>
+                            <p id="title-error" class="error">タイトルが入力されていません。</p>
+                            
+                            <li>コメントを残そう！！</li>
+                            <textarea id="body_value" name="routine[body]" rows="3" cols="30" placeholder="今日も頑張ったー！！"></textarea><br>
+                            
+                            <li>何分頑張った？</li>
+                            <input type="number" id="minutes_value" name="routine[minutes]" /><br>
+                            <p id="minutes-error" class="error">数字を入力してください。</p>
+                            
+                            <li>画像を選択</li>
+                            <input type="file" id="input" name="image"><br>
+                            
+                            <input type="hidden" name="routine[user_id]" value="{{ Auth::id() }}"/>
+                        </ul>
                         <input type="submit" value="保存" />
                     </form>
                 </div>
@@ -54,7 +64,8 @@
             </div>
         
         </x-app-layout>
-        <script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script defer src="\js\routine_show.js"></script>
+        <script defer src="\js\routine_create.js"></script>
     </body>
 </html>

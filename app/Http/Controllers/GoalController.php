@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 
 class GoalController extends Controller
 {
-    // ゴール作成画面の表示
+    // ゴール作成画面の表示　→　タスク管理画面に移動
+    /*
     public function create(Goal $goal)
     {
         return view('Goal.create');
     }
+    */
 
     // ゴールの保存
     public function store(Request $request, Goal $goal)

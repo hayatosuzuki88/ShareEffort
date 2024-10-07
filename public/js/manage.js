@@ -1,3 +1,7 @@
+function xor(a, b) {
+    return (a || b) && !(a && b);
+}
+
 ;
 (function() {
 	$("#goal_create_button").click(function() {
@@ -135,4 +139,98 @@
 				$('.goal_active .next_plan_button').css('display', 'inline-block');
 			}
 		});
+		
+		$('#goal_form').submit(function() {
+    let isValid = true; // フォームの有効性を追跡するフラグ
+
+    // ゴール名のバリデーション
+    if ($('#goal-name').val() == '') {
+        $('#goal-name-error').css('display', 'block');
+        isValid = false; // 無効に設定
+    } else {
+        $('#goal-name-error').css('display', 'none');
+    }
+
+    // ゴール日付のバリデーション
+    if ($('#goal-date').val() == '') {
+        $('#goal-date-error').css('display', 'block');
+        isValid = false; // 無効に設定
+    } else {
+        $('#goal-date-error').css('display', 'none');
+    }
+
+    return isValid; // すべてが有効であれば true を返す
+});
+
+    	
+    	$('#plan_form').submit(function() {
+    
+    // エラーメッセージの初期化
+    $('.error').css('display', 'none');
+
+    // バリデーションフラグ
+    let isValid = true;
+
+    // バリデーション関数
+    function displayError(element, message) {
+        $(element).css('display', 'block').text(message);
+        isValid = false;
+    }
+
+    if ($('#plan-name').val() == '') {
+        displayError('#plan-name-error', 'プラン名を入力してください。');
+    }
+
+    if ($('#plan-date-start').val() == '') {
+        displayError('#plan-date-error', '開始日を入力してください。');
+    }
+
+    if ($('#plan-date-end').val() == '') {
+        displayError('#plan-date-error', '終了日を入力してください。');
+    }
+    
+    function isNumber(val) {
+    // 空文字列を許可し、正の整数（1以上）の場合のみtrueを返す
+    return val === '' || new RegExp('^(?:[1-9][0-9]*)$').test(val);
+    }
+
+    if (!isNumber($('#plan-integer').val())) { // 修正
+        displayError('#plan-integer-error', '自然数を入力してください。');
+    }
+
+    function rangeStartExist() {
+        return $('#plan-range-start').val() !== '';
+    }
+
+    function rangeEndExist() {
+        return $('#plan-range-end').val() !== '';
+    }
+
+    function rangeUnitExist() {
+        return $('#plan-range-unit').val() !== '';
+    }
+
+    if (rangeStartExist() !== rangeEndExist()) {
+        displayError('#plan-range-error', '両方選択してください。');
+    }
+
+    if (rangeUnitExist() && !rangeStartExist()) {
+        displayError('#plan-range-error', '単位を消すか、範囲を選択してください。');
+    }
+
+
+    if ($('#plan-interval').val() == '') {
+        displayError('#plan-interval-error', 'タスクの間隔を入力してください。');
+    } else if (!isNumber($('#plan-interval').val())) {
+        displayError('#plan-interval-error', '可能な数値を入力してください。');
+    }
+
+    if ($('#plan-goal').val() == '') {
+        displayError('#plan-goal-error', '目標を入力してください。');
+    }
+
+    return isValid; // フォームが有効な場合のみ送信
+});
+
+
 })();
