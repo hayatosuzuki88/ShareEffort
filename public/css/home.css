@@ -1,270 +1,4 @@
-.body {
-    padding: 30px;
-}
-
-.home {
-    background-color: #eaf4ff;
-}
-
-h1 {
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.user_image {
-    position: relative;
-    display: inline-block;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-.user_image img {
-    height: 50px;
-    width: 50px;
-    display: block; /* 画像の下に余分な隙間ができないようにする */
-}
-
-.user_image p {
-    position: absolute; /* 画像の上に絶対的に位置させる */
-    bottom: 0; /* 下部に合わせる */
-    padding: 20px;
-}
-
-.user {
-    display: inline-block;
-}
-
-.post_header .user_name {
-    font-size: 10px;
-}
-
-.logo_image {
-    margin: 10px;
-    height: 100px;
-    width: 100px;
-    margin-right: 20px;
-}
-
-.my_goals, .routing_friends, .today_tasks {
-    display: flex;
-    flex-direction: row;
-}
-
-.my_goal {
-    border-radius: 50%;
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    border-width: 4px;
-    border-color: #84ffc1;
-    background-color: white;
-}
-
-.today_task {
-    background-color: #e5ffe5;
-    border-color: white;
-    border-width: 4px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 20%;
-}
-
-.routing_friends {
-    max-width: 1000px;
-    padding: 5px;
-    background-color: white;
-    height: 150px;
-    border-width: 6px;
-    border-color: #ccffff;
-}
-
-.routing_user_image {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-}
-
-.routing_user_name {
-    display: flex;
-    justify-content: center;
-}
-
-h2 {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.post {
-    max-width: 1000px;
-    background-color: white;
-    padding: 20px;
-    border-width: 6px;
-    border-color: #ccffff;
-}
-
-.post_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    border-width: 2px;
-    border-color: #f2f2f2;
-    padding: 10px;
-}
-
-.post_title {
-    text-align: center;
-    font-size: 20px;
-}
-
-.post_footer {
-    padding: 10px;
-    background-color: #f2f2f2;
-}
-
-.image_post {
-    position: relative; /* 画像の上に絶対的に位置させる */
-    display: inline-block;
-}
-
-.image_post img {
-    display: block; /* 画像の下に余分な隙間ができないようにする */
-    width: 100%; /* コンテナに合わせて画像の幅を設定 */
-    height: auto; /* アスペクト比を維持する */
-}
-
-.post_goal {
-    position: absolute; /* 画像の上に絶対的に位置させる */
-    top: 0; /* 上部に合わせる */
-    right: 0; /* 右端に合わせる */
-    color: black;
-    border-radius: 50%;
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    border-width: 4px;
-    border-color: white;
-    height: 150px;
-    background-color: rgba(132, 255, 193, 0.4);
-}
-
-.button {
-    background: #eee;
-    border-radius: 3px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 250px;
-    padding: 10px 25px;
-    font-family: "Noto Sans Japanese";
-    color: #333;
-    line-height: 1.8;
-    text-decoration: none;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-}
-
-.button:hover {
-    background: #333;
-    color: #FFF;
-}
-
-.button11 {
-    padding: 10px 30px;
-    text-decoration: none;
-    font-size: 20px;
-    outline: 1px solid;
-    outline-color: white;
-    outline-offset: 0px;
-    transition: .3s;
-}
-
-.button11:hover {
-    color: #fff;
-    animation: light .8s infinite;
-}
-
-@keyframes light {
-    100% { 
-        outline-color: transparent;
-        outline-offset: 10px;
-    }
-}
-
-.sent_comment {
-    display: flex;
-    align-items: center;
-}
-
-.comment_user_name {
-    font-size: 10px;
-}
-
-.good {
-    height: 25px;
-    width: 25px;
-    display: inline-block;
-}
-
-.comment .user_image {
-    height: 25px;
-    width: 25px;
-}
-
-@media (max-width: 768px) {
-    .routing_friends {
-        height: 80px;
-    }
-
-    .routing_user_image {
-        height: 50px;
-        width: 50px;
-    }
-
-    .routing_user_name {
-        font-size: 10px;
-    }
-
-    .post_header {
-        height: 100px;
-    }
-
-    .post_title {
-        display: none;
-    }
-
-    .post_goal {
-        height: 100px;    
-    }
-
-    .my_goal h2, .post_goal h2, .today_task h2 {
-        font-size: 15px;
-    }
-
-    .my_goal p, .post_goal p, .today_task p {
-        font-size: 10px;
-    }
-
-    .button11 { 
-        padding: 10px 15px;   
-    }
-}
-
-@media (max-width: 480px) {
-    .my_goal h2, .today_task h2 {
-        font-size: 15px;
-    }
-
-    .my_goal p, .today_task p {
-        font-size: 10px;
-    }
-}
-
-/* スライドボタン */
-.my_goal, .today_task, .routing_friends {
+.my_goal, .today_task, .routing_friend {
     display: none;
 }
 
@@ -297,6 +31,28 @@ h2 {
     width: 30px;
     align-items: center;
     background-color: #ededed;
+}
+
+.button {
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 250px;
+    padding: 10px 25px;
+    font-family: "Noto Sans Japanese";
+    color: #333;
+    line-height: 1.8;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.button:hover {
+    background: #333;
+    color: #FFF;
 }
 
 @media (max-width: 768px) {

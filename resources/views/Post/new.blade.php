@@ -5,7 +5,7 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-        <link rel="stylesheet" href="{{ asset('/css/new_post.css') }}" />
+        <link rel="stylesheet" href="{{ asset('/css/home.css') }}" />
     </head>
     <body>
         <x-app-layout>

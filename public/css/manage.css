@@ -1,107 +1,4 @@
-.body {
-    padding: 30px;
-}
 
-h1 {
-    font-size: 25px;
-    font-weight: bold;
-}
-
-h2 {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-/* 目標とプランのスタイル */
-.my_goal {
-    border-radius: 50%;
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    border-width: 4px;
-    border-color: #84ffc1;
-    background-color: white;
-    height: 200px;
-}
-
-.my_plan {
-    border-radius: 10%;
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    border-width: 4px;
-    border-color: #eaeaff;
-    background-color: white;
-}
-
-/* ボタンのスタイル */
-.button04 {
-    background-color: #fff;
-    border: double 6px #3cb371;
-    color: #3cb371;
-    border-radius: 10px;
-    padding: 10px 30px;
-    font-size: 1em;
-}
-
-.button04:hover {
-    background-color: #f0fff0;
-}
-
-.button11 {
-    padding: 10px 30px;
-    font-size: 20px;
-    outline: 1px solid;
-    outline-color: white;
-    transition: .3s;
-}
-
-.button11:hover {
-    color: #fff;
-    animation: light .8s infinite;
-}
-
-@keyframes light {
-    100% { 
-        outline-color: transparent;
-    }
-}
-
-/* エラースタイル */
-.error {
-    color: red;
-    display: none;
-}
-
-/* メディアクエリ */
-@media (max-width: 1200px) {
-    .my_goal p {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .button11 { 
-        padding: 10px 15px;   
-    }
-}
-
-@media (max-width: 480px) {
-    #goal_create_button, #plan_create_button {
-        padding: 10px 20px; 
-        font-size: 15px;
-    }
-    
-    .my_goal {
-        width: 50px;
-        writing-mode: vertical-rl; 
-        text-orientation: upright;  
-        display: flex;
-        justify-content: center;
-    }
-}
-
-/* 目標とプラン作成のスタイル */
 #goal_create, #plan_create, #edit_event {
     display: none;
     position: absolute;
@@ -111,21 +8,23 @@ h2 {
     padding: 20px 0 40px;
     border-radius: 10px;
     width: 450px;
+    height: auto;
     text-align: center;
     z-index: 10;
 }
 
-#goal_create_button, #plan_create_button {
+#goal_create_button {
     font-size: 30px;
 }
 
 #plan_create_button {
+    font-size: 30px;
+    margin-left: 200px;
     color: #9932cc;
     border: double 6px #9932cc;
 }
-
 #plan_create_button:hover {
-    background-color: #eddbff;
+  background-color: #eddbff;
 }
 
 .my_goal_plan {
@@ -140,8 +39,73 @@ h2 {
     display: flex;
 }
 
+.active{
+    display: block;
+}
+
+.prev_plan_button, .prev_goal_button {
+    display: none;
+}
+
 .prev_goal_button, .next_goal_button {
     width: 250px;
     background-color: #84ffc1;
     justify-content: center;
+}
+
+.prev_plan_button, .next_plan_button {
+    height: 200px;
+    width: 30px;
+    align-items: center;
+    background-color: #eaeaff;
+}
+
+.button04 {
+  background-color: #fff;
+  border: double 6px #3cb371;
+  color: #3cb371;
+  border-radius: 10px;
+  padding: 10px 30px;
+  text-decoration: none;
+  font-size: 1em;
+}
+.button04:hover {
+  color: #3cb371;
+  background-color: #f0fff0;
+}
+
+
+@media (max-width: 1200px) {
+
+    .my_goal p {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    #goal_create_button, #plan_create_button {
+        padding: 10px, 20px;
+        font-size: 15px;
+    }
+    #plan_create_button {
+        margin-left: 50px;
+    }
+    
+    .my_goal {
+        width: 50px;
+        writing-mode: vertical-rl; /* 縦書き、右から左へ */
+        text-orientation: upright;  /* 文字の向きを立てる */
+        display: flex;
+        justify-content: center;
+    }
+    
+    .prev_goal_button, .next_goal_button {
+        height: 40px;
+    }
+    .calendar p {
+        font-size: 1px;
+    }
+    
+    
 }
