@@ -12,3 +12,12 @@ formBodyValue.addEventListener('input',()=>{
   let body  = document.getElementById('body');
   body.textContent = formBodyValue.value;
 })
+
+
+$('#image').on('change', function(){
+  var $fr = new FileReader();
+	$fr.onload = function(){
+		$('#preview').attr('src', $fr.result);
+	}
+	$fr.readAsDataURL(this.files[0]);
+});
