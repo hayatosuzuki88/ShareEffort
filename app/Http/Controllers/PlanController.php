@@ -39,7 +39,7 @@ class PlanController extends Controller
         // 一日のタスクの量を計算
         $period = $start->diffInDays($end);
         $interval = $plan->interval;
-        $task_size = $period / $interval;
+        $task_size = $period / $interval + 1;
         $task_range_per_day = round(($plan->rangeE - $plan->rangeS) / $task_size);
         $task_range_start = $plan->rangeS - 1;
 
