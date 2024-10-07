@@ -1,3 +1,7 @@
+.body {
+    padding: 30px;
+}
+
 .profile img {
     height: 100px;
     width: 100px;
@@ -7,20 +11,19 @@
 .button {
     background: #eee;
     border-radius: 3px;
-    position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 10px auto;
     max-width: 250px;
     padding: 10px 25px;
     font-family: "Noto Sans Japanese";
     color: #333;
-    line-height: 1.8;
     text-decoration: none;
-    transition: 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
     font-weight: 500;
 }
+
 .button:hover {
     background: #333;
     color: #FFF;
@@ -28,4 +31,56 @@
 
 .friend {
     display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user_image {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.user_image img {
+    width: 100%;
+    height: auto; /* アスペクト比を維持 */
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .user_image {
+        height: 40px;
+        width: 40px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .button {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h3 {
+        font-size: 18px;
+    }
+
+    .button {
+        padding: 6px 10px;
+    }
 }

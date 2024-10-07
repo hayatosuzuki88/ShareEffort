@@ -28,7 +28,11 @@ class RoutineController extends Controller
         $input = $request['routine'];
 
         // 画像の保存
-        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        if ($request->file('image') == NULL){
+            $image_path = NULL;
+        } else {
+            $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        }
         $input += ['image_path' => $image_path];
 
         $routine->fill($input)->save();

@@ -1,0 +1,116 @@
+.error {
+    color: red;
+    display: none;
+}
+
+.body {
+    padding: 30px;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.user_image {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user_image img {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.posts {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.post {
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.post_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post_footer {
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.post_title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .user_image {
+        height: 40px;
+        width: 40px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        padding: 8px 16px;
+    }
+}
