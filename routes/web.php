@@ -52,8 +52,8 @@ Route::controller(RoutineController::class)->middleware(['auth'])->group(functio
 });
 
 Route::controller(GoalController::class)->middleware(['auth'])->group(function () {
-    // 作成画面　→　タスク管理画面に移動
-    // Route::get('/goals/create', 'create')->name('goal.create');
+    // 作成画面
+    Route::get('/goals/create', 'create')->name('goal.create');
     // 保存URL
     Route::post('/goals/store', 'store')->name('goal.store');
 
@@ -62,8 +62,8 @@ Route::controller(GoalController::class)->middleware(['auth'])->group(function (
 });
 
 Route::controller(PlanController::class)->middleware(['auth'])->group(function () {
-    // 作成画面　→　タスク管理画面に移動
-    // Route::get('/plans/create', 'create')->name('plan.create');
+    // 作成画面
+    Route::get('/plans/create', 'create')->name('plan.create');
     // 保存URL
     Route::post('/plans/store', 'store')->name('plan.store');
 

@@ -249,6 +249,11 @@ h2 {
     width: 25px;
 }
 
+.error {
+    color: red;
+    display: none;
+}
+
 
 @media (max-width: 768px) {
     .routing_friends {

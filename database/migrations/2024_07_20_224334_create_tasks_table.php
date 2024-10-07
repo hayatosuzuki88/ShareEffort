@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('range')->nullable();
             $table->integer('duration')->nullable(); // 何分かかる予定か
             $table->date('date'); // 実施日
-            $table->time('start'); // 開始時間
+            $table->time('start')->nullable(); // 開始時間
             $table->integer('finish')->default(0); // 実施状況
             $table->integer('taken_time'); // かかった時間
             $table->string('color')->default('#c0c0c0'); // カレンダーで表示する色
