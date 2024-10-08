@@ -1,0 +1,55 @@
+
+.routine-container {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+#preview {
+    display: block; /* 画像の下に余分な隙間ができないようにする */
+    width: 100%; /* コンテナに合わせて画像の幅を設定 */
+    height: auto; /* アスペクト比を維持する */
+}
+
+.routine-header {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    top: 10px;
+    left: 10px;
+    width: 95%;
+    background-color: rgba(211, 211, 211, 0.5);
+    color: black;
+}
+
+.details {
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: rgba(144, 238, 144, 0.5);
+    border-color: #A9A9A9;
+    border-width: 3px;
+    padding: 10px;
+}
+
+.routine .user_image {
+    height: 100%;
+    width: 100%;
+}
+
+.user_name {
+    font-size: 20px;
+    vertical-align: top;
+}
+
+.user {
+    width: 30%;
+}
+
+.title {
+    z-index: 2;
+}
