@@ -99,6 +99,7 @@ class PostController extends Controller
 
         // タスクの色を灰色に戻す
         $task->color = '#c0c0c0';
+        $task->finish = 0;
 
         $task->save();
 
