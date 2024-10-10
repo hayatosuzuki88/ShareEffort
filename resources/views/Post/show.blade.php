@@ -11,8 +11,8 @@
         <x-app-layout>
             <!-- 投稿詳細画面 -->
             <div class="routines body">
-                <!-- 投稿 -->
                 <div class="post">
+                    <!-- 削除機能 -->
                     <form action="{{ route('post.delete', ['post_id' => $post->id ]) }}" id="form_{{ $post->id }}" method="post">
                         @csrf
                         @method("DELETE")
@@ -20,8 +20,9 @@
                         <button type="button" onclick="deletePost({{ $post->id }})">×</button>
                         @endif
                     </form>
-                    <!-- ヘッダー -->
+                    
                     <div class="post_header">
+                        
                         <!-- ユーザ -->
                         @if ($post->user->id == Auth::id())
                         <a class="user" href="{{ route('profile.edit') }}">
@@ -47,9 +48,9 @@
                                     
                     <a class="image_post" href="{{ route('post.show', ['post_id' => $post->id ]) }}">
                         
-                        <!-- ゴール -->
                     @if($post->image_path != null)
                         <img class="post_image" src="{{ $post->image_path }}" alt="画像が読み込みません。" />
+                        <!-- ゴール -->
                         <div class="post_goal">
                             <h2 class="goal_name"> {{ $post->task->plan->goal->goal }} </h2>
                             <p> {{ \Carbon\Carbon::parse($post->task->plan->goal->date)->format('Y年m月d日') }} </p>
@@ -57,10 +58,11 @@
                         </div>
                     @endif
                     
-                        <!-- フッター -->
                         <div class="post_footer">
                             <p>{{ $post->body }}</p>
                             <br/>
+                            
+                        <!-- いいね機能 -->
                         @if ($post->is_liked_by_auth_user())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
                                 <img class="good" src="/images/gooded.webp"><span>{{ $post->like_posts->count() }}</span>
@@ -70,8 +72,10 @@
                                 <img class="good" src="/images/good.webp"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @endif
-                    
+                            
+                            <!-- コメント機能 -->
                             <div class="comment">
+                                <!-- コメント送信 -->
                                 <form class="comment_send" action="{{ route('post.comment.store', ['post_id' => $post->id ]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                     <input type="text" name="comment[comment]" placeholder="頑張れー！！"><br>
@@ -81,10 +85,11 @@
                                     <input class="button" type="submit" value="コメントを送信" />
                                 </form>
                         
+                                <!-- コメント一覧 -->
                                 @foreach ($post->comment_posts as $comment)
                                 <div class="mb-2 sent_comment">
                                     
-                                <!-- コメントユーザ -->
+                                    <!-- コメントユーザ -->
                                     <div class="user_comment">
                                     @if ($post->user->id == Auth::id())
                                         <a class="user" href="{{ route('profile.edit') }}">
@@ -97,6 +102,7 @@
                                             <p class="comment_user_name" >　{{ $comment->user->name }}</p>
                                         </a>
                                     </div>
+                                    
                                     <span>　{{ $comment->comment }}</span>
                             
                                     @if ($comment->user->id == Auth::id())

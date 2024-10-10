@@ -10,8 +10,9 @@
     </head>
     <body>
         <x-app-layout>
+            <!-- タスク管理画面 -->
             <div class="manage body">
-            <!--現在の目標-->
+            <!-- 目標設定 -->
             <div id="goal_create">
                 <h2>目標設定</h2>
                 <div class="goal_create">
@@ -33,6 +34,7 @@
                     </form>
                 </div>
             </div>
+            <!-- プランの設定 -->
             <div id="plan_create">
                 <p id="close_plan_create">×</p>
                 <h2>プランの作成</h2>
@@ -83,6 +85,7 @@
                     </form>
                 </div>
             </div>
+            <!-- todo:タスクの編集画面 -->
             <div id="edit_event">
                 <p id="close_edit_event">×</p>
                 <h2>タスクの編集</h2>
@@ -93,6 +96,8 @@
                     <p>実施日</p>
                 </form>
             </div>
+            
+            <!-- 現在の目標 -->
             <div class="goals">
                 <h1>現在の目標</h1>
                 <div class="header">
@@ -107,6 +112,7 @@
                     <div class="button11 prev_goal_button"><a>↑</a></div>
                     <table>
                         @foreach ($my_goals as $goal)
+                        <!-- ゴールごとに1プランを表示 -->
                         <tr class="my_goal_plan">
                             <th class="my_goal">
                                 <form action="{{ route('goal.delete', ['goal_id' => $goal->id ]) }}" id="form_{{ $goal->id }}" method="post">
@@ -125,6 +131,7 @@
                             </th>
                             <th class="button11 prev_plan_button"><a><</a></th>
                             @foreach ($my_plans as $plan)
+                            <!-- プランの表示 -->
                                 @if ($plan->goal_id == $goal->id)
                             <th class="my_plan">
                                 <form action="{{ route('plan.delete', ['plan_id' => $plan->id ]) }}" id="form_{{ $plan->id }}" method="post">
@@ -152,6 +159,7 @@
                     <div class="button11 next_goal_button"><a>↓</a></div>
                     @endif
                 </div>
+            <!-- タスクカレンダー -->
             <div class="body">
                 <h2>Task</h2>
                 <div id="app">

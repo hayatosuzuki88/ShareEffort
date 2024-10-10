@@ -10,7 +10,9 @@
     </head>
     <body>
         <x-app-layout>
+            <!-- ROUTINE作成画面 -->
             <div class="routines body">
+                <!-- 入力フォーム -->
                 <form id="routine_form" action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <h2>ROUTINE作成</h2>
@@ -36,10 +38,12 @@
                 <br/>
                 <br/>
                 
+                <!-- プレビュー画面 -->
                 <div class="routine">
                     <div class="routine-container">
                         <img class="img" id="preview"/>
                         <div class="routine-header">
+                            
                             <!-- ユーザ -->
                             <div class="user">
                                 <div class="user_image">
@@ -47,6 +51,7 @@
                                 </div>
                                 <strong class="user_name">　{{ Auth::User()->name }}</strong>
                             </div>
+                            
                             <h2 id="title"></h2>
                         </div>
                         <div class="details">

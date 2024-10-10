@@ -14,6 +14,7 @@
             <div class="posts body">
                 <h2>投稿作成</h2>
                 <div class="posts">
+                    <!-- 入力フォーム -->
                     <form id="form" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <ul>

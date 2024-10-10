@@ -9,16 +9,19 @@
     </head>
     <body>
         <x-app-layout>
-            
+            <!-- ROUTINE詳細画面 -->
             <div class="routines body">
                 <div class="routine">
                         
                 @if ($routine->user->id == Auth::id())
+                <!-- 投稿者がユーザ -->
                     <a href="{{ route('profile.edit') }}">
                 @else
+                <!-- 投稿者がユーザ以外 -->
                     <a href="{{ route('user.show', ['user_id' => $routine->user->id ]) }}">
                 @endif
                     
+                    <!-- ROUTINEの削除機能 -->
                     <form action="{{ route('routine.delete', ['routine_id' => $routine->id ]) }}" id="form_{{ $routine->id }}" method="post">
                         @csrf
                         @method("DELETE")
@@ -26,7 +29,8 @@
                         <button type="button" onclick="deleteRoutine({{ $routine->id }})">×</button>
                         @endif
                     </form>
-                    
+                        
+                        <!-- ユーザ -->
                         <div class="user">
                             <img class="user_image" src="{{ $routine->user->image_path }}" />
                             <p>{{ $routine->user->continue }}</p>
@@ -42,6 +46,7 @@
                         
                     <p class="body">{{ $routine->body }}</p>
                         
+                    <!-- いいね機能 -->
                     <div class="like">
                     @if ($routine->is_liked_by_auth_user())
                         <a href="{{ route('routine.unlike', ['routine_id' => $routine->id]) }}" >
@@ -55,6 +60,7 @@
                     </div>
                 
                     <div class="footer">
+                        <!-- コメント機能 -->
                         <form class="comment_form" action="{{ route('routine.comment.store', ['routine_id' => $routine->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="text" name="comment[comment]" placeholder="頑張れー！！">
@@ -66,6 +72,7 @@
                     </div>
                     
                     @foreach ($routine->comment_routines as $comment)
+                    <!-- コメントごとに処理 -->
                         <div class="mb-2">
                             <span>
                                 <strong>
@@ -74,16 +81,16 @@
                             </span>
                             <span>{{ $comment->comment }}</span>
                             
-                            @if ($comment->user->id == Auth::id())
-                                <a href="/comments/{{ $comment->id }}/like">
-                                    いいね
-                                </a>
-                                <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/comments/{{ $comment->id }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                    </svg>
-                                </a>
-                            @endif
+                        @if ($comment->user->id == Auth::id())
+                            <a href="/comments/{{ $comment->id }}/like">
+                                いいね
+                            </a>
+                            <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/comments/{{ $comment->id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </a>
+                        @endif
                             
                         </div>
                     @endforeach
