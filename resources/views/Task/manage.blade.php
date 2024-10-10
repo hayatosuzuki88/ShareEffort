@@ -141,10 +141,18 @@
                                 </form>
                                 <h2>{{ $plan->name }}</h2>
                                 <p>{{ $plan->start }}〜{{ $plan->end }}</p>
+                            @if ($plan->duration != NULL)
                                 <p>1回{{ $plan->duration }}分</p>
+                            @endif
+                            @if ($plan->rangeS != NULL and $plan->rangeUnit != NULL)
                                 <p>範囲：{{ $plan->rangeS . $plan->rangeUnit ."〜". $plan->rangeE . $plan->rangeUnit }}</p>
-                                <p>毎日{{ $plan->routine_time }}に実施</p>
-                                <p>{{ $plan->interval }}日ごと</p>
+                            @elseif ($plan->rangeS != NULL and $plan->rangeUnit == NULL)
+                                <p>範囲：{{ $plan->rangeS ."〜". $plan->rangeE }}</p>
+                            @endif
+                            @if ($plan->routine_time != NULL)
+                                <p>毎日{{ $plan->routine_time }}に</p>
+                            @endif
+                                <p>{{ $plan->interval }}日ごとで実施</p>
                             </th>
                                 @endif
                             @endforeach
