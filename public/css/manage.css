@@ -1,4 +1,4 @@
-
+/* モーダルの表示 */
 #goal_create, #plan_create, #edit_event {
     display: none;
     position: absolute;
@@ -12,7 +12,6 @@
     text-align: center;
     z-index: 10;
 }
-
 #goal_create_button {
     font-size: 30px;
 }
@@ -27,32 +26,27 @@
   background-color: #eddbff;
 }
 
+/* ゴールとプランのページ送り */
 .my_goal_plan {
     flex-direction: row;
 }
-
 .my_plan, .my_goal_plan {
     display: none;
 }
-
 .goal_active {
     display: flex;
 }
-
 .active{
     display: block;
 }
-
 .prev_plan_button, .prev_goal_button {
     display: none;
 }
-
 .prev_goal_button, .next_goal_button {
     width: 250px;
     background-color: #84ffc1;
     justify-content: center;
 }
-
 .prev_plan_button, .next_plan_button {
     height: 200px;
     width: 30px;
@@ -60,6 +54,7 @@
     background-color: #eaeaff;
 }
 
+/* ボタン */
 .button04 {
   background-color: #fff;
   border: double 6px #3cb371;

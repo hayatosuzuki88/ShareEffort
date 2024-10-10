@@ -1,13 +1,14 @@
 ;(function(){
-		let display_size = 0;
+		// ゴールとプランのページ送り
+		let display_size = 0; // 表示枚数
 		if (window.matchMedia('(max-width: 768px)').matches) {
-			//スマホ処理
+			//スマホ
 			display_size = 1;
 		} else if (window.matchMedia('(max-width: 1200px)').matches) {
-
+			// タブレット
 			display_size = 2;
 		} else {
-			//PC処理
+			//PC
 			display_size = 4;
 		}
 

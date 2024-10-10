@@ -47,7 +47,7 @@
                             <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}"/>
                             
                         </ul>
-                        <input type="submit" value="保存" />
+                        <input class="button" type="submit" value="保存" />
                     </form>
                 </div>
             </div>
