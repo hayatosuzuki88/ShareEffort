@@ -13,10 +13,8 @@
             <div class="home body">
             
             @foreach ($all_posts as $post)
-                <!-- 投稿 -->
+                <!-- Postごとに表示 -->
                 <div class="post">
-                    
-                    <!-- ヘッダー -->
                     <div class="post_header">
                         <!-- ユーザ -->
                         @if ($post->user->id == Auth::id())
@@ -43,20 +41,18 @@
                                     
                     <a class="image_post" href="{{ route('post.show', ['post_id' => $post->id ]) }}">
                         
-                        <!-- ゴール -->
-                    @if($post->image_path != null)
                         <img class="post_image" src="{{ $post->image_path }}" alt="画像が読み込みません。" />
+                        <!-- ゴール -->
                         <div class="post_goal">
                             <h2 class="goal_name"> {{ $post->task->plan->goal->goal }} </h2>
                             <p> {{ \Carbon\Carbon::parse($post->task->plan->goal->date)->format('Y年m月d日') }} </p>
                             <p>あと<strong>{{ \Carbon\Carbon::parse($post->task->plan->goal->date)->diffInDays(\Carbon\Carbon::today()) }}日</strong></p>
                         </div>
-                    @endif
-                    
-                        <!-- フッター -->
+                
                         <div class="post_footer">
                             <p>{{ $post->body }}</p>
                             <br/>
+                            
                         @if ($post->is_liked_by_auth_user())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
                                 <img class="good" src="/images/gooded.webp"><span>{{ $post->like_posts->count() }}</span>
@@ -66,21 +62,23 @@
                                 <img class="good" src="/images/good.webp"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @endif
-                    
+                            
+                            <!-- コメント送信 -->
                             <div class="comment">
                                 <form class="comment_send" action="{{ route('post.comment.store', ['post_id' => $post->id ]) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                                    @csrf
                                     <input type="text" name="comment[comment]" placeholder="頑張れー！！"><br>
                                     <input type="hidden" name="comment[post_id]" value="{{ $post->id }}">
                                     <input type="hidden" name="comment[user_id]" value="{{ Auth::id() }}">
                                     <input type="checkbox" name="comment[is_advice]" value="1">アドバイス
                                     <input class="button" type="submit" value="コメントを送信" />
                                 </form>
-                        
+                    
+                                <!-- コメント一覧 -->
                                 @foreach ($post->comment_posts as $comment)
                                 <div class="mb-2 sent_comment">
-                                    
-                                <!-- コメントユーザ -->
+                                
+                                    <!-- コメントユーザ -->
                                     <div class="user_comment">
                                     @if ($post->user->id == Auth::id())
                                         <a class="user" href="{{ route('profile.edit') }}">
@@ -93,6 +91,7 @@
                                             <p class="comment_user_name" >　{{ $comment->user->name }}</p>
                                         </a>
                                     </div>
+                                    
                                     <span>　{{ $comment->comment }}</span>
                             
                                     @if ($comment->user->id == Auth::id())
@@ -109,11 +108,11 @@
                             </div>
                             
                             <p class="created_at" >{{ $post->created_at }}に投稿</p>
-                            
+                        
                         </div>
                     </a>
                 </div>
-                </br>
+                <br/>
                         
             @endforeach
                     

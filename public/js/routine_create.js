@@ -7,7 +7,7 @@ function isNumber(val) {
 (function() {
     $('#routine_form').submit(function() {
         
-        if ($('#title').val() == '') {
+        if ($('#title_Value').val() == '') {
             $('#title-error').css('display', 'block');
             return false;
         } else {

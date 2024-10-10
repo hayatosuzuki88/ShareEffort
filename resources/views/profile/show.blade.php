@@ -9,8 +9,8 @@
     </head>
     <body>
         <x-app-layout>
-            
             <div class="user body">
+                <!-- ユーザのプロフィール画面 -->
                 <div class="profile">
                     <img class="img" src="{{ $profiled_user->image_path }}" />
                     
@@ -24,6 +24,7 @@
                     
                     <a>フォロワー：{{ $followed_user->count() }}</a>
                     @foreach($followed_user as $user)
+                        <!-- フォロワーユーザごとに表示 -->
                         <div class="friend">
                             <a class="user" href="{{ route('user.show', ['user_id' => $user->id ]) }}">
                                 <div class="user_image">
@@ -37,10 +38,12 @@
                             <a class="button" href="{{ route('user.follow', ['user_id' => $user->id]) }}" >フォローする</a>
                         @endif
                         </div>
+                        
                     @endforeach
                     <br/>
                     <a>フォロー中：{{ $following_user->count() }}</a>
                     @foreach($following_user as $user)
+                    <!-- フォローユーザごとに表示 -->
                         <div class="friend">
                             <a class="user" href="{{ route('user.show', ['user_id' => $user->id ]) }}">
                                 <div class="user_image">
