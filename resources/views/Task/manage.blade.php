@@ -16,7 +16,7 @@
             <div id="goal_create">
                 <h2>目標設定</h2>
                 <div class="goal_create">
-                    <p id="close_goal_create">×</p>
+                    <p id="close_goal_create" class="button center">×</p>
                     <form id="goal_form" action="{{ route('goal.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <ul>
@@ -36,7 +36,7 @@
             </div>
             <!-- プランの設定 -->
             <div id="plan_create">
-                <p id="close_plan_create">×</p>
+                <p id="close_plan_create" class="button center">×</p>
                 <h2>プランの作成</h2>
                 <div class="plan">
                     <form id="plan_form" action="{{ route('plan.store') }}" method="POST" enctype="multipart/form-data">
