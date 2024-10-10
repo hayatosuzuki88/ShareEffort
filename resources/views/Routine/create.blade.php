@@ -33,7 +33,7 @@
                             
                         <input type="hidden" name="routine[user_id]" value="{{ Auth::id() }}"/>
                     </ul>
-                    <input type="submit" value="保存" />
+                    <input class="button" type="submit" value="保存" />
                 </form>
                 <br/>
                 <br/>
@@ -63,7 +63,7 @@
                     <div class="routine-footer">
                         <img class="good" src="/images/gooded.webp"><span>100</span>
                         <input type="text" name="comment[comment]" placeholder="頑張れー！！"><br>
-                        <input type="submit" value="コメントを送信" />
+                        <input class="button" type="submit" value="コメントを送信" />
                         <p class="created_at" >{{ \Carbon\Carbon::now() }}に投稿</p>
                     </div> 
                     

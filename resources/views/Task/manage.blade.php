@@ -30,7 +30,7 @@
                             
                             <input type="hidden" name="goal[user_id]" value="{{ Auth::id() }}"/>
                         </ul>
-                        <input type="submit" value="保存" />
+                        <input class="button center" type="submit" value="保存" />
                     </form>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                             <p id="plan-goal-error" class="error">ゴールが入力されていません。</p>
                             
                         </ul>
-                        <input type="submit" value="保存" />
+                        <input class="button center" type="submit" value="保存" />
                     </form>
                 </div>
             </div>

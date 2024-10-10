@@ -4,6 +4,11 @@
     border-radius: 50%;
 }
 
+.friend {
+    display: flex;
+}
+
+/* ボタン */
 .button {
     background: #eee;
     border-radius: 3px;
@@ -24,8 +29,4 @@
 .button:hover {
     background: #333;
     color: #FFF;
-}
-
-.friend {
-    display: flex;
 }
