@@ -2,48 +2,72 @@ function xor(a, b) {
     return (a || b) && !(a && b);
 }
 
+function openModal(button, modal){
+	$(button).click(function () {
+		$(modal).css("display", "block");	
+	});
+}
+
+function closeModal(button, modal){
+	$(button).click(function () {
+		$(modal).css("display", "none");	
+	});
+}
+
 ;
 (function() {
-	$("#goal_create_button").click(function() {
-		$("#goal_create").css("display", "block");
-		$("#calendar").css("display", "none");
+	openModal("#goal_create_button", "#goal_create");
+	closeModal("#close_goal_create", "#goal_create");
+	openModal("#plan_create_button", "#plan_create");
+	closeModal("#close_plan_create", "#plan_create");
 
-	});
+	let display_size = 0;
+	if (window.matchMedia('(max-width: 768px)').matches) {			
+		//スマホ処理
+		display_size = 1;
+	} else if (window.matchMedia('(max-width: 1200px)').matches) {
+		display_size = 2;
+	} else {
+		//PC処理
+		display_size = 3;
+	}
 
-	$("#close_goal_create").click(function() {
-		$("#goal_create").css("display", "none");
-		$("#calendar").css("display", "block");
-	});
+	const my_goal_size = $('.my_goal_plan').length;
 
-	$("#plan_create_button").click(function() {
-		$("#plan_create").css("display", "block");
-		$("#calendar").css("display", "none");
-	});
+	$('.my_goal_plan').eq(0).addClass('goal_active');
 
-	$("#close_plan_create").click(function() {
-		$("#plan_create").css("display", "none");
-		$("#calendar").css("display", "block");
-	});
+	let my_plan_size = $('.goal_active .my_plan').length;
 
+	for (let i = 0; i < my_plan_size && i < display_size; i++) {
+		$('.goal_active .my_plan').eq(i).addClass('active');
+	}
 
+	if (my_plan_size == 0) {
+		$('.goal_active .next_plan_button').css('display', 'none');
+		$('.goal_active .prev_plan_button').css('display', 'none');
+	}
+	
+	if (my_plan_size < display_size) {
+		$('.goal_active .next_plan_button').css('display', 'none');
+	}
 
-		let display_size = 0;
-		if (window.matchMedia('(max-width: 768px)').matches) {
-			//スマホ処理
-			display_size = 1;
-		} else if (window.matchMedia('(max-width: 1200px)').matches) {
+	if (my_goal_size <= 1) {
+		$('.next_goal_button').css('display', 'none');
+		$('.prev_goal_button').css('display', 'none');
+	}
 
-			display_size = 2;
-		} else {
-			//PC処理
-			display_size = 3;
+	$('.next_goal_button').click(function() {
+		$('.goal_active').next().addClass('goal_active');
+		$('.goal_active').eq(0).removeClass('goal_active');
+
+		if ($('.my_goal_plan').eq(my_goal_size - 1).hasClass('goal_active')) {
+			$('.next_goal_button').css('display', 'none');
+		}
+		if (!$('.my_goal_plan').eq(0).hasClass('goal_active')) {
+			$('.prev_goal_button').css('display', 'flex');
 		}
 
-		const my_goal_size = $('.my_goal_plan').length;
-
-		$('.my_goal_plan').eq(0).addClass('goal_active');
-
-		let my_plan_size = $('.goal_active .my_plan').length;
+		my_plan_size = $('.goal_active .my_plan').length;
 
 		for (let i = 0; i < my_plan_size && i < display_size; i++) {
 			$('.goal_active .my_plan').eq(i).addClass('active');
@@ -57,38 +81,7 @@ function xor(a, b) {
 		if (my_plan_size < display_size) {
 			$('.goal_active .next_plan_button').css('display', 'none');
 		}
-
-		if (my_goal_size <= 1) {
-			$('.next_goal_button').css('display', 'none');
-			$('.prev_goal_button').css('display', 'none');
-		}
-
-		$('.next_goal_button').click(function() {
-			$('.goal_active').next().addClass('goal_active');
-			$('.goal_active').eq(0).removeClass('goal_active');
-
-			if ($('.my_goal_plan').eq(my_goal_size - 1).hasClass('goal_active')) {
-				$('.next_goal_button').css('display', 'none');
-			}
-			if (!$('.my_goal_plan').eq(0).hasClass('goal_active')) {
-				$('.prev_goal_button').css('display', 'inline-block');
-			}
-
-			my_plan_size = $('.goal_active .my_plan').length;
-
-			for (let i = 0; i < my_plan_size && i < display_size; i++) {
-				$('.goal_active .my_plan').eq(i).addClass('active');
-			}
-
-			if (my_plan_size == 0) {
-				$('.goal_active .next_plan_button').css('display', 'none');
-				$('.goal_active .prev_plan_button').css('display', 'none');
-			}
-
-			if (my_plan_size < display_size) {
-				$('.goal_active .next_plan_button').css('display', 'none');
-			}
-		});
+	});
 
 		$('.prev_goal_button').click(function() {
 			$('.goal_active').eq(0).prev().addClass('goal_active');
@@ -98,7 +91,7 @@ function xor(a, b) {
 				$('.prev_goal_button').css('display', 'none');
 			}
 			if (!$('.my_goal_plan').eq(my_goal_size - 1).hasClass('goal_active')) {
-				$('.next_goal_button').css('display', 'inline-block');
+				$('.next_goal_button').css('display', 'flex');
 			}
 			my_plan_size = $('.goal_active .my_plan').length;
 			for (let i = 0; i < my_plan_size && i < display_size; i++) {
@@ -124,7 +117,7 @@ function xor(a, b) {
 				$('.goal_active .next_plan_button').css('display', 'none');
 			}
 			if (!$('.goal_active .my_plan').eq(0).hasClass('active')) {
-				$('.goal_active .prev_plan_button').css('display', 'inline-block');
+				$('.goal_active .prev_plan_button').css('display', 'flex');
 			}
 		});
 
@@ -136,7 +129,7 @@ function xor(a, b) {
 				$('.goal_active .prev_plan_button').css('display', 'none');
 			}
 			if (!$('.goal_active .my_plan').eq(my_plan_size - 1).hasClass('active')) {
-				$('.goal_active .next_plan_button').css('display', 'inline-block');
+				$('.goal_active .next_plan_button').css('display', 'flex');
 			}
 		});
 		

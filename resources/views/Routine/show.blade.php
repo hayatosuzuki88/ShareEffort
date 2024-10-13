@@ -10,8 +10,8 @@
     <body>
         <x-app-layout>
             <!-- ROUTINE詳細画面 -->
-            <div class="routines body">
-                <div class="routine">
+            <div id="wrap" class="routines wrap">
+                <article class="routine">
                         
                 @if ($routine->user->id == Auth::id())
                 <!-- 投稿者がユーザ -->
@@ -32,7 +32,7 @@
                         
                         <!-- ユーザ -->
                         <div class="user">
-                            <img class="user_image" src="{{ $routine->user->image_path }}" />
+                            <img class="user_image" src="{{ $routine->user->image_path }}" alt="ユーザ画像"/>
                             <p>{{ $routine->user->continue }}</p>
                             <p>{{ $routine->user->name }}</p>
                         </div>
@@ -41,7 +41,7 @@
                     <p class="minutes">頑張った時間：{{ $routine->minutes }}分間</p>
                         
                     @if($routine->image_path != null)
-                        <img class="img" src="{{ $routine->image_path }}" alt="画像が読み込みません。" />
+                        <img class="img" src="{{ $routine->image_path }}" alt="ROUTINE画像" />
                     @endif
                         
                     <p class="body">{{ $routine->body }}</p>
@@ -50,11 +50,11 @@
                     <div class="like">
                     @if ($routine->is_liked_by_auth_user())
                         <a href="{{ route('routine.unlike', ['routine_id' => $routine->id]) }}" >
-                            <img class="like_icon" src="/images/like_icon.png" /><span>{{ $routine->like_routines->count() }}</span>
+                            <img class="like_icon" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"/><span>{{ $routine->like_routines->count() }}</span>
                         </a>
                     @else
-                        <a href="{{ route('routine.like', ['routine_id' => $routine->id]) }}" >
-                            <img class="like_icon" src="/images/like_icon.png" /><span>{{ $routine->like_routines->count() }}</span>
+                        <a href="{{ route('routine.like', ['routine_id' => $routine->id]) }}" alt="いいね未">
+                            <img class="like_icon" src="{{ asset('/images/good.webp') }}" /><span>{{ $routine->like_routines->count() }}</span>
                         </a>
                     @endif
                     </div>
@@ -95,8 +95,11 @@
                         </div>
                     @endforeach
                     
-                </div>
+                </article>
             </div>
+            <footer>
+                <small>by Hayato Suzuki</small>
+            </footer>
         </x-app-layout>
         <script defer>
             function deleteRoutine(id){

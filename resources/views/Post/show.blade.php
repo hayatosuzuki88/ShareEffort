@@ -10,8 +10,8 @@
     <body>
         <x-app-layout>
             <!-- 投稿詳細画面 -->
-            <div class="routines body">
-                <div class="post">
+            <div id="wrap" class="routines wrap">
+                <article class="post">
                     <!-- 削除機能 -->
                     <form action="{{ route('post.delete', ['post_id' => $post->id ]) }}" id="form_{{ $post->id }}" method="post">
                         @csrf
@@ -30,7 +30,7 @@
                         <a class="user" href="{{ route('user.show', ['user_id' => $post->user->id ]) }}">
                         @endif
                             <div class="user_image">
-                                <img class="user_image" src="{{ $post->user->image_path }}" />
+                                <img class="user_image" src="{{ $post->user->image_path }}" alt="ユーザ画像"/>
                             </div>
                             <p class="user_name" >　{{ $post->user->name }}</p>
                         </a>
@@ -49,7 +49,7 @@
                     <a class="image_post" href="{{ route('post.show', ['post_id' => $post->id ]) }}">
                         
                     @if($post->image_path != null)
-                        <img class="post_image" src="{{ $post->image_path }}" alt="画像が読み込みません。" />
+                        <img class="post_image" src="{{ $post->image_path }}" alt="投稿画像" />
                         <!-- ゴール -->
                         <div class="post_goal">
                             <h2 class="goal_name"> {{ $post->task->plan->goal->goal }} </h2>
@@ -65,11 +65,11 @@
                         <!-- いいね機能 -->
                         @if ($post->is_liked_by_auth_user())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
-                                <img class="good" src="/images/gooded.webp"><span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @else
                             <a href="{{ route('post.like', ['post_id' => $post->id]) }}" >
-                                <img class="good" src="/images/good.webp"><span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="{{ asset('/images/good.webp') }}" alt="いいね未"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @endif
                             
@@ -97,7 +97,7 @@
                                         <a class="user" href="{{ route('user.show', ['user_id' => $comment->user->id ]) }}">
                                     @endif
                                             <div class="user_image">
-                                                <img class="user_image" src="{{ $comment->user->image_path }}" />
+                                                <img class="user_image" src="{{ $comment->user->image_path }}" alt="ユーザ画像"/>
                                             </div>
                                             <p class="comment_user_name" >　{{ $comment->user->name }}</p>
                                         </a>
@@ -118,14 +118,17 @@
                                 @endforeach
                             </div>
                             
-                            <p class="created_at" >{{ $post->created_at }}に投稿</p>
+                            <small class="created_at" >{{ $post->created_at }}に投稿</small>
                             
                         </div>
                     </a>
-                </div>
+                </article>
                 </br>
             </div>
             
+            <footer>
+                <small>by Hayato Suzuki</small>
+            </footer>
         </x-app-layout>
         <script defer>
             function deletePost(id){
