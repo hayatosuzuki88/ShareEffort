@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 /* 全体 */
-.body {
-    padding: 30px;
+#wrap {
+    margin: 40px 10px;
 }
     /* フォント */
 h1 {
@@ -16,13 +16,8 @@ h2 {
     font-size: 20px;
 }
 
-/* 各画面 */
-.home {
-    background-color: #eaf4ff;
-}
-.routines {
-    background-color: #eafff4;
-}
+
+
 
 /* ロゴイメージ */
 .logo_image {
@@ -56,11 +51,6 @@ h2 {
     align-items: center;
 }
 
-/* ホーム画面 */
-.my_goals, .routing_friends, .today_tasks {
-    display: flex;
-    flex-direction: row;
-}
     /* ゴール */
 .my_goal {
     border-radius: 50%;
@@ -70,7 +60,7 @@ h2 {
     border-width: 4px;
     border-color: #84ffc1;
     background-color: white;
-    height: 200px;
+    height: 170px;
 }
     /* プラン */
 .my_plan {
@@ -82,38 +72,7 @@ h2 {
     border-color: #eaeaff;
     background-color: white;
 }
-    /* タスク */
-.today_task {
-    background-color: #e5ffe5;
-    border-color: white;
-    border-width: 4px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 20%;
-}
-    /* ルーティンを投稿した友達 */
-.routing_friends {
-    max-width: 1000px;
-    padding: 5px;
-    background-color: white;
-    height: 150px;
-    border-width: 6px;
-    border-color: #ccffff;
-}
-.routing_user_image {
-    height:100px;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-}
-.routing_user_name {
-    display: flex;
-    justify-content: center;
-}
-    /* 今日のタスク */
-.today_task {
-    margin: 10px;
-}
+
 
 /* 投稿表示 */
 .post {
@@ -122,6 +81,7 @@ h2 {
     padding: 20px;
     border-width: 6px;
     border-color: #ccffff;
+    margin-bottom: 20px;
 }
     /* ヘッダー */
 .post_header {
@@ -131,7 +91,7 @@ h2 {
     height: 50px;
     border-width: 2px;
     border-color: #f2f2f2;
-    padding: 10px;
+    padding: 20px;
 }
 .post_header .user_name {
     font-size: 10px;
@@ -215,13 +175,13 @@ h2 {
 
 /* ボタン */
 .button11 {
-  padding: 10px 30px;
+  padding: 10px 10px;
   text-decoration: none;
   font-size: 20px;
   outline: 1px solid;
-  outline-color: white;
   outline-offset: 0px;
   transition: .3s;
+  border-radius: 50%;
 }
 .button11:hover {
   color: #fff;
@@ -262,21 +222,7 @@ h2 {
     display: none;
 }
 
-
-@media (max-width: 768px) {
-    .routing_friends {
-        height: 80px;
-    }
-    
-    .routing_user_image {
-        height:50px;
-        width: 50px;
-    }
-    
-    .routing_user_name {
-        font-size: 10px;
-    }
-    
+@media (max-width: 700px) {
     .post_header {
         height: 100px;
     }
@@ -289,35 +235,66 @@ h2 {
         display: block;
     }
     
+}
+
+@media (max-width: 500px) {
+    
+    #wrap {
+        margin: 40px 0;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 15px;
+    }
+
     .post_goal {
         height: 100px;    
+    }
+    
+    .my_goal {
+        height: 140px;
     }
     
     .my_goal h2, .post_goal h2, .today_task h2 {
         font-size: 15px;
     }
     
-    .my_goal p, .post_goal p, .today_task p {
-        font-size: 10px;
+    ul, p {
+        font-size: 12px;
     }
     
     .button11 { 
         padding:10px 15px;   
     }
     
+    .post {
+        padding: 20px 0;
+    }    
 
 }
 
-@media (max-width: 480px) {
-    .my_goal h2, .my_plan h2, .today_task h2 {
-        font-size: 15px;
-    }
+
+footer {
+    text-align: center;
+    color: #ffffff;
+    padding: 20px 0;
+    background-color: #767671;
     
-    .my_goal p, .my_plan p, .today_task p {
-        font-size: 10px;
-    }
-    
-    .manage .my_goal {
-        height: 300px;
-    }
+}
+
+
+.clearfix:after {
+    content:"";
+    display: block;
+    clear: both;
+}
+
+
+.button-space {
+    width: 30px;
+    height: 30px;
 }

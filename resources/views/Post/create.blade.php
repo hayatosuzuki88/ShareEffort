@@ -5,15 +5,15 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-        <link rel="preload" href="/css/post_create.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+        <link rel="preload" href="{{ asset('/css/post_create.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 
     </head>
     <body>
         <x-app-layout>
             <!-- 投稿作成画面 -->
-            <div class="posts body">
-                <h2>投稿作成</h2>
-                <div class="posts">
+            <div  id="wrap" class="posts wrap">
+                <h1>投稿作成</h1>
+                <section class="posts">
                     <!-- 入力フォーム -->
                     <form id="form" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -49,39 +49,42 @@
                         </ul>
                         <input class="button" type="submit" value="保存" />
                     </form>
-                </div>
-            </div>
-            <!-- 投稿のプレビュー -->
-            <div class="post">
-                <div class="post_header">
-                    <!-- ユーザ -->
-                    <div class="user">
-                        <div class="user_image">
-                            <img class="user_image" src="{{ Auth::User()->image_path }}" />
+                </section>
+                
+                <!-- 投稿のプレビュー -->
+                <section class="post">
+                    <div class="post_header">
+                        <!-- ユーザ -->
+                        <div class="user">
+                            <div class="user_image">
+                                <img class="user_image" src="{{ Auth::User()->image_path }}" alt="ユーザ画像"/>
+                            </div>
+                            <p>　{{ Auth::User()->name }}</p>
                         </div>
-                        <p>　{{ Auth::User()->name }}</p>
+                    
+                        <!-- 達成したタスク -->
+                        <p>タスク：</p>
+                        <h2 class="post_title"></h2>
+                    
+                    </div>
+                                    
+                    <img class="post_image" src="" alt="投稿画像" />
+                
+                    <!-- 投稿時間 -->
+                    <div class="post_footer">
+                        <p></p>
+                        <small>{{ \Carbon\Carbon::now() }}に投稿</small>
                     </div>
                     
-                    <!-- 達成したタスク -->
-                    <p>タスク：</p>
-                    <h2 class="post_title"></h2>
-                    
-                </div>
-                                    
-                <img class="post_image" src="" alt="画像が読み込みません。" />
-                
-                <!-- 投稿時間 -->
-                <div class="post_footer">
-                    <p></p>
-                    <p>{{ \Carbon\Carbon::now() }}に投稿</p>
-                </div>
-                
+                </section>
             </div>
-            </br>
+            <footer>
+                <small>by Hayato Suzuki</small>
+            </footer>
         
         </x-app-layout>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script defer src="/js/post_show.js"></script>
-        <script defer src="/js/post_create.js"></script>
+        <script defer src="{{ asset('/js/post_show.js') }}"></script>
+        <script defer src="{{ asset('/js/post_create.js') }}"></script>
     </body>
 </html>

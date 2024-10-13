@@ -18,7 +18,6 @@
 
 #plan_create_button {
     font-size: 30px;
-    margin-left: 200px;
     color: #9932cc;
     border: double 6px #9932cc;
 }
@@ -27,9 +26,6 @@
 }
 
 /* ゴールとプランのページ送り */
-.my_goal_plan {
-    flex-direction: row;
-}
 .my_plan, .my_goal_plan {
     display: none;
 }
@@ -39,19 +35,27 @@
 .active{
     display: block;
 }
-.prev_plan_button, .prev_goal_button {
-    display: none;
-}
 .prev_goal_button, .next_goal_button {
-    width: 250px;
-    background-color: #84ffc1;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
     justify-content: center;
+    background-color: white;
+    color: black;
+    outline-color: #84ffc1;
 }
 .prev_plan_button, .next_plan_button {
-    height: 200px;
+    height: 30px;
     width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     align-items: center;
     background-color: #eaeaff;
+    color: black;
+    outline-color: white;
 }
 
 /* ボタン */
@@ -77,22 +81,18 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 700px) {
     
     #goal_create_button, #plan_create_button {
         padding: 10px, 20px;
         font-size: 15px;
     }
     #plan_create_button {
-        margin-left: 50px;
+        margin-top: 20px;
     }
     
-    .my_goal {
-        width: 50px;
-        writing-mode: vertical-rl; /* 縦書き、右から左へ */
-        text-orientation: upright;  /* 文字の向きを立てる */
-        display: flex;
-        justify-content: center;
+    .goal_active{
+        display: block;
     }
     
     .prev_goal_button, .next_goal_button {
@@ -102,5 +102,41 @@
         font-size: 1px;
     }
     
+    .plan_content {
+        margin: 30px;
+    }
     
+    .goal_active .plans {
+        display: flex;
+        justify-content: center;
+    }
+    
+    
+}
+
+.create_buttons {
+    margin: 20px 0;
+}
+
+.task_calendar {
+    margin-top: 20px;
+}
+#app {
+    margin-top: 20px;
+}
+.plans {
+    display: flex;
+    align-items: center;
+}
+.goal-button-space {
+    height: 30px;
+    margin: 0 auto;
+}
+
+.prev_plan_button, .prev_goal_button {
+    display: none;
+}
+
+.plans {
+    margin-top: 20px;
 }

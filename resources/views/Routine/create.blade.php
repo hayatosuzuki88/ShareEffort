@@ -5,13 +5,13 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-        <link rel="preload" href="/css/routine_create.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+        <link rel="preload" href="{{ asset('/css/routine_create.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 
     </head>
     <body>
         <x-app-layout>
             <!-- ROUTINE作成画面 -->
-            <div class="routines body">
+            <div id="wrap" class="routines wrap">
                 <!-- 入力フォーム -->
                 <form id="routine_form" action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -39,15 +39,15 @@
                 <br/>
                 
                 <!-- プレビュー画面 -->
-                <div class="routine">
+                <section class="routine">
                     <div class="routine-container">
-                        <img class="img" id="preview"/>
+                        <img class="img" id="preview" alt="ROUTINE画像"/>
                         <div class="routine-header">
                             
                             <!-- ユーザ -->
                             <div class="user">
                                 <div class="user_image">
-                                    <img class="user_image" src="{{ Auth::User()->image_path }}" />
+                                    <img class="user_image" src="{{ Auth::User()->image_path }}" alt="ユーザ画像"/>
                                 </div>
                                 <strong class="user_name">　{{ Auth::User()->name }}</strong>
                             </div>
@@ -61,18 +61,21 @@
                     </div>
                     <br/>
                     <div class="routine-footer">
-                        <img class="good" src="/images/gooded.webp"><span>100</span>
+                        <img class="good" src={{ asset('/images/gooded.webp') }} alt="いいね済"><span>100</span>
                         <input type="text" name="comment[comment]" placeholder="頑張れー！！"><br>
                         <input class="button" type="submit" value="コメントを送信" />
                         <p class="created_at" >{{ \Carbon\Carbon::now() }}に投稿</p>
                     </div> 
                     
-                </div>
+                </section>
             
             </div>
+            <footer>
+                <small>by Hayato Suzuki</small>
+            </footer>
         </x-app-layout>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script defer src="\js\routine_show.js"></script>
-        <script defer src="\js\routine_create.js"></script>
+        <script defer src="{{ asset('\js\routine_show.js') }}"></script>
+        <script defer src="{{ asset('\js\routine_create.js') }}"></script>
     </body>
 </html>

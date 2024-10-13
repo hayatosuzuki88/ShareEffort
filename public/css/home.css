@@ -5,22 +5,27 @@
 .goal_active, .task_active, .routing_active {
     display: block;
 }
-.prev_goal_button, .prev_task_button, .prev_routing_button {
-    display: none;
-}
+
 .prev_goal_button, .next_goal_button {
-    height: 200px;
+    height: 30px;
     width: 30px;
+    display: flex;
     align-items: center;
-    background-color: #f9f9f9;
-    color: #84ffc1;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    outline-color: #84ffc1;
 }
 .prev_task_button, .next_task_button {
-    height: 100px;
+    height: 30px;
     width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     align-items: center;
     background-color: #e5ffe5;
     color: black;
+    outline-color: white;
 }
 .prev_routing_button, .next_routing_button {
     height: 200px;
@@ -28,7 +33,9 @@
     align-items: center;
     background-color: #ededed;
 }
-
+.prev_goal_button, .prev_task_button, .prev_routing_button {
+    display: none;
+}
 /* ボタン */
 
 .button {
@@ -53,12 +60,117 @@
     color: #FFF;
 }
 
-@media (max-width: 768px) {
-    .prev_goal_button, .prev_routing_button, .prev_task_button {
-        width: 20px;
+.main {
+    width: 700px;
+    margin: 0 10px;
+    float: left;
+    padding: 20px;
+    background-color: #eaf4ff;
+}
+
+
+
+
+.sidebar {
+    width: 500px;
+    margin: 0 10px 0 30px;
+    float: right;
+    background-color: #eafff4;
+    padding: 20px;
+}
+
+
+
+.my_goals, .routing_friends, .today_tasks {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+    /* ルーティンを投稿した友達 */
+.home-routine {
+    margin-bottom: 20px;
+}
+.routing_friends {
+    max-width: 1000px;
+    padding: 5px;
+    background-color: white;
+    height: 120px;
+    border-width: 6px;
+    border-color: #ccffff;
+}
+.routing_user_image {
+    height:80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+}
+.routing_user_name {
+    display: flex;
+    justify-content: center;
+}
+
+.goal_content, .task-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    /* 今日のタスク */
+.today_task {
+    margin: 10px;
+}
+    /* タスク */
+.today_task {
+    background-color: #e5ffe5;
+    border-color: white;
+    border-width: 4px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25%;
+}
+
+@media screen and (max-width: 1300px) {
+    .main {
+        float: none;
+        margin: 20px;
+        width: 90%;
     }
     
-    .next_goal_button, .next_routing_button, .next_task_button {
-        width: 20px;
+    .sidebar {
+        float: none;
+        width: 90%;
+        margin: 20px;
+    }
+    .content {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        padding: 20px 0;
+        margin: 0px;
+        width: 100%;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin: 0px;
+        padding: 20px 0;
+    }
+    
+    .routing_friends {
+        height: 80px;
+    }
+    
+    .routing_user_image {
+        height:50px;
+        width: 50px;
+    }
+    
+    .routing_user_name {
+        font-size: 10px;
     }
 }

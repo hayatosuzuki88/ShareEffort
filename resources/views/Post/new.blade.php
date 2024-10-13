@@ -10,11 +10,10 @@
     <body>
         <x-app-layout>
             <!-- 全ての投稿一覧 -->
-            <div class="home body">
-            
+            <div id="wrap" class="clearfix">
             @foreach ($all_posts as $post)
                 <!-- Postごとに表示 -->
-                <div class="post">
+                <article class="post">
                     <div class="post_header">
                         <!-- ユーザ -->
                         @if ($post->user->id == Auth::id())
@@ -23,7 +22,7 @@
                         <a class="user" href="{{ route('user.show', ['user_id' => $post->user->id ]) }}">
                         @endif
                             <div class="user_image">
-                                <img class="user_image" src="{{ $post->user->image_path }}" />
+                                <img class="user_image" src="{{ $post->user->image_path }}" alt="ユーザ画像"/>
                             </div>
                             <p class="user_name" >　{{ $post->user->name }}</p>
                         </a>
@@ -41,7 +40,7 @@
                                     
                     <a class="image_post" href="{{ route('post.show', ['post_id' => $post->id ]) }}">
                         
-                        <img class="post_image" src="{{ $post->image_path }}" alt="画像が読み込みません。" />
+                        <img class="post_image" src="{{ $post->image_path }}" alt="投稿画像" />
                         <!-- ゴール -->
                         <div class="post_goal">
                             <h2 class="goal_name"> {{ $post->task->plan->goal->goal }} </h2>
@@ -55,11 +54,11 @@
                             
                         @if ($post->is_liked_by_auth_user())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
-                                <img class="good" src="/images/gooded.webp"><span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @else
                             <a href="{{ route('post.like', ['post_id' => $post->id]) }}" >
-                                <img class="good" src="/images/good.webp"><span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="{{ asset('/images/good.webp') }}" alt="いいね未"><span>{{ $post->like_posts->count() }}</span>
                             </a>
                         @endif
                             
@@ -86,7 +85,7 @@
                                         <a class="user" href="{{ route('user.show', ['user_id' => $comment->user->id ]) }}">
                                     @endif
                                             <div class="user_image">
-                                                <img class="user_image" src="{{ $comment->user->image_path }}" />
+                                                <img class="user_image" src="{{ $comment->user->image_path }}" alt="ユーザ画像"/>
                                             </div>
                                             <p class="comment_user_name" >　{{ $comment->user->name }}</p>
                                         </a>
@@ -107,18 +106,29 @@
                                 @endforeach
                             </div>
                             
-                            <p class="created_at" >{{ $post->created_at }}に投稿</p>
+                            <small class="created_at" >{{ $post->created_at }}に投稿</small>
                         
                         </div>
                     </a>
-                </div>
-                <br/>
+                </article>
                         
             @endforeach
-                    
+                    </div>
+                </div>    
             </div>
+            <footer>
+                <small>by Hayato Suzuki</small>
+            </footer>
         </x-app-layout>
+        <style>
+            .post {
+                margin: 0 auto;
+            }
+            #wrap {
+                background: #eaf4ff;
+            }
+        </style>
         <script defer src="https://...jquery.min.js"></script>
-        <script defer src="js/home.js"></script>
+        <script defer src="{{ asset('js/home.js') }}"></script>
     </body>
 </html>

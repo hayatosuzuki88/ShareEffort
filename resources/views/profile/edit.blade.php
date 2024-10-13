@@ -32,4 +32,7 @@
             </div>
         </div>
     </div>
+            <footer>
+                <small>by Hayato Suzuki</small>
+            </footer>
 </x-app-layout>
