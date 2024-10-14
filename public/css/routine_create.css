@@ -1,9 +1,18 @@
-
+/* 全体設定 */
+li {
+   margin-top: 20px; 
+}
 .routine-container {
     position: relative;
     width: auto;
     height: auto;
 }
+/* ルーティン保存ボタン */
+#routine_submit {
+    margin: 20px 0;
+    background-color: #7fbfff;
+}
+
 /* プレビュー画面 */
 #preview {
     display: block;
@@ -22,6 +31,7 @@
     background-color: rgba(211, 211, 211, 0.5);
     color: black;
 }
+    /* ユーザ画像 */
 .routine .user_image {
     height: 100%;
     width: 100%;
@@ -33,9 +43,11 @@
 .user {
     width: 30%;
 }
+    /* タイトル */
 .title {
     z-index: 2;
 }
+    /* 詳細 */
 .details {
     position: absolute;
     z-index: 2;

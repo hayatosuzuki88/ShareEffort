@@ -5,12 +5,12 @@
         <title>ShareEffort</title>
         <!-- Fonts -->
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:200,600" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-        <link rel="stylesheet" href="{{ asset('/css/home.css') }}" />
     </head>
     <body>
         <x-app-layout>
             <!-- 全ての投稿一覧 -->
-            <div id="wrap" class="clearfix">
+            <div id="wrap" class="sns clearfix">
+            <h1>新しい投稿</h1>
             @foreach ($all_posts as $post)
                 <!-- Postごとに表示 -->
                 <article class="post">
@@ -50,7 +50,6 @@
                 
                         <div class="post_footer">
                             <p>{{ $post->body }}</p>
-                            <br/>
                             
                         @if ($post->is_liked_by_auth_user())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
@@ -122,13 +121,8 @@
         </x-app-layout>
         <style>
             .post {
-                margin: 0 auto;
-            }
-            #wrap {
-                background: #eaf4ff;
+                margin: 10px auto ;
             }
         </style>
-        <script defer src="https://...jquery.min.js"></script>
-        <script defer src="{{ asset('js/home.js') }}"></script>
     </body>
 </html>

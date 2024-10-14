@@ -10,7 +10,7 @@
     <body>
         <x-app-layout>
             <!-- ROUTINE詳細画面 -->
-            <div id="wrap" class="routines wrap">
+            <div id="wrap" class="sns routines">
                 <article class="routine">
                         
                 @if ($routine->user->id == Auth::id())

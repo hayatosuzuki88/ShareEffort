@@ -10,7 +10,7 @@
     <body>
         <x-app-layout>
             <!-- 投稿詳細画面 -->
-            <div id="wrap" class="routines wrap">
+            <div id="wrap" class="sns routines">
                 <article class="post">
                     <!-- 削除機能 -->
                     <form action="{{ route('post.delete', ['post_id' => $post->id ]) }}" id="form_{{ $post->id }}" method="post">
@@ -123,7 +123,6 @@
                         </div>
                     </a>
                 </article>
-                </br>
             </div>
             
             <footer>

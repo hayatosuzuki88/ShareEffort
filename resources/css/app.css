@@ -5,6 +5,31 @@
 /* 全体 */
 #wrap {
     margin: 40px 10px;
+    padding: 10px;
+}
+.task_management {
+    background-color: #eafff4;
+}
+.sns {
+    background-color: #eaf4ff;;
+}
+    /* フッター */
+footer {
+    text-align: center;
+    color: #ffffff;
+    padding: 20px 0;
+    background-color: #767671;
+    
+}
+    /* 回り込み防止対策 */
+.clearfix:after {
+    content:"";
+    display: block;
+    clear: both;
+}
+.button-space {
+    width: 30px;
+    height: 30px;
 }
     /* フォント */
 h1 {
@@ -15,8 +40,14 @@ h2 {
     font-weight: bold;
     font-size: 20px;
 }
-
-
+    /* その他 */
+.center {
+    margin: 0 auto;
+}
+.error {
+    color: red;
+    display: none;
+}
 
 
 /* ロゴイメージ */
@@ -51,7 +82,7 @@ h2 {
     align-items: center;
 }
 
-    /* ゴール */
+/* ゴール */
 .my_goal {
     border-radius: 50%;
     margin: 10px;
@@ -62,17 +93,6 @@ h2 {
     background-color: white;
     height: 170px;
 }
-    /* プラン */
-.my_plan {
-    border-radius: 10%;
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    border-width: 4px;
-    border-color: #eaeaff;
-    background-color: white;
-}
-
 
 /* 投稿表示 */
 .post {
@@ -213,24 +233,16 @@ h2 {
     background: #333;
     color: #FFF;
 }
-.center {
-    margin: 0 auto;
-}
 
-.error {
-    color: red;
-    display: none;
-}
-
+/* レスポンシブデザイン */
 @media (max-width: 700px) {
+    /* 投稿のヘッダー */
     .post_header {
         height: 100px;
     }
-    
     .post_title {
         display: none;
     }
-    
     .post_header2 {
         display: block;
     }
@@ -238,63 +250,35 @@ h2 {
 }
 
 @media (max-width: 500px) {
-    
+    /* 画面領域拡大 */
     #wrap {
         margin: 40px 0;
     }
     
+    /* フォントサイズ変更 */
     h1 {
         font-size: 20px;
     }
-    
     h2 {
         font-size: 15px;
     }
-
-    .post_goal {
-        height: 100px;    
-    }
-    
-    .my_goal {
-        height: 140px;
-    }
-    
-    .my_goal h2, .post_goal h2, .today_task h2 {
-        font-size: 15px;
-    }
-    
     ul, p {
         font-size: 12px;
     }
     
+    /* その他 */
+    .post {
+        padding: 20px 0;
+    } 
+    .post_goal {
+        height: 100px;    
+    }
+    .my_goal {
+        height: 140px;
+    }
     .button11 { 
         padding:10px 15px;   
     }
-    
-    .post {
-        padding: 20px 0;
-    }    
-
+   
 }
 
-
-footer {
-    text-align: center;
-    color: #ffffff;
-    padding: 20px 0;
-    background-color: #767671;
-    
-}
-
-
-.clearfix:after {
-    content:"";
-    display: block;
-    clear: both;
-}
-
-
-.button-space {
-    width: 30px;
-    height: 30px;
-}
