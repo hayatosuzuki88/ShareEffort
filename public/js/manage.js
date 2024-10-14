@@ -1,13 +1,14 @@
+// 排他的論理和の判定関数
 function xor(a, b) {
     return (a || b) && !(a && b);
 }
 
+// クリックでモーダルを操作するよう設定する関数
 function openModal(button, modal){
 	$(button).click(function () {
 		$(modal).css("display", "block");	
 	});
 }
-
 function closeModal(button, modal){
 	$(button).click(function () {
 		$(modal).css("display", "none");	

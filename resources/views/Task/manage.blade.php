@@ -11,13 +11,13 @@
     <body>
         <x-app-layout>
             <!-- タスク管理画面 -->
-            <div id="wrap" class="manage clearfix">
+            <div id="wrap" class="task_management clearfix">
                 
                 <!-- 目標設定 -->
                 <div id="goal_create">
+                    <a id="close_goal_create" class="button center">×</a>
                     <h2>目標設定</h2>
                     <div class="goal_create">
-                        <a id="close_goal_create" class="button center">×</a>
                         <form id="goal_form" action="{{ route('goal.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <ul>
@@ -31,7 +31,7 @@
                             
                                 <input type="hidden" name="goal[user_id]" value="{{ Auth::id() }}"/>
                             </ul>
-                            <input class="button center" type="submit" value="保存" />
+                            <input id="goal_submit" class="button center" type="submit" value="保存" />
                         </form>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                                 <p id="plan-goal-error" class="error">ゴールが入力されていません。</p>
                                 
                             </ul>
-                            <input class="button center" type="submit" value="保存" />
+                            <input id="plan_submit" class="button center" type="submit" value="保存" />
                         </form>
                     </div>
                 </div>
@@ -103,8 +103,6 @@
                 <!-- 現在のゴールとプラン -->
                 <section class="goals">
                     <h1>現在のゴールとプラン</h1>
-                    <div class="create_buttons">
-                    </div>
                     <div>
                         
                     @if (count($my_goals)==0)
@@ -112,72 +110,72 @@
                     @else
                         @foreach ($my_goals as $goal)
                         <div class="my_goal_plan">
-                        <div class="goal_content">
-                        <a class="button04" id="goal_create_button">Goal</a>
-                            <div class="goal-button-space">
-                                <a class="button11 prev_goal_button">↑</a>
-                            </div>
+                            <div class="goal_content">
+                                <a class="button04" id="goal_create_button">Goal</a>
+                                <div class="goal-button-space">
+                                    <a class="button11 prev_goal_button">↑</a>
+                                </div>
                             
-                            <div class="my_goal">
-                                <form action="{{ route('goal.delete', ['goal_id' => $goal->id ]) }}" id="form_{{ $goal->id }}" method="post">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="button" onclick="deleteGoal({{ $goal->id }})">×</button>
-                                </form>
-                                <h2 class="goal_name"> {{ $goal->goal }} </h2>
-                                <p> {{ \Carbon\Carbon::parse($goal->date)->format('Y年m月d日') }} </p>
-                                <p>あと<strong>{{ \Carbon\Carbon::parse($goal->date)->diffInDays(\Carbon\Carbon::today()) }}日</strong></p>
-                            @if ($goal->achived == 0)
-                                <p>未達成</p>
-                            @else
-                                <p>達成</p>                                
-                            @endif
-                            </div>
-                            <div class="goal-button-space">
-                                <a class="button11 next_goal_button">↓</a>
-                            </div>
-                            
-                        </div>
-                        <div class="plan_content">
-                            
-                        <a class="button04" id="plan_create_button">Plan</a>
-                        <div class="plans">
-                            <!-- ゴールごとにプランを表示 -->
-                            <div class="button-space">
-                                <a class="button11 prev_plan_button"><</a>
-                            </div>
-                            @foreach ($my_plans as $plan)
-                            <!-- プランの表示 -->
-                                @if ($plan->goal_id == $goal->id)
-                            <div class="my_plan">
-                                <form action="{{ route('plan.delete', ['plan_id' => $plan->id ]) }}" id="form_{{ $plan->id }}" method="post">
-                                    @csrf
-                                    @method("DELETE")
-                                    <button type="button" onclick="deletePlan({{ $plan->id }})">×</button>
-                                </form>
-                                <h2>{{ $plan->name }}</h2>
-                                <p>{{ $plan->start }}〜{{ $plan->end }}</p>
-                                    @if ($plan->duration != NULL)
-                                <p>1回{{ $plan->duration }}分</p>
-                                    @endif
-                                    @if ($plan->rangeS != NULL and $plan->rangeUnit != NULL)
-                                <p>範囲：{{ $plan->rangeS . $plan->rangeUnit ."〜". $plan->rangeE . $plan->rangeUnit }}</p>
-                                    @elseif ($plan->rangeS != NULL and $plan->rangeUnit == NULL)
-                                <p>範囲：{{ $plan->rangeS ."〜". $plan->rangeE }}</p>
-                                    @endif
-                                    @if ($plan->routine_time != NULL)
-                                <p>毎日{{ $plan->routine_time }}に</p>
-                                    @endif
-                                <p>{{ $plan->interval }}日ごとで実施</p>
-                            </div>
+                                <div class="my_goal">
+                                    <form action="{{ route('goal.delete', ['goal_id' => $goal->id ]) }}" id="form_{{ $goal->id }}" method="post">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button type="button" onclick="deleteGoal({{ $goal->id }})">×</button>
+                                    </form>
+                                    <h2 class="goal_name"> {{ $goal->goal }} </h2>
+                                    <p> {{ \Carbon\Carbon::parse($goal->date)->format('Y年m月d日') }} </p>
+                                    <p>あと<strong>{{ \Carbon\Carbon::parse($goal->date)->diffInDays(\Carbon\Carbon::today()) }}日</strong></p>
+                                @if ($goal->achived == 0)
+                                    <p>未達成</p>
+                                @else
+                                    <p>達成</p>                                
                                 @endif
-                            @endforeach
-                            <div class="button-space">
-                                <a class="button11 next_plan_button">></a>
+                                </div>
+                                <div class="goal-button-space">
+                                    <a class="button11 next_goal_button">↓</a>
+                                </div>
+                            
                             </div>
-                        </div>
+                            <div class="plan_content">
+                            
+                                <a class="button04" id="plan_create_button">Plan</a>
+                                <div class="plans">
+                                    <!-- ゴールごとにプランを表示 -->
+                                    <div class="button-space">
+                                        <a class="button11 prev_plan_button"><</a>
+                                    </div>
+                                    @foreach ($my_plans as $plan)
+                                        <!-- プランの表示 -->
+                                        @if ($plan->goal_id == $goal->id)
+                                    <div class="my_plan">
+                                        <form action="{{ route('plan.delete', ['plan_id' => $plan->id ]) }}" id="form_{{ $plan->id }}" method="post">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="button" onclick="deletePlan({{ $plan->id }})">×</button>
+                                        </form>
+                                        <h2>{{ $plan->name }}</h2>
+                                        <p>{{ $plan->start }}〜{{ $plan->end }}</p>
+                                            @if ($plan->duration != NULL)
+                                        <p>1回{{ $plan->duration }}分</p>
+                                            @endif
+                                            @if ($plan->rangeS != NULL and $plan->rangeUnit != NULL)
+                                        <p>範囲：{{ $plan->rangeS . $plan->rangeUnit ."〜". $plan->rangeE . $plan->rangeUnit }}</p>
+                                            @elseif ($plan->rangeS != NULL and $plan->rangeUnit == NULL)
+                                        <p>範囲：{{ $plan->rangeS ."〜". $plan->rangeE }}</p>
+                                            @endif
+                                            @if ($plan->routine_time != NULL)
+                                        <p>毎日{{ $plan->routine_time }}に</p>
+                                            @endif
+                                        <p>{{ $plan->interval }}日ごとで実施</p>
+                                    </div>
+                                        @endif
+                                    @endforeach
+                                    <div class="button-space">
+                                        <a class="button11 next_plan_button">></a>
+                                    </div>
+                                </div>
                         
-                        </div>
+                            </div>
                         </div>
                         @endforeach
                     @endif

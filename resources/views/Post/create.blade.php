@@ -11,7 +11,7 @@
     <body>
         <x-app-layout>
             <!-- 投稿作成画面 -->
-            <div  id="wrap" class="posts wrap">
+            <div  id="wrap" class="sns posts">
                 <h1>投稿作成</h1>
                 <section class="posts">
                     <!-- 入力フォーム -->
@@ -47,7 +47,7 @@
                             <input type="hidden" name="post[user_id]" value="{{ Auth::id() }}"/>
                             
                         </ul>
-                        <input class="button" type="submit" value="保存" />
+                        <input id="post_submit" class="button" type="submit" value="保存" />
                     </form>
                 </section>
                 

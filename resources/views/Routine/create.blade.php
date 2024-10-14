@@ -11,11 +11,11 @@
     <body>
         <x-app-layout>
             <!-- ROUTINE作成画面 -->
-            <div id="wrap" class="routines wrap">
+            <div id="wrap" class="sns routines">
                 <!-- 入力フォーム -->
                 <form id="routine_form" action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <h2>ROUTINE作成</h2>
+                    <h1>ROUTINE作成</h1>
                     <ul>
                         <li>*何を頑張った？</li>
                         <input id="title_value" type="text" name="routine[name]" required="required"/><br>
@@ -33,10 +33,8 @@
                             
                         <input type="hidden" name="routine[user_id]" value="{{ Auth::id() }}"/>
                     </ul>
-                    <input class="button" type="submit" value="保存" />
+                    <input id="routine_submit" class="button" type="submit" value="保存" />
                 </form>
-                <br/>
-                <br/>
                 
                 <!-- プレビュー画面 -->
                 <section class="routine">
@@ -59,7 +57,6 @@
                             <p id="body"></p>
                         </div>
                     </div>
-                    <br/>
                     <div class="routine-footer">
                         <img class="good" src={{ asset('/images/gooded.webp') }} alt="いいね済"><span>100</span>
                         <input type="text" name="comment[comment]" placeholder="頑張れー！！"><br>

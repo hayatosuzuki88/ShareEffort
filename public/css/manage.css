@@ -1,4 +1,14 @@
-/* モーダルの表示 */
+/* プラン */
+.my_plan {
+    border-radius: 10%;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    border-width: 4px;
+    border-color: #eaeaff;
+    background-color: white;
+}
+/* モーダル */
 #goal_create, #plan_create, #edit_event {
     display: none;
     position: absolute;
@@ -12,10 +22,11 @@
     text-align: center;
     z-index: 10;
 }
+    /* モーダル表示ボタン */
 #goal_create_button {
     font-size: 30px;
+    margin: 20px 0;
 }
-
 #plan_create_button {
     font-size: 30px;
     color: #9932cc;
@@ -24,7 +35,45 @@
 #plan_create_button:hover {
   background-color: #eddbff;
 }
-
+    /* モーダル消去ボタン */
+#close_goal_create {
+    background-color: #eafff4;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    top: 0;
+    right:0;
+    position: absolute;
+    float: right;
+}
+#close_plan_create{
+    background-color: #d6adff;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    top: 0;
+    right:0;
+    position: absolute;
+    float: right;
+}
+    /* ゴール保存ボタン */
+#goal_submit {
+    margin-top: 20px;
+    background-color: #eafff4;
+}
+    /* プラン保存ボタン */
+#plan_submit {
+    margin-top: 20px;
+    background-color: #d6adff;
+}
+#goal_create {
+    line-height: 2.0;
+}
+#plan_create li{
+    margin-top: 20px;
+}
 /* ゴールとプランのページ送り */
 .my_plan, .my_goal_plan {
     display: none;
@@ -57,6 +106,27 @@
     color: black;
     outline-color: white;
 }
+.prev_plan_button, .prev_goal_button {
+    display: none;
+}
+
+/* その他配置 */
+.task_calendar {
+    margin-top: 20px;
+}
+.plans {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.goal-button-space {
+    height: 30px;
+    margin: 20px auto 0;
+}
+
+.goal_content, .plan_content{
+    margin: 20px 0;
+}
 
 /* ボタン */
 .button04 {
@@ -73,16 +143,16 @@
   background-color: #f0fff0;
 }
 
-
+/* レスポンシブデザイン */
 @media (max-width: 1200px) {
-
+    /* ゴールの詳細非表示 */
     .my_goal p {
         display: none;
     }
 }
 
 @media (max-width: 700px) {
-    
+    /* 表示方法を縦にする */
     #goal_create_button, #plan_create_button {
         padding: 10px, 20px;
         font-size: 15px;
@@ -90,53 +160,24 @@
     #plan_create_button {
         margin-top: 20px;
     }
-    
     .goal_active{
         display: block;
     }
-    
     .prev_goal_button, .next_goal_button {
         height: 40px;
     }
-    .calendar p {
-        font-size: 1px;
-    }
-    
     .plan_content {
         margin: 30px;
     }
-    
     .goal_active .plans {
         display: flex;
         justify-content: center;
     }
+    /* フォントサイズの変更 */
+    .calendar p {
+        font-size: 1px;
+    }
     
-    
 }
 
-.create_buttons {
-    margin: 20px 0;
-}
 
-.task_calendar {
-    margin-top: 20px;
-}
-#app {
-    margin-top: 20px;
-}
-.plans {
-    display: flex;
-    align-items: center;
-}
-.goal-button-space {
-    height: 30px;
-    margin: 0 auto;
-}
-
-.prev_plan_button, .prev_goal_button {
-    display: none;
-}
-
-.plans {
-    margin-top: 20px;
-}

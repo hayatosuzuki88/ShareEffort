@@ -1,3 +1,19 @@
+/* カラムの設定 */
+.main {
+    width: 700px;
+    margin: 0 10px;
+    float: left;
+    padding: 20px;
+    background-color: #eaf4ff;
+}
+.sidebar {
+    width: 500px;
+    margin: 0 10px 0 30px;
+    float: right;
+    background-color: #eafff4;
+    padding: 20px;
+}
+
 /* ゴールとプランのページ送用のCSS */
 .my_goal, .today_task, .routing_friend {
     display: none;
@@ -5,7 +21,6 @@
 .goal_active, .task_active, .routing_active {
     display: block;
 }
-
 .prev_goal_button, .next_goal_button {
     height: 30px;
     width: 30px;
@@ -36,8 +51,8 @@
 .prev_goal_button, .prev_task_button, .prev_routing_button {
     display: none;
 }
-/* ボタン */
 
+/* ボタン */
 .button {
     background: #eee;
     border-radius: 3px;
@@ -59,32 +74,21 @@
     background: #333;
     color: #FFF;
 }
-
-.main {
-    width: 700px;
-    margin: 0 10px;
-    float: left;
-    padding: 20px;
-    background-color: #eaf4ff;
-}
-
-
-
-
-.sidebar {
-    width: 500px;
-    margin: 0 10px 0 30px;
-    float: right;
-    background-color: #eafff4;
-    padding: 20px;
-}
-
-
-
+    /* section */
 .my_goals, .routing_friends, .today_tasks {
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+    /* 今日のタスク */
+.today_task {
+    margin: 10px;
+    background-color: #e5ffe5;
+    border-color: white;
+    border-width: 4px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25%;
 }
     /* ルーティンを投稿した友達 */
 .home-routine {
@@ -109,35 +113,19 @@
     display: flex;
     justify-content: center;
 }
-
 .goal_content, .task-content{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-
-    /* 今日のタスク */
-.today_task {
-    margin: 10px;
-}
-    /* タスク */
-.today_task {
-    background-color: #e5ffe5;
-    border-color: white;
-    border-width: 4px;
-    padding: 10px;
-    text-align: center;
-    border-radius: 25%;
-}
-
+/* レスポンシブデザイン */
 @media screen and (max-width: 1300px) {
+    /* カラムの変更 */
     .main {
         float: none;
         margin: 20px;
         width: 90%;
     }
-    
     .sidebar {
         float: none;
         width: 90%;
@@ -149,27 +137,26 @@
 }
 
 @media screen and (max-width: 500px) {
+    /* 画面領域拡大 */
     .main {
         padding: 20px 0;
         margin: 0px;
         width: 100%;
     }
-    
     .sidebar {
         width: 100%;
         margin: 0px;
         padding: 20px 0;
     }
     
+    /* ルーティンの友達の大きさ変更 */
     .routing_friends {
         height: 80px;
     }
-    
     .routing_user_image {
         height:50px;
         width: 50px;
     }
-    
     .routing_user_name {
         font-size: 10px;
     }
