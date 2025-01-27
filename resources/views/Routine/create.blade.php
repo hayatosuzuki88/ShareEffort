@@ -11,9 +11,11 @@
     <body>
         <x-app-layout>
             <!-- ROUTINE作成画面 -->
-            <div id="wrap" class="sns routines">
+            <div id="wrap" class="sns routines clearfix">
                 <!-- 入力フォーム -->
-                <form id="routine_form" action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="content">
+                    <div class="main">
+                        <form id="routine_form" action="{{ route('routine.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <h1>ROUTINE作成</h1>
                     <ul>
@@ -35,8 +37,9 @@
                     </ul>
                     <input id="routine_submit" class="button" type="submit" value="保存" />
                 </form>
-                
-                <!-- プレビュー画面 -->
+                    </div>
+                    <aside class="sidebar">
+                        <!-- プレビュー画面 -->
                 <section class="routine">
                     <div class="routine-container">
                         <img class="img" id="preview" alt="ROUTINE画像"/>
@@ -67,6 +70,11 @@
                 </section>
             
             </div>
+                    </aside>
+                </div>
+                
+                
+                
             <footer>
                 <small>by Hayato Suzuki</small>
             </footer>

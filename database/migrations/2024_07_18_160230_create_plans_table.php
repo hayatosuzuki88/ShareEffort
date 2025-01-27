@@ -17,9 +17,9 @@ return new class extends Migration
             $table->date('start'); // プランの開始日
             $table->date('end'); // プランの終了日
             $table->integer('duration')->nullable(); // 何分かかる予定か
-            $table->integer('rangeS')->nullable(); // タスク範囲の始め
-            $table->integer('rangeE')->nullable(); // タスク範囲の終わり
-            $table->string('rangeUnit')->nullable(); // 範囲の単位（ページなど）
+            $table->integer('range_start')->nullable(); // タスク範囲の始め
+            $table->integer('range_end')->nullable(); // タスク範囲の終わり
+            $table->string('range_unit')->nullable(); // 範囲の単位（ページなど）
             $table->time('routine_time')->nullable(); // 何時に行うか
             $table->integer('interval'); // 何日ごとに実施するか
             $table->foreignId('goal_id')->constrained()->onDelete('cascade');

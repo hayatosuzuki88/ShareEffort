@@ -40,8 +40,8 @@ class PlanController extends Controller
         $period = $start->diffInDays($end);
         $interval = $plan->interval;
         $task_size = $period / $interval + 1;
-        $task_range_per_day = round(($plan->rangeE - $plan->rangeS) / $task_size);
-        $task_range_start = $plan->rangeS - 1;
+        $task_range_per_day = round(($plan->range_end - $plan->range_start) / $task_size);
+        $task_range_start = $plan->range_start - 1;
 
         // プランの情報からタスクを生成
         for ($task_i = 1; $task_i <= $task_size; $task_i++) {
@@ -49,9 +49,9 @@ class PlanController extends Controller
             $task->name = $plan->name.$task_i.'回目';
 
             if ($task_i == $task_size) { // 範囲の余りを最後に行う
-                $task->range = ($task_range_start + 1).$plan->rangeUnit.'から'.$plan->rangeE.$plan->rangeUnit;
+                $task->range = ($task_range_start + 1).$plan->range_unit.'から'.$plan->range_end.$plan->range_unit;
             } else {
-                $task->range = ($task_range_start + 1).$plan->rangeUnit.'から'.($task_range_start + $task_range_per_day).$plan->rangeUnit;
+                $task->range = ($task_range_start + 1).$plan->range_unit.'から'.($task_range_start + $task_range_per_day).$plan->range_unit;
             }
 
             // 次のタスクの範囲の計算
