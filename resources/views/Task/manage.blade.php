@@ -58,10 +58,10 @@
                                 <p id="plan-integer-error" class="error">可能な数値を入力してください。</p>
                                 
                                 <li>どこからどこまで</li>
-                                <input id="plan-range-start" type="integer" name="plan[rangeS]"/>〜
-                                <input id="plan-range-end" type="integer" name="plan[rangeE]"/><br>
+                                <input id="plan-range-start" type="integer" name="plan[range_start]"/>〜
+                                <input id="plan-range-end" type="integer" name="plan[range_end]"/><br>
                                 <span>単位：</span>
-                                <input id="plan-range-unit" type="string" name="plan[rangeUnit]"/><br>
+                                <input id="plan-range-unit" type="string" name="plan[range_unit]"/><br>
                                 <p id="plan-range-error" class="error"></p>
                         
                                 <li>何時に取り組む？</li>
@@ -158,10 +158,10 @@
                                             @if ($plan->duration != NULL)
                                         <p>1回{{ $plan->duration }}分</p>
                                             @endif
-                                            @if ($plan->rangeS != NULL and $plan->rangeUnit != NULL)
-                                        <p>範囲：{{ $plan->rangeS . $plan->rangeUnit ."〜". $plan->rangeE . $plan->rangeUnit }}</p>
-                                            @elseif ($plan->rangeS != NULL and $plan->rangeUnit == NULL)
-                                        <p>範囲：{{ $plan->rangeS ."〜". $plan->rangeE }}</p>
+                                            @if ($plan->range_start != NULL and $plan->range_unit != NULL)
+                                        <p>範囲：{{ $plan->range_start . $plan->range_unit ."〜". $plan->range_end . $plan->range_unit }}</p>
+                                            @elseif ($plan->range_start != NULL and $plan->range_unit == NULL)
+                                        <p>範囲：{{ $plan->range_start ."〜". $plan->range_end }}</p>
                                             @endif
                                             @if ($plan->routine_time != NULL)
                                         <p>毎日{{ $plan->routine_time }}に</p>

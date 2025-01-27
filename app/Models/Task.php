@@ -84,13 +84,13 @@ class Task extends Model
         });
 
         // 一つ前の行を取得
-        $previousRow = $index > 0 ? $rows[$index - 1] : null;
+        $previous_row = $index > 0 ? $rows[$index - 1] : null;
 
-        if ($previousRow == null) {
+        if ($previous_ow == null) {
             return 0;
         }
 
-        if ($previousRow->achived == 1) {
+        if ($previous_row->achived == 1) {
             return 1;
         } else {
             return 0;
