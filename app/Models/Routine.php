@@ -24,24 +24,24 @@ class Routine extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function like_routines()
+    public function likeRoutines()
     {
         return $this->hasMany(LikeRoutine::class, 'routine_id');
     }
 
-    public function comment_routines()
+    public function commentRoutines()
     {
         return $this->hasMany(CommentRoutine::class, 'routine_id');
     }
 
     // ルーティンがログインユーザにいいねされているか
-    public function is_liked_by_auth_user()
+    public function isLikedByAuthUser()
     {
         $my_id = Auth::id();
 
         // ルーティンをいいねしているユーザの配列
         $likers = [];
-        foreach ($this->like_routines as $like) {
+        foreach ($this->likeRoutines as $like) {
             $liker = $like->user_id;
             array_push($likers, $liker);
         }
@@ -55,7 +55,7 @@ class Routine extends Model
     }
 
     // 今日のルーティンをしている友達
-    public function get_today_routines_of_friends()
+    public function getTodayRoutinesOfFriends()
     {
         $user = Auth::User();
 
@@ -70,7 +70,7 @@ class Routine extends Model
 
     }
 
-    public function get_my_today_routine()
+    public function getMyTodayRoutine()
     {
 
         $yesterday = Carbon::now()->subDay();

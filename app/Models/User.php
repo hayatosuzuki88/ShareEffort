@@ -55,7 +55,7 @@ class User extends Authenticatable
         return $this->hasMany(Goal::class);
     }
 
-    public function like_routines()
+    public function likeRoutines()
     {
         return $this->hasMany(LikeRoutine::class, 'routine_id');
     }
@@ -65,7 +65,7 @@ class User extends Authenticatable
         return $this->hasMany(Friend::class, 'follow');
     }
 
-    public function comment_routines()
+    public function commentRoutines()
     {
         return $this->hasMany(CommentRoutine::class, 'user_id');
     }
@@ -75,13 +75,13 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'followed');
     }
 
-    public function like_posts()
+    public function likePosts()
     {
         return $this->hasMany(LikePost::class, 'post_id');
     }
 
     // ユーザがログインユーザにフォローされているか
-    public function is_followed_by_auth_user()
+    public function isFollowedByAuthUser()
     {
         $my_id = Auth::id();
 

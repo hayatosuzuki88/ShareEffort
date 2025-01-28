@@ -37,7 +37,7 @@ class TaskController extends Controller
     {
         // 自分のタスクを取得
         $Task = new Task;
-        $my_tasks = $Task->get_my_tasks();
+        $my_tasks = $Task->getMyTasks();
 
         $my_events = [];
 

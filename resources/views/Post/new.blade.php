@@ -51,13 +51,13 @@
                         <div class="post_footer">
                             <p>{{ $post->body }}</p>
                             
-                        @if ($post->is_liked_by_auth_user())
+                        @if ($post->isLikedByAuthUser())
                             <a href="{{ route('post.unlike', ['post_id' => $post->id]) }}" >
-                                <img class="good" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"><span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"><span>{{ $post->likePosts->count() }}</span>
                             </a>
                         @else
                             <a href="{{ route('post.like', ['post_id' => $post->id]) }}" >
-                                <img class="good" src="{{ asset('/images/good.webp') }}" alt="いいね未"><span>{{ $post->like_posts->count() }}</span>
+                                <img class="good" src="{{ asset('/images/good.webp') }}" alt="いいね未"><span>{{ $post->likePosts->count() }}</span>
                             </a>
                         @endif
                             
@@ -73,7 +73,7 @@
                                 </form>
                     
                                 <!-- コメント一覧 -->
-                                @foreach ($post->comment_posts as $comment)
+                                @foreach ($post->commentPosts as $comment)
                                 <div class="mb-2 sent_comment">
                                 
                                     <!-- コメントユーザ -->

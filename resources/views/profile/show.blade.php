@@ -16,7 +16,7 @@
                     
                     <h1>{{ $profiled_user->name }}</h1>
                     
-                    @if ($profiled_user->is_followed_by_auth_user())
+                    @if ($profiled_user->isFollowedByAuthUser())
                         <a class="button" href="{{ route('user.follow.remove', ['user_id' => $profiled_user->id]) }}" >フォローをやめる</a>
                     @else
                         <a class="button" href="{{ route('user.follow', ['user_id' => $profiled_user->id]) }}" >フォローする</a>
@@ -32,7 +32,7 @@
                                 </div>
                                 <p>{{ $user->name }}　</p>
                             </a>
-                        @if ($user->is_followed_by_auth_user())
+                        @if ($user->isFollowedByAuthUser())
                             <a class="button" href="{{ route('user.follow.remove', ['user_id' => $user->id]) }}" >フォローをやめる</a>
                         @else
                             <a class="button" href="{{ route('user.follow', ['user_id' => $user->id]) }}" >フォローする</a>
@@ -51,7 +51,7 @@
                                 </div>
                                 <p>{{ $user->name }}　</p>
                             </a>
-                        @if ($user->is_followed_by_auth_user())
+                        @if ($user->isFollowedByAuthUser())
                             <a class="button" href="{{ route('user.follow.remove', ['user_id' => $user->id]) }}" >フォローをやめる</a>
                         @else
                             <a class="button" href="{{ route('user.follow', ['user_id' => $user->id]) }}" >フォローする</a>

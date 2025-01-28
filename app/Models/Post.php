@@ -28,24 +28,24 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function comment_posts()
+    public function commentPosts()
     {
         return $this->hasMany(CommentPost::class, 'post_id');
     }
 
-    public function like_posts()
+    public function likePosts()
     {
         return $this->hasMany(LikePost::class, 'post_id');
     }
 
     // 投稿がログインユーザにいいねされているか
-    public function is_liked_by_auth_user()
+    public function isLikedByAuthUser()
     {
         $my_id = Auth::id();
 
         // 投稿をいいねしているユーザの配列
         $likers = [];
-        foreach ($this->like_posts as $like) {
+        foreach ($this->likePosts as $like) {
             $liker = $like->user_id;
             array_push($likers, $liker);
         }
@@ -59,7 +59,7 @@ class Post extends Model
     }
 
     // 友達の投稿を返す
-    public function get_posts_of_friends()
+    public function getPostsOfFriends()
     {
         $user = Auth::User();
 

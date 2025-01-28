@@ -100,7 +100,7 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function (
 
     Route::get('/users/follow/{user_id}', 'follow')->name('user.follow');
 
-    Route::get('/users/removefollow/{user_id}', 'removefollow')->name('user.follow.remove');
+    Route::get('/users/removefollow/{user_id}', 'removeFollow')->name('user.follow.remove');
 
     Route::get('/users/{user_id}', 'show')->name('user.show');
 });

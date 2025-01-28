@@ -20,7 +20,7 @@ class UserController extends Controller
     }
 
     // ユーザのフォローを取り消し
-    public function removefollow($friend_id)
+    public function removeFollow($friend_id)
     {
         $like = Friend::where('followed', $friend_id)->where('follow', Auth::id())->first();
         $like->delete();
