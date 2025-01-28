@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         // 今日のタスク
         $Task = new Task;
-        $my_today_tasks = $Task->get_today_tasks();
+        $my_today_tasks = $Task->getTodayTasks();
 
         return view('Post.create')->with(['my_today_tasks' => $my_today_tasks]);
     }
@@ -32,7 +32,7 @@ class PostController extends Controller
 
         // todo　タスクの継続をカウント
         /*
-        if($task->previous_task_is_achived())
+        if($task->previousTaskIsAchived())
         {
             Auth::User()->continue += 1;
             Auth::User()->save();
@@ -85,7 +85,7 @@ class PostController extends Controller
 
         // todo　タスクの継続をカウント
         /*
-        if($task->previous_task_is_achived()){
+        if($task->previousTaskIsAchived()){
             Auth::User()->continue -= 1;
             Auth::User()->save();
         } else {

@@ -27,7 +27,7 @@ class Task extends Model
     }
 
     // 自分のタスクを取得
-    public function get_my_tasks()
+    public function getMyTasks()
     {
         $my_tasks = Task::whereHas('plan', function ($query1) {
             $query1->whereHas('goal', function ($query2) {
@@ -41,7 +41,7 @@ class Task extends Model
     }
 
     // 今日のタスクを取得
-    public function get_today_tasks()
+    public function getTodayTasks()
     {
         $today = Carbon::today();
 
@@ -67,7 +67,7 @@ class Task extends Model
     }
 
     // 一つ前のタスクが達成状況になっているか
-    public function previous_task_is_achived()
+    public function previousTaskIsAchived()
     {
         $task_table = Task::whereHas('plan', function ($query1) {
             $query1->whereHas('goal', function ($query2) {

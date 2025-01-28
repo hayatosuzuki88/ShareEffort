@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comment_routines', function (Blueprint $table) {
+        Schema::create('commentRoutines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('routine_id')->constrained('routines')->onDelete('cascade');
             $table->string('comment');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comment_routines');
+        Schema::dropIfExists('commentRoutines');
     }
 };

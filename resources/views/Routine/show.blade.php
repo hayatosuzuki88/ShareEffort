@@ -48,13 +48,13 @@
                         
                     <!-- いいね機能 -->
                     <div class="like">
-                    @if ($routine->is_liked_by_auth_user())
+                    @if ($routine->isLikedByAuthUser())
                         <a href="{{ route('routine.unlike', ['routine_id' => $routine->id]) }}" >
-                            <img class="like_icon" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"/><span>{{ $routine->like_routines->count() }}</span>
+                            <img class="like_icon" src="{{ asset('/images/gooded.webp') }}" alt="いいね済"/><span>{{ $routine->likeRoutines->count() }}</span>
                         </a>
                     @else
                         <a href="{{ route('routine.like', ['routine_id' => $routine->id]) }}" alt="いいね未">
-                            <img class="like_icon" src="{{ asset('/images/good.webp') }}" /><span>{{ $routine->like_routines->count() }}</span>
+                            <img class="like_icon" src="{{ asset('/images/good.webp') }}" /><span>{{ $routine->likeRoutines->count() }}</span>
                         </a>
                     @endif
                     </div>
@@ -71,7 +71,7 @@
                         <p class="created_at" >{{ $routine->created_at }}に投稿</p>
                     </div>
                     
-                    @foreach ($routine->comment_routines as $comment)
+                    @foreach ($routine->commentRoutines as $comment)
                     <!-- コメントごとに処理 -->
                         <div class="mb-2">
                             <span>
