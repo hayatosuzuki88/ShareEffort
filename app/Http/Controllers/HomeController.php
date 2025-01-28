@@ -14,7 +14,8 @@ class HomeController extends Controller
     public function home(Routine $routine)
     {
         // 自分のゴール
-        $my_goals = Goal::where('user_id', '=', Auth::id())->get();
+        $goal = new Goal;
+        $my_goals = $goal->getByUserId(Auth::id());
 
         // 自分の今日のタスク
         $Task = new Task;

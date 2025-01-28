@@ -46,16 +46,17 @@ class PostController extends Controller
         $input = $request['post'];
         $minutes = $request['minutes'];
         $task_id = $input['task_id'];
-        $task = Task::find($task_id);
+        $task = new Task;
+        $target_task = $task->find($task_id);
 
-        if ($task) { // taskが存在したら、かかった時間とともに達成状態にする
-            $task->achive($minutes);
+        if ($target_task) { // taskが存在したら、かかった時間とともに達成状態にする
+            $target_task->achive($minutes);
         }
 
         // todo　いずれタスクごとに色を決められるようにしたい
-        $task->color = '#ff8484';
+        $target_task->color = '#ff8484';
 
-        $task->save();
+        $target_task->save();
 
         // 画像の保存
         $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
@@ -69,9 +70,10 @@ class PostController extends Controller
     // 投稿の詳細画面の表示
     public function show($post_id)
     {
-        $post = Post::find($post_id);
+        $post = new Post;
+        $targetpost = $post->find($post_id);
 
-        return view('Post.show')->with(['post' => $post]);
+        return view('Post.show')->with(['post' => $target_post]);
     }
 
     // 投稿の削除
@@ -93,17 +95,19 @@ class PostController extends Controller
             Auth::User()->save();
         }
         */
-
-        $post = Post::find($post_id);
-        $task = Task::find($post->task_id);
+        
+        $post = new Post;
+        $task = new Task;
+        $target_post = $post->find($post_id);
+        $target_task = $task->find($post->task_id);
 
         // タスクの色を灰色に戻す
-        $task->color = '#c0c0c0';
-        $task->finish = 0;
+        $target_task->color = '#c0c0c0';
+        $target_task->finish = 0;
 
-        $task->save();
+        $target_task->save();
 
-        $post->delete();
+        $target_post->delete();
 
         return redirect('/');
     }
@@ -111,7 +115,8 @@ class PostController extends Controller
     // 全ての投稿を（NEW POSTページに）表示
     public function all()
     {
-        $all_posts = Post::all();
+        $post = new Post;
+        $all_posts = $post->all();
 
         return view('Post.new')->with(['all_posts' => $all_posts]);
     }
@@ -125,10 +130,8 @@ class PostController extends Controller
         Auth::User()->save();
         */
 
-        LikePost::create([
-            'post_id' => $post_id,
-            'user_id' => Auth::id(),
-        ]);
+        $like_post = new LikePost;
+        $like_post->create($post_id, Auth::id());
 
         return redirect()->back();
     }
@@ -141,8 +144,9 @@ class PostController extends Controller
         Auth::User()->point -= 3;
         Auth::User()->save();
         */
-
-        $like = LikePost::where('post_id', $post_id)->where('user_id', Auth::id())->first();
+        
+        $like_post = new LikePost;
+        $like = $like_post->getByPostAndUserId($post_id, Auth::id());
         $like->delete();
 
         return redirect()->back();

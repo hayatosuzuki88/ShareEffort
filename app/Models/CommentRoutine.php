@@ -24,4 +24,9 @@ class CommentRoutine extends Model
     {
         return $this->belongsTo(Routine::class);
     }
+    
+    public function find($comment_id)
+    {
+        return $this->find($comment_id);
+    }
 }

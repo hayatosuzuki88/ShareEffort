@@ -43,9 +43,10 @@ class RoutineController extends Controller
     // ルーティンの詳細画面の表示
     public function show($routine_id)
     {
-        $routine = Routine::find($routine_id);
+        $routine = new Routine;
+        $target_routine = $routine->find($routine_id);
 
-        return view('Routine.show')->with(['routine' => $routine]);
+        return view('Routine.show')->with(['routine' => $target_routine]);
     }
 
     // ルーティンの削除
@@ -57,8 +58,9 @@ class RoutineController extends Controller
         Auth::User()->save();
         */
 
-        $routine = Routine::find($routine_id);
-        $routine->delete();
+        $routine = new Routine;
+        $target_routine = $routine->find($routine_id);
+        $target_routine->delete();
 
         return redirect()->back();
     }
@@ -72,11 +74,9 @@ class RoutineController extends Controller
         Auth::User()->save();
         */
 
-        LikeRoutine::create([
-            'routine_id' => $routine_id,
-            'user_id' => Auth::id(),
-        ]);
-
+        $like_routine = new LikeRoutine;
+        $like_routine->create($routine_id, Auth::id());
+        
         return redirect()->back();
     }
 
@@ -89,7 +89,8 @@ class RoutineController extends Controller
         Auth::User()->save();
         */
 
-        $like = LikeRoutine::where('routine_id', $routine_id)->where('user_id', Auth::id())->first();
+        $like_routine = new LikeRoutine;
+        $like = $like_routine->getByRoutineAndUserId($routine_id, Auth::id()); 
         $like->delete();
 
         return redirect()->back();

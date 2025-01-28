@@ -55,6 +55,19 @@ class Task extends Model
 
         return $today_tasks;
     }
+    
+    public function getByGoalId($goal_id)
+    {
+        $tasks = Task::whereHas('plan', function ($query1) use ($goal_id) {
+            $query1->where('goal_id', '=', $goal_id);
+        })->get();
+        return $tasks;
+    }
+    
+    public function getByPlanId($plan_id)
+    {
+        return Plan::where('plan_id', '=', $plan_id);
+    }
 
     // タスクを達成状況にする
     public function achive($minutes)

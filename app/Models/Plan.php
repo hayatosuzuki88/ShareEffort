@@ -31,4 +31,17 @@ class Plan extends Model
     {
         return $this->hasMany(Task::class);
     }
+    
+    public function getByGoalId($goal_id)
+    {
+        return Plan::where('goal_id', '=', $goal_id)->get();
+    }
+    
+    public function getByUserId($user_id)
+    {
+        $goals_id = Goal::where('user_id', '=', $user_id)->pluck('id');
+        $my_plans = Plan::whereIn('goal_id', $goals_id)->get();
+        
+        return $my_plans;
+    }
 }

@@ -30,27 +30,28 @@ class GoalController extends Controller
     public function delete($goal_id)
     {
         // 指定のゴール
-        $goal = Goal::find($goal_id);
+        $goal = new Goal;
+        $target_goal = $goal->find($goal_id);
 
         // 指定ゴールのプラン
-        $plans_of_goal = Plan::where('goal_id', '=', $goal_id)->get();
+        $plan = new Plan;
+        $target_plans_of_goal = $plan->getByGoalId($goal_id);
 
         // 指定ゴールのタスク
-        $tasks_of_goal = Task::whereHas('plan', function ($query1) use ($goal_id) {
-            $query1->where('goal_id', '=', $goal_id);
-        })->get();
+        $task = new Task;
+        $target_tasks_of_goal = $task->getByGoalId($goal_id); 
 
         // ゴールの削除
-        $goal->delete();
+        $target_goal->delete();
 
         // プランの削除
-        foreach ($plans_of_goal as $plan) {
-            $plan->delete();
+        foreach ($target_plans_of_goal as $target_plan) {
+            $target_plan->delete();
         }
 
         // タスクの削除
-        foreach ($tasks_of_goal as $task) {
-            $task->delete();
+        foreach ($target_tasks_of_goal as $target_task) {
+            $target_task->delete();
         }
 
         return redirect()->back();

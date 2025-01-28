@@ -26,4 +26,9 @@ class CommentPost extends Model
     {
         return $this->belongsTo(Post::class);
     }
+    
+    public function find($comment_id)
+    {
+        return $this->find($comment_id);
+    }
 }
