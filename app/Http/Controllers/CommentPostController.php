@@ -31,7 +31,8 @@ class CommentPostController extends Controller
         Auth::User()->save();
         */
 
-        $comment = CommentPost::find($request['comment_id']);
+        $comment_post = new CommentPost;
+        $comment = $comment_post->find($request['comment_id']);
         $comment->delete();
 
         return redirect()->back();
@@ -40,7 +41,8 @@ class CommentPostController extends Controller
     // コメントにいいね
     public function like($comment_id)
     {
-        $comment = CommentPost::find($comment_id);
+        $comment_post = new CommentPost;
+        $comment = $comment_post->find($comment_id);
 
         // 投稿のポイント制度導入時の処理　廃止
         /*

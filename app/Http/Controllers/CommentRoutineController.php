@@ -32,7 +32,8 @@ class CommentRoutineController extends Controller
         Auth::User()->save();
         */
 
-        $comment = CommentRoutine::find($request['comment_id']);
+        $comment_routine = new CommentRoutine;
+        $comment = $comment_routine->find($request['comment_id']);
         $comment->delete();
 
         return redirect()->back();
@@ -47,7 +48,8 @@ class CommentRoutineController extends Controller
         $comment->user->save();
         */
 
-        $comment = CommentRoutine::find($comment_id);
+        $comment_routine = new CommentRoutine;
+        $comment = $comment_routine->find($comment_id);
         $comment->like += 1;
         $comment->save();
     }

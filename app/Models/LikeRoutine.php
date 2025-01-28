@@ -23,4 +23,17 @@ class LikeRoutine extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function create($routine_id, $user_id)
+    {
+        LikeRoutine::create([
+            'routine_id' => $routine_id,
+            'user_id' => $user_id,
+        ]);
+    }
+    
+    public function getByRoutineAndUserId($routine_id, $user_id)
+    {
+        LikeRoutine::where('routine_id', $routine_id)->where('user_id', $user_id)->first();
+    }
 }

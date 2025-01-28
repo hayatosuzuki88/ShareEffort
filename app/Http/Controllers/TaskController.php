@@ -12,18 +12,18 @@ class TaskController extends Controller
     // タスク管理画面の表示
     public function manage(Task $task)
     {
+        $my_id = Auth::id();
         // 自分のゴール
-        $my_goals = Goal::where('user_id', '=', Auth::id())->get();
+        $goal = new Goal;
+        $my_goals = $goal->getByUserId($my_id);
 
         // 自分のプラン
-        $my_goals_id = Goal::where('user_id', '=', Auth::id())->pluck('id');
-        $my_plans = Plan::whereIn('goal_id', $my_goals_id)->get();
+        $plan = new Plan;
+        $my_plans = $plan->getByUserId($my_id);
 
         // 未達成な自分のゴール
-        $not_achived_goals_of_mine = Goal::where([
-            ['user_id', Auth::id()],
-            ['achived', 0],
-        ])->get();
+        $not_achived_goals_of_mine = $goal->getNotAchiveByUserId($my_id)
+        
 
         return view('Task.manage')->with([
             'my_goals' => $my_goals,

@@ -79,6 +79,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(LikePost::class, 'post_id');
     }
+    
+    public function find($user_id)
+    {
+        return User::find($user_id);
+    }
+    
+    public function getFollowingUser()
+    {
+        $following_user_id = Friend::where('follow', $this->id)->pluck('followed');
+        $following_user = User::whereIn('id', $following_user_id)->get();
+        return $following_user;
+    }
+    
+    public function getFollowedUser()
+    {
+        $followed_user_id = Friend::where('followed', $this->id)->pluck('follow');
+        $followed_user = User::whereIn('id', $followed_user_id)->get();
+        return $followed_user;
+    }
 
     // ユーザがログインユーザにフォローされているか
     public function isFollowedByAuthUser()

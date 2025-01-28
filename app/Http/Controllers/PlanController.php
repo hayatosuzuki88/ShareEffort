@@ -72,17 +72,19 @@ class PlanController extends Controller
     public function delete($plan_id)
     {
         // 指定のプラン
-        $plan = Plan::find($plan_id);
+        $plan = new Plan;
+        $target_plan = $plan->find($plan_id);
 
         // 指定プランのタスク
-        $tasks_of_plan = Task::where('plan_id', '=', $plan_id);
+        $task = new Task;
+        $target_tasks_of_plan = $task->getByPlanId($plan_id);
 
         // プランの削除
-        $plan->delete();
+        $target_plan->delete();
 
         // タスクの削除
-        foreach ($tasks_of_plan as $task) {
-            $task->delete();
+        foreach ($target_tasks_of_plan as $target_task) {
+            $target_task->delete();
         }
 
         return redirect()->back();

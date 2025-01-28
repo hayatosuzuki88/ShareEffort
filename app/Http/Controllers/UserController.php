@@ -11,10 +11,8 @@ class UserController extends Controller
     // ユーザをフォロー
     public function follow($friend_id)
     {
-        Friend::create([
-            'followed' => $friend_id,
-            'follow' => Auth::id(),
-        ]);
+        $friend = new Friend;
+        $friend->create($friend_id, Auth::id());
 
         return redirect()->back();
     }
@@ -22,7 +20,8 @@ class UserController extends Controller
     // ユーザのフォローを取り消し
     public function removeFollow($friend_id)
     {
-        $like = Friend::where('followed', $friend_id)->where('follow', Auth::id())->first();
+        $friend = new Friend;
+        $like = $friend->getByFriendAndUserId($friend_id, Auth::id()); 
         $like->delete();
 
         return redirect()->back();
@@ -31,13 +30,12 @@ class UserController extends Controller
     // ユーザの詳細画面を表示
     public function show($user_id)
     {
-        $profiled_user = User::where('id', $user_id)->first();
+        $user = new User;
+        $profiled_user = $user->find($user_id);
 
-        $following_user_id = Friend::where('follow', $profiled_user->id)->pluck('followed');
-        $following_user = User::whereIn('id', $following_user_id)->get();
-
-        $followed_user_id = Friend::where('followed', $profiled_user->id)->pluck('follow');
-        $followed_user = User::whereIn('id', $followed_user_id)->get();
+        $following_user = $profiled_user->getFollowingUser();
+        
+        $followed_user = $profiled_user->getFollowedUser();
 
         return view('profile.show')->with([
             'profiled_user' => $profiled_user,

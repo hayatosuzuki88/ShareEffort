@@ -24,4 +24,22 @@ class Goal extends Model
     {
         return $this->hasMany(Plan::class);
     }
+    
+    public function find($goal_id)
+    {
+        return $this->find($goal_id);
+    }
+    
+    public function getByUserId($user_id)
+    {
+        return Goal::where('user_id', '=', $user_id)->get();
+    }
+    
+    public function getNotAchiveByUserId($user_id)
+    {
+        return Goal::where([
+            ['user_id', $user_id],
+            ['achived', 0],
+        ])->get();
+    }
 }

@@ -33,6 +33,11 @@ class Routine extends Model
     {
         return $this->hasMany(CommentRoutine::class, 'routine_id');
     }
+    
+    public function find($routine_id)
+    {
+        return Routine::find($routine_id);
+    }
 
     // ルーティンがログインユーザにいいねされているか
     public function isLikedByAuthUser()

@@ -37,6 +37,11 @@ class Post extends Model
     {
         return $this->hasMany(LikePost::class, 'post_id');
     }
+    
+    public function all()
+    {
+        return Post::all();
+    }
 
     // 投稿がログインユーザにいいねされているか
     public function isLikedByAuthUser()
